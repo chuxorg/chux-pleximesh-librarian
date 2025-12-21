@@ -1,0 +1,10 @@
+services:
+  librarian:
+    build: .
+    ports:
+      - "${LIBRARIAN_PORT:-8000}:8000"
+    environment:
+      LIBRARIAN_PORT: "${LIBRARIAN_PORT:-8000}"
+      LIBRARIAN_ARTIFACT_ROOT: /data/librarian
+    volumes:
+      - ./data:/data/librarian

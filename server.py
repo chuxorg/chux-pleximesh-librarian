@@ -5,13 +5,19 @@ from __future__ import annotations
 
 import json
 import os
+import re
 import uuid
 from dataclasses import dataclass
 from datetime import datetime, timezone
 from http import HTTPStatus
 from http.server import BaseHTTPRequestHandler, HTTPServer
 from pathlib import Path
-from typing import Any, Dict, Optional
+from typing import Any, Dict, List, Optional
+from urllib.parse import parse_qs, urlparse
+
+from pymongo import ASCENDING, MongoClient
+from pymongo.collection import Collection
+from pymongo.errors import PyMongoError
 
 BASE_DIR = Path(__file__).resolve().parent
 ARTIFACT_ROOT = Path(os.environ.get("LIBRARIAN_ARTIFACT_ROOT", BASE_DIR))
@@ -29,15 +35,6 @@ TYPE_DIRECTORIES = {
 # TODO: replace HTTP transport with AWACS/event ingestion in a future phase.
 # TODO: add stronger payload validation once upstream schemas are finalized.
 # TODO: emit structured events rather than relying solely on stdout logging.
-
-
-def ensure_directories() -> None:
-    for artifact_type, base in TYPE_DIRECTORIES.items():
-        if artifact_type in {"prompt", "result"}:
-            for role in ROLE_DIRECTORIES:
-                (base / role).mkdir(parents=True, exist_ok=True)
-        else:
-            base.mkdir(parents=True, exist_ok=True)
 
 
 def now_timestamp() -> str:
@@ -60,6 +57,8 @@ class NormalizedArtifact:
     metadata: Dict[str, Any]
     timestamp: str
     execution_phase: Optional[str]
+    references: List[str]
+    status: str
 
     def storage_directory(self) -> Path:
         base = TYPE_DIRECTORIES[self.artifact_type]
@@ -99,18 +98,104 @@ class NormalizedArtifact:
         }
         return header
 
-    def store(self) -> Path:
-        directory = self.storage_directory()
-        directory.mkdir(parents=True, exist_ok=True)
-        target = directory / self.filename()
-        header_json = json.dumps(self.header(), indent=2, sort_keys=True)
-        with target.open("w", encoding="utf-8") as handle:
-            handle.write(header_json)
-            handle.write("\n---\n")
-            handle.write(self.content_body)
-            if not self.content_body.endswith("\n"):
-                handle.write("\n")
-        return target
+    def canonical_relative_path(self) -> Path:
+        target = self.storage_directory() / self.filename()
+        try:
+            return target.relative_to(ARTIFACT_ROOT)
+        except ValueError:
+            return target
+
+
+class PersistenceError(RuntimeError):
+    """Raised when artifact storage or retrieval fails."""
+
+
+class MongoArtifactStore:
+    """Mongo-backed persistence adapter for Librarian artifacts."""
+
+    def __init__(self) -> None:
+        uri = os.environ.get("LIBRARIAN_MONGO_URI", "mongodb://mongo:27017")
+        db_name = os.environ.get("LIBRARIAN_MONGO_DB", "librarian")
+        collection_name = os.environ.get("LIBRARIAN_MONGO_COLLECTION", "artifacts")
+        client = MongoClient(uri, serverSelectionTimeoutMS=5000)
+        collection = client[db_name][collection_name]
+        collection.create_index("uri", unique=True)
+        collection.create_index([("path", ASCENDING)])
+        self._collection: Collection = collection
+
+    def put(self, artifact: NormalizedArtifact) -> Dict[str, Any]:
+        relative_path = artifact.canonical_relative_path()
+        uri = f"central-librarian://{relative_path.as_posix()}"
+        document = {
+            "uri": uri,
+            "path": list(relative_path.parent.parts),
+            "filename": relative_path.name,
+            "artifact_type": artifact.artifact_type,
+            "owner_agent": artifact.agent_role,
+            "created_by": artifact.agent_id or artifact.agent_role,
+            "created_at": artifact.timestamp,
+            "updated_at": artifact.timestamp,
+            "status": artifact.status,
+            "references": artifact.references,
+            "metadata": artifact.metadata,
+            "content": artifact.content_body,
+            "content_format": artifact.content_format,
+            "header": artifact.header(),
+        }
+        try:
+            self._collection.replace_one({"uri": uri}, document, upsert=True)
+        except PyMongoError as exc:  # pragma: no cover - network failure
+            raise PersistenceError(f"Mongo persistence failure: {exc}") from exc
+
+        return {
+            "uri": uri,
+            "path": relative_path.as_posix(),
+            "artifact_type": artifact.artifact_type,
+            "agent_role": artifact.agent_role,
+            "execution_id": artifact.execution_id,
+            "prompt_id": artifact.prompt_id or artifact.correlation_prompt_id,
+            "root_execution_id": artifact.root_execution_id,
+            "timestamp": artifact.timestamp,
+            "status": artifact.status,
+        }
+
+    def get(self, uri: str) -> Optional[Dict[str, Any]]:
+        try:
+            document = self._collection.find_one({"uri": uri}, {"_id": 0})
+        except PyMongoError as exc:  # pragma: no cover
+            raise PersistenceError(f"Mongo read failure: {exc}") from exc
+        return document
+
+    def exists(self, uri: str) -> bool:
+        try:
+            return self._collection.count_documents({"uri": uri}, limit=1) > 0
+        except PyMongoError as exc:  # pragma: no cover
+            raise PersistenceError(f"Mongo read failure: {exc}") from exc
+
+    def list(self, prefix: Optional[str]) -> List[Dict[str, Any]]:
+        query: Dict[str, Any] = {}
+        if prefix:
+            query["uri"] = {"$regex": f"^{re.escape(prefix)}"}
+
+        projection = {
+            "_id": 0,
+            "uri": 1,
+            "filename": 1,
+            "path": 1,
+            "artifact_type": 1,
+            "owner_agent": 1,
+            "status": 1,
+            "created_at": 1,
+            "updated_at": 1,
+        }
+        try:
+            cursor = self._collection.find(query, projection).sort("created_at", ASCENDING)
+            return list(cursor)
+        except PyMongoError as exc:  # pragma: no cover
+            raise PersistenceError(f"Mongo list failure: {exc}") from exc
+
+
+ARTIFACT_STORE = MongoArtifactStore()
 
 
 def normalize_payload(payload: Dict[str, Any]) -> NormalizedArtifact:
@@ -176,11 +261,20 @@ def normalize_payload(payload: Dict[str, Any]) -> NormalizedArtifact:
         raise ValueError("metadata.tags must be a list of strings")
     if isinstance(tags, list):
         tags = [str(tag) for tag in tags]
+    status = payload.get("status") or metadata.get("status") or "canonical"
+    allowed_status = {"draft", "canonical", "superseded", "blocked"}
+    if status not in allowed_status:
+        raise ValueError("status must be one of draft | canonical | superseded | blocked")
+    references = payload.get("references") or []
+    if references and not isinstance(references, list):
+        raise ValueError("references must be a list of strings")
+    references_list = [str(ref) for ref in references]
     metadata_normalized = {
         "client_timestamp": metadata.get("timestamp"),
         "tags": tags,
         "notes": metadata.get("notes"),
         "agent_id": agent_id,
+        "status": status,
     }
 
     timestamp = now_timestamp()
@@ -199,6 +293,8 @@ def normalize_payload(payload: Dict[str, Any]) -> NormalizedArtifact:
         metadata=metadata_normalized,
         timestamp=timestamp,
         execution_phase=execution_phase,
+        references=references_list,
+        status=status,
     )
 
 
@@ -235,20 +331,19 @@ class ArtifactRequestHandler(BaseHTTPRequestHandler):
             return
 
         try:
-            stored_path = artifact.store()
-        except OSError as exc:
+            record = ARTIFACT_STORE.put(artifact)
+        except PersistenceError as exc:
             self.log_error("Failed to store artifact: %s", exc)
-            self.respond_json(HTTPStatus.INTERNAL_SERVER_ERROR, {"error": "Failed to store artifact"})
+            self.respond_json(
+                HTTPStatus.INTERNAL_SERVER_ERROR,
+                {"error": "Failed to store artifact"},
+            )
             return
-
-        try:
-            relative_path = stored_path.relative_to(ARTIFACT_ROOT)
-        except ValueError:
-            relative_path = stored_path
 
         body = {
             "status": "stored",
-            "path": str(relative_path),
+            "uri": record["uri"],
+            "path": record["path"],
             "artifact_type": artifact.artifact_type,
             "agent_role": artifact.agent_role,
             "execution_id": artifact.execution_id,
@@ -257,6 +352,65 @@ class ArtifactRequestHandler(BaseHTTPRequestHandler):
             "timestamp": artifact.timestamp,
         }
         self.respond_json(HTTPStatus.CREATED, body)
+
+    def do_GET(self) -> None:  # noqa: N802
+        parsed = urlparse(self.path)
+        params = parse_qs(parsed.query)
+        if parsed.path == "/artifacts":
+            uri = self._single_param(params, "uri")
+            if not uri:
+                self.respond_json(HTTPStatus.BAD_REQUEST, {"error": "uri query parameter is required"})
+                return
+            try:
+                document = ARTIFACT_STORE.get(uri)
+            except PersistenceError as exc:
+                self.log_error("Failed to fetch artifact: %s", exc)
+                self.respond_json(
+                    HTTPStatus.INTERNAL_SERVER_ERROR,
+                    {"error": "Failed to fetch artifact"},
+                )
+                return
+            if document is None:
+                self.respond_json(HTTPStatus.NOT_FOUND, {"error": "Artifact not found"})
+                return
+            self.respond_json(HTTPStatus.OK, document)
+            return
+
+        if parsed.path == "/artifacts/exists":
+            uri = self._single_param(params, "uri")
+            if not uri:
+                self.respond_json(HTTPStatus.BAD_REQUEST, {"error": "uri query parameter is required"})
+                return
+            try:
+                exists = ARTIFACT_STORE.exists(uri)
+            except PersistenceError as exc:
+                self.log_error("Failed to check existence: %s", exc)
+                self.respond_json(
+                    HTTPStatus.INTERNAL_SERVER_ERROR,
+                    {"error": "Failed to check existence"},
+                )
+                return
+            self.respond_json(HTTPStatus.OK, {"uri": uri, "exists": exists})
+            return
+
+        if parsed.path == "/artifacts/list":
+            prefix = self._single_param(params, "prefix") or ""
+            try:
+                artifacts = ARTIFACT_STORE.list(prefix)
+            except PersistenceError as exc:
+                self.log_error("Failed to list artifacts: %s", exc)
+                self.respond_json(
+                    HTTPStatus.INTERNAL_SERVER_ERROR,
+                    {"error": "Failed to list artifacts"},
+                )
+                return
+            self.respond_json(
+                HTTPStatus.OK,
+                {"prefix": prefix, "artifacts": artifacts},
+            )
+            return
+
+        self.respond_json(HTTPStatus.NOT_FOUND, {"error": "Unknown path"})
 
     def do_PUT(self) -> None:  # noqa: N802
         self.respond_json(HTTPStatus.METHOD_NOT_ALLOWED, {"error": "Updates are not supported"})
@@ -280,6 +434,13 @@ class ArtifactRequestHandler(BaseHTTPRequestHandler):
         )
         print(message)
 
+    @staticmethod
+    def _single_param(params: Dict[str, List[str]], key: str) -> Optional[str]:
+        values = params.get(key)
+        if not values:
+            return None
+        return values[0]
+
 
 def run_server() -> None:
     port = int(os.environ.get("LIBRARIAN_PORT", "8000"))
@@ -294,7 +455,6 @@ def run_server() -> None:
 
 
 def main() -> None:
-    ensure_directories()
     run_server()
 
 

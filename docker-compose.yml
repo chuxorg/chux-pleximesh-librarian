@@ -1,10 +1,24 @@
 services:
+  mongo:
+    image: mongo:7
+    restart: unless-stopped
+    environment:
+      MONGO_INITDB_DATABASE: librarian
+    volumes:
+      - mongo-data:/data/db
+
   librarian:
     build: .
+    depends_on:
+      - mongo
     ports:
       - "${LIBRARIAN_PORT:-8000}:8000"
     environment:
       LIBRARIAN_PORT: "${LIBRARIAN_PORT:-8000}"
       LIBRARIAN_ARTIFACT_ROOT: /data/librarian
-    volumes:
-      - ./data:/data/librarian
+      LIBRARIAN_MONGO_URI: "${LIBRARIAN_MONGO_URI:-mongodb://mongo:27017}"
+      LIBRARIAN_MONGO_DB: "${LIBRARIAN_MONGO_DB:-librarian}"
+      LIBRARIAN_MONGO_COLLECTION: "${LIBRARIAN_MONGO_COLLECTION:-artifacts}"
+
+volumes:
+  mongo-data:

@@ -1,0 +1,3 @@
+- Mission Rail Implementation Authorization gate specification persisted at `central-librarian://project13/gates/mission-rail-implementation-gate.md` (local path `data/project13/gates/mission-rail-implementation-gate.md`).
+- Specification documents gate purpose, required input artifacts, governing law (NFR charter, Persistence Law, SDLC policy, PM orchestration rules), Guardian checklist, and mandated decision outputs referencing `central-librarian://project13/mission-rail/review/guardian-decision.md`.
+- Prompt persisted at `results/pm/awacs-mission-rail-implementation-gate-prompt-20251226T150834Z.md` for traceability.

@@ -58,35 +58,41 @@ The Librarian is the canonical store for PlexiMesh governance, operational promp
 
 ## Artifact Intake API
 
-A minimal REST service (`server.py`) accepts artifacts and writes them into the correct Librarian lane. It is intentionally boring, append-only, and transport-agnostic so we can swap HTTP for events later without changing the storage schema.
+A minimal REST service (`server.py`) accepts artifacts and writes them into Mongo-backed storage while preserving the canonical Librarian URI scheme. It is intentionally boring, append-only, and transport-agnostic so we can swap HTTP for events later without changing the storage schema.
 
 ### Running the server directly
 
 ```bash
-LIBRARIAN_PORT=8000 LIBRARIAN_ARTIFACT_ROOT=$(pwd) python server.py
+pip install --no-cache-dir -r requirements.txt
+
+LIBRARIAN_PORT=8000 \
+LIBRARIAN_ARTIFACT_ROOT=$(pwd) \
+LIBRARIAN_MONGO_URI="mongodb://localhost:27017" \
+LIBRARIAN_MONGO_DB=librarian \
+LIBRARIAN_MONGO_COLLECTION=artifacts \
+python server.py
 ```
 
-Set `LIBRARIAN_ARTIFACT_ROOT` to the path where artifacts should be written (defaults to the repo root). This makes it easy to store data on a mounted volume when running inside containers.
+Set `LIBRARIAN_ARTIFACT_ROOT` to the virtual root used when constructing canonical URIs (defaults to the repo root). All artifact content is persisted to MongoDB using the `LIBRARIAN_MONGO_*` environment variables; the filesystem is no longer used as the primary backing store.
 
 ### Running the server with Docker
 
-The repository ships with a `Dockerfile` and `docker-compose.yml` so the Librarian can be run as an isolated container with its artifacts persisted to the host.
+The repository ships with a `Dockerfile` and `docker-compose.yml` so the Librarian can be run with MongoDB as an isolated dependency.
 
-1. Create a host directory for artifacts (ignored by git):
-
-   ```bash
-   mkdir -p ./data
-   ```
-
-2. Start the intake service:
+1. Start Mongo + Librarian:
 
    ```bash
    docker compose up --build
    ```
 
-   This maps `./data` to `/data/librarian` inside the container and exposes the API on `http://localhost:8000`. Override the port with `LIBRARIAN_PORT` to avoid collisions.
+   This launches two services:
 
-3. (Optional) Build and run with plain Docker:
+   - `mongo`: MongoDB 7 with its data stored in the `mongo-data` volume
+   - `librarian`: artifact API connected to Mongo via the internal Docker network
+
+   The Librarian API is exposed on `http://localhost:8000`. Override the port with `LIBRARIAN_PORT` to avoid collisions.
+
+2. (Optional) Build and run only the Librarian container (requires an external Mongo instance reachable via `LIBRARIAN_MONGO_URI`):
 
    ```bash
    docker build -t librarian-intake .
@@ -94,11 +100,13 @@ The repository ships with a `Dockerfile` and `docker-compose.yml` so the Librari
      -p 8000:8000 \
      -e LIBRARIAN_PORT=8000 \
      -e LIBRARIAN_ARTIFACT_ROOT=/data/librarian \
-     -v "$(pwd)/data":/data/librarian \
+     -e LIBRARIAN_MONGO_URI=mongodb://host.docker.internal:27017 \
+     -e LIBRARIAN_MONGO_DB=librarian \
+     -e LIBRARIAN_MONGO_COLLECTION=artifacts \
      librarian-intake
    ```
 
-Once the container is running you can submit artifacts from the host:
+Once the API is running you can submit and retrieve artifacts from the host.
 
 ```bash
 curl -X POST http://localhost:8000/artifacts \
@@ -112,12 +120,14 @@ curl -X POST http://localhost:8000/artifacts \
   }'
 ```
 
-### Endpoint
+### Endpoints
 
-- `POST /artifacts`
-- JSON body (see contract below)
-- Responds with the stored path, timestamp, and prompt identifier (when applicable)
-- `PUT` and `DELETE` return `405 Method Not Allowed` to protect immutability
+- `POST /artifacts` — `put`: normalizes and persists artifacts into MongoDB. Responds with the canonical URI plus metadata.
+- `GET /artifacts?uri=central-librarian://...` — `get`: returns the stored document (header, metadata, and raw content).
+- `GET /artifacts/exists?uri=central-librarian://...` — `exists`: returns `{ "exists": true|false }`.
+- `GET /artifacts/list?prefix=central-librarian://project13` — `list`: enumerates artifacts whose URIs share the supplied prefix.
+
+All endpoints are append-only; `PUT` and `DELETE` return `405 Method Not Allowed` to protect immutability.
 
 ### Request contract (v0)
 
@@ -140,7 +150,23 @@ curl -X POST http://localhost:8000/artifacts \
 - Result artifacts must cite the prompt they respond to via `correlation.prompt_id` and the same `root_execution_id`.
 - Governance artifacts are only accepted from guardian agents; other types must still provide a valid role.
 
-The stored file name follows `timestamp_artifact-type_execution-id_prompt-id.md` (prompt ID is omitted when not applicable). Each file begins with a JSON header that includes artifact type, agent role, execution/correlation identifiers, timestamp, content format, metadata, and source control references, separated from the raw body by `---`.
+Each stored artifact receives a canonical URI following `central-librarian://<relative-path>/<filename>`. URIs map to the logical Librarian directory structure (prompts/, results/, governance/, etc.) even though the backing store is Mongo.
+
+MongoDB documents (collection: `artifacts`) include:
+
+- `uri` (unique, indexed)
+- `path` (array of directory segments)
+- `filename`
+- `artifact_type`
+- `owner_agent`
+- `created_by`
+- `created_at` / `updated_at`
+- `status` (draft | canonical | superseded | blocked)
+- `references` (array of URIs)
+- `metadata` (freeform object, including client timestamps/tags)
+- `content_format`
+- `content`
+- `header` (JSON structure mirrored from the legacy file header)
 
 ### Example requests
 
@@ -176,4 +202,4 @@ curl -X POST http://localhost:8000/artifacts \\
   }'
 ```
 
-Each response includes the stored path (relative to `LIBRARIAN_ARTIFACT_ROOT`) plus the correlation identifiers so agents can cite `path@commit` in downstream work.
+Each `POST /artifacts` response includes the canonical URI and logical path (relative to `LIBRARIAN_ARTIFACT_ROOT`) plus correlation identifiers so downstream agents can cite `uri@commit` in tasks and prompts.

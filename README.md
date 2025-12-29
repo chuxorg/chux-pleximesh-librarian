@@ -122,12 +122,13 @@ curl -X POST http://localhost:8000/artifacts \
 
 ### Endpoints
 
-- `POST /artifacts` — `put`: normalizes and persists artifacts into MongoDB. Responds with the canonical URI plus metadata.
-- `GET /artifacts?uri=central-librarian://...` — `get`: returns the stored document (header, metadata, and raw content).
-- `GET /artifacts/exists?uri=central-librarian://...` — `exists`: returns `{ "exists": true|false }`.
-- `GET /artifacts/list?prefix=central-librarian://project13` — `list`: enumerates artifacts whose URIs share the supplied prefix.
+- `POST /artifacts` — idempotent create: normalizes payloads, derives the canonical URI, and persists the artifact. Duplicate payloads return `200` with `status=unchanged`.
+- `PUT /artifacts` — same contract as `POST`. Provided for agents that prefer PUT semantics for idempotent writes.
+- `GET /artifacts?uri=central-librarian://...` — returns the stored document (header, metadata, and raw content).
+- `GET /artifacts/exists?uri=central-librarian://...` — returns `{ "exists": true|false }`.
+- `GET /artifacts/list?prefix=central-librarian://project13` — enumerates artifacts whose URIs share the supplied prefix.
 
-All endpoints are append-only; `PUT` and `DELETE` return `405 Method Not Allowed` to protect immutability.
+`DELETE` remains `405 Method Not Allowed`. Conflicting writes return `409 Conflict` with the stored and incoming digests so callers understand which URI already owns the logical artifact.
 
 ### Request contract (v0)
 
@@ -139,33 +140,52 @@ All endpoints are append-only; `PUT` and `DELETE` return `405 Method Not Allowed
   "correlation": { "root_execution_id": "required", "prompt_id": "required for result" },
   "source": { "repo": "optional", "branch": "optional", "commit": "optional" },
   "content": { "format": "markdown | text | json", "body": "raw artifact text" },
-  "metadata": { "timestamp": "optional", "tags": ["optional"], "notes": "optional" }
+  "logical_path": ["optional", "namespace"],   // OR provide canonical_prefix below
+  "canonical_prefix": "central-librarian://system/librarian-integrity/",  // optional override for the namespace
+  "status": "draft | canonical | superseded | blocked (optional)",
+  "references": ["optional URIs"],
+  "metadata": {
+    "timestamp": "optional",
+    "tags": ["optional"],
+    "notes": "optional",
+    "supersedes": ["optional URIs"],
+    "deprecated_by": ["optional URIs"],
+    "canonical": true
+  }
 }
 ```
 
 ### Correlation guarantees
 
 - Every artifact must specify a `root_execution_id` so multi-hop reasoning is reproducible.
-- Prompt artifacts ignore client-provided prompt IDs; the server issues a new UUID and embeds it in the stored file header.
+- Prompt artifacts ignore client-provided prompt IDs; the server deterministically derives a UUID from the `execution_id` so retries reuse the same prompt identifier.
 - Result artifacts must cite the prompt they respond to via `correlation.prompt_id` and the same `root_execution_id`.
 - Governance artifacts are only accepted from guardian agents; other types must still provide a valid role.
 
-Each stored artifact receives a canonical URI following `central-librarian://<relative-path>/<filename>`. URIs map to the logical Librarian directory structure (prompts/, results/, governance/, etc.) even though the backing store is Mongo.
+Each stored artifact receives a canonical URI following `central-librarian://<logical-path>/<execution_id>.<ext>`. The logical path comes from the supplied `logical_path` (or `canonical_prefix`) or falls back to the artifact-type defaults (e.g., `prompts/<role>`). The filename is the sanitized `execution_id`, so retries with the same logical artifact always target the same URI. When callers provide an explicit `canonical_prefix` such as `central-librarian://system/librarian-integrity/`, the server validates it but never rewrites it.
+
+Replay safety: re-submitting the exact same payload returns `200 OK` with `status: "unchanged"`. Attempts to store different content at an existing URI fail with `409 Conflict` and include both the stored and incoming digests so agents can reconcile divergent data.
 
 MongoDB documents (collection: `artifacts`) include:
 
 - `uri` (unique, indexed)
-- `path` (array of directory segments)
+- `path` (array of directory segments) + `relative_path` (joined string)
+- `canonical_prefix`
 - `filename`
 - `artifact_type`
 - `owner_agent`
+- `execution_id`, `root_execution_id`, `prompt_id`/`correlation_prompt_id`
 - `created_by`
 - `created_at` / `updated_at`
 - `status` (draft | canonical | superseded | blocked)
+- `is_canonical`
+- `supersedes` / `deprecated_by`
 - `references` (array of URIs)
 - `metadata` (freeform object, including client timestamps/tags)
 - `content_format`
+- `content_sha256`
 - `content`
+- `digest` (sha256 of the normalized payload)
 - `header` (JSON structure mirrored from the legacy file header)
 
 ### Example requests
@@ -180,6 +200,7 @@ curl -X POST http://localhost:8000/artifacts \\
     "agent": { "role": "pm", "id": "pm-42" },
     "execution": { "execution_id": "exec-123", "phase": "phase-3" },
     "correlation": { "root_execution_id": "root-789" },
+    "logical_path": ["prompts", "pm"],
     "content": { "format": "markdown", "body": "## Sprint Planning Prompt\\n..." },
     "metadata": { "tags": ["planning"] }
   }'
@@ -194,6 +215,7 @@ curl -X POST http://localhost:8000/artifacts \\
     "artifact_type": "result",
     "agent": { "role": "engineer", "id": "eng-17" },
     "execution": { "execution_id": "exec-124" },
+    "logical_path": ["results", "engineer", "mission-rail"],
     "correlation": {
       "root_execution_id": "root-789",
       "prompt_id": "PROMPT-ID-RETURNED-FROM-PREVIOUS-CALL"
@@ -202,4 +224,32 @@ curl -X POST http://localhost:8000/artifacts \\
   }'
 ```
 
-Each `POST /artifacts` response includes the canonical URI and logical path (relative to `LIBRARIAN_ARTIFACT_ROOT`) plus correlation identifiers so downstream agents can cite `uri@commit` in tasks and prompts.
+Each `POST /artifacts` response includes the canonical URI, canonical prefix, and deterministic digest so downstream agents can cite `uri@commit`. To write into privileged namespaces such as the Librarian integrity area, provide a fully qualified prefix:
+
+```json
+{
+  "canonical_prefix": "central-librarian://system/librarian-integrity/",
+  "execution": { "execution_id": "guardian-audit-20251228" },
+  "...": "..."
+}
+```
+
+The server validates the prefix but never rewrites it, so callers retain full control over directory-level namespaces.
+
+### Canonical ingestion utility
+
+Use `tools/ingest_canonical_repo.py` to load existing repository artifacts into the Mongo-backed Librarian. The script walks the specified directories, derives deterministic URIs (using `logical_path` + `execution_id`), and calls the API so stored digests match the live contract.
+
+```bash
+python tools/ingest_canonical_repo.py --api-base http://localhost:8000
+```
+
+To ingest Project 13 artifacts that live under `data/project13/` but should be stored at `central-librarian://project13/...`, supply a prefix override:
+
+```bash
+python tools/ingest_canonical_repo.py \
+  --api-base http://localhost:8000 \
+  --roots "data/project13=project13"
+```
+
+Add additional `dir=canonical/prefix` mappings as needed. Pass `--dry-run` to audit the files that would be ingested without performing writes.

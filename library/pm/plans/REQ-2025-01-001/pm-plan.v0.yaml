@@ -1,0 +1,45 @@
+artifact:
+  type: pm.plan
+  version: v0
+  plan_id: PLAN-2025-01-001
+  created_at: <ISO-8601 timestamp>
+  authority: pm
+
+inputs:
+  requirements_id: REQ-2025-01-001
+  guardian_decision_id: GD-2025-01-001
+  guardian_outcome: PASS
+
+scope:
+  in_scope:
+    - <authorized objective or area of work>
+  out_of_scope:
+    - <explicit exclusions inherited from requirements>
+
+phases:
+  - id: PHASE-1
+    name: <phase name>
+    description: <what this phase accomplishes>
+    deliverables:
+      - <artifact, capability, or outcome>
+    acceptance_criteria:
+      - <clear condition for completion>
+
+tasks:
+  - id: TASK-1
+    phase: PHASE-1
+    description: <unit of work>
+    assigned_role: engineer | qa | documentation
+    blocking: true | false
+
+dependencies:
+  - <task or phase dependency>
+
+handoff_rules:
+  engineer_start_requires: pm.plan.approved
+  qa_start_requires: engineer.completed
+  documentation_start_requires: qa.passed
+
+audit:
+  immutable: true
+  supersedes: null

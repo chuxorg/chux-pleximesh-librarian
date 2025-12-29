@@ -1,0 +1,39 @@
+artifact:
+  type: guardian.decision
+  version: v0
+  decision_id: GD-2025-01-001
+  decided_at: <ISO-8601 timestamp>
+  authority: guardian
+
+inputs:
+  requirements_id: REQ-2025-01-001
+  requirements_version: v0
+  ruleset: guardian-requirements-rules.v0
+
+decision:
+  outcome: PASS | REVISE | REJECT
+  summary: <one-paragraph explanation of the decision>
+
+findings:
+  passed:
+    - <rule or section that passed>
+  issues:
+    - id: ISSUE-1
+      severity: INFO | WARN | BLOCKER
+      description: <what failed or needs revision>
+      rule_reference: <rule that triggered this finding>
+
+next_actions:
+  on_pass:
+    authorized_next_actor: pm
+    authorized_action: create_plan
+  on_revise:
+    authorized_next_actor: human
+    authorized_action: revise_requirements
+  on_reject:
+    authorized_next_actor: human
+    authorized_action: reauthor_requirements
+
+audit:
+  immutable: true
+  supersedes: null

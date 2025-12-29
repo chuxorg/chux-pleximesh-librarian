@@ -1,0 +1,55 @@
+artifact:
+  type: guardian.requirements.rules
+  version: v0
+  applies_to: requirements.v0
+  authority: guardian
+  status: ACTIVE
+
+evaluation:
+  completeness:
+    required_sections:
+      - context
+      - objectives.primary
+      - constraints
+      - success_criteria
+      - review
+    failure_action: REVISE
+
+  clarity:
+    rules:
+      - description: Objectives must be stated as outcomes, not tasks
+      - description: Success criteria must be objectively testable
+    failure_action: REVISE
+
+  constraints_validation:
+    rules:
+      - description: At least one technical or operational constraint must exist
+      - description: Non-goals must be explicitly listed
+    failure_action: REVISE
+
+  risk_acknowledgement:
+    rules:
+      - description: At least one identified risk must be present
+    failure_action: REVISE
+
+  authority_checks:
+    rules:
+      - description: guardian_required must be true
+      - description: human_signoff_required must be true
+    failure_action: REJECT
+
+decision_logic:
+  pass_conditions:
+    - All evaluation sections pass without failure
+  revise_conditions:
+    - Any REVISE failure_action triggered
+  reject_conditions:
+    - Any REJECT failure_action triggered
+
+outputs:
+  on_pass:
+    emit_event: guardian.requirements.pass
+  on_revise:
+    emit_event: guardian.requirements.revise
+  on_reject:
+    emit_event: guardian.requirements.reject

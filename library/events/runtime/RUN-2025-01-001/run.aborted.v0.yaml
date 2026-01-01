@@ -1,0 +1,12 @@
+event:
+  type: system.run.aborted
+  version: v0
+  event_id: RUN-ABORT-2025-01-001
+  timestamp: <ISO-8601 timestamp>
+  actor: guardian | human
+
+context:
+  run_id: RUN-2025-01-001
+
+details:
+  reason: <abort reason>

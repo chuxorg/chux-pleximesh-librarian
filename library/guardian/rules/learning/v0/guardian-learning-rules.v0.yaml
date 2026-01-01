@@ -1,0 +1,48 @@
+artifact:
+  type: guardian.learning.rules
+  version: v0
+  status: ACTIVE
+  authority: guardian
+
+principles:
+  - Guardian may analyze historical outcomes
+  - Guardian may recommend changes but may not enforce them
+  - Human approval is required for all system evolution
+  - Learning must be explainable and auditable
+
+inputs:
+  eligible_sources:
+    - run.outcome
+    - qa.verification
+    - system.escalation.required
+    - system.run.aborted
+
+analysis:
+  allowed_patterns:
+    - repeated failures
+    - frequent escalations
+    - mission binding violations
+    - requirements ambiguity
+    - agent performance degradation
+
+outputs:
+  recommendation_types:
+    - revise_requirements_template
+    - revise_mission_definition
+    - tighten_validation_rules
+    - adjust_escalation_policy
+    - suggest_additional_events
+
+delivery:
+  emit_event: guardian.recommendation.issued
+  target:
+    - human
+    - awacs
+
+restrictions:
+  may_modify_artifacts_directly: false
+  may_execute_without_approval: false
+
+audit:
+  immutable: true
+  supersedes: null

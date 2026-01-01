@@ -1,0 +1,57 @@
+artifact:
+  type: guardian.mission.rules
+  version: v0
+  status: ACTIVE
+  authority: guardian
+
+evaluation:
+
+  structural_integrity:
+    required_fields:
+      - artifact.mission_id
+      - agents
+      - bindings
+      - validation
+    failure_action: REJECT
+
+  event_taxonomy_compliance:
+    rules:
+      - description: Mission must not disable or override system events
+      - description: All bound system events must exist in event taxonomy
+      - description: All mission events must be declared before use
+    failure_action: REJECT
+
+  binding_safety:
+    rules:
+      - description: Mission actions may not suppress system events
+      - description: Multiple actions may subscribe to the same system event
+      - description: No circular bindings allowed
+    failure_action: REVISE
+
+  human_authority_guarantees:
+    rules:
+      - description: Missions allowing unattended execution must still honor system.escalation.required
+      - description: Human intervention paths must exist for escalation
+    failure_action: REJECT
+
+  execution_viability:
+    rules:
+      - description: All referenced agents must exist
+      - description: All lifecycle hooks must be valid
+    failure_action: REVISE
+
+decision_logic:
+  pass_conditions:
+    - All evaluation categories pass
+  revise_conditions:
+    - Any REVISE failure_action triggered
+  reject_conditions:
+    - Any REJECT failure_action triggered
+
+outputs:
+  on_pass:
+    emit_event: guardian.mission.pass
+  on_revise:
+    emit_event: guardian.mission.revise
+  on_reject:
+    emit_event: guardian.mission.reject

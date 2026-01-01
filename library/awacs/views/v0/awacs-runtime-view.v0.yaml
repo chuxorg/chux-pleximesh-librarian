@@ -1,0 +1,94 @@
+artifact:
+  type: awacs.view.runtime
+  version: v0
+  status: ACTIVE
+  authority: system
+
+views:
+
+  run_overview:
+    description: High-level status of the active Mission Run
+    displays:
+      - run_id
+      - mission_id
+      - requirements_id
+      - run_status
+      - start_time
+      - elapsed_time
+    source_events:
+      - system.run.started
+      - system.run.completed
+      - system.run.aborted
+
+  event_timeline:
+    description: Ordered timeline of all runtime events
+    ordering:
+      by: event.timestamp
+      contract: run-event-stream.v0
+    includes:
+      - system_events
+      - agent_events
+      - enabled_mission_events
+    highlights:
+      - system.escalation.required
+      - system.run.paused
+      - system.run.aborted
+
+  agent_status:
+    description: Current state of each participating agent
+    derives_from:
+      - engineer.started
+      - engineer.completed
+      - guardian.decision.recorded
+      - qa.verification.passed
+      - qa.verification.failed
+
+  alerts:
+    description: Conditions requiring human attention
+    triggers_on:
+      - system.escalation.required
+      - guardian.mission.revise
+      - qa.verification.failed
+
+controls:
+
+  pause_run:
+    enabled_when:
+      - run_status: RUNNING
+    authorized_roles:
+      - human
+      - guardian
+    emits:
+      - system.run.paused
+
+  resume_run:
+    enabled_when:
+      - run_status: PAUSED
+    authorized_roles:
+      - human
+      - guardian
+    emits:
+      - system.run.resumed
+
+  abort_run:
+    enabled_when:
+      - run_status: RUNNING | PAUSED
+    authorized_roles:
+      - human
+      - guardian
+    emits:
+      - system.run.aborted
+
+permissions:
+  event_visibility:
+    system_events: always
+    mission_events: when_enabled
+    agent_events: always
+
+  control_authority:
+    guardian_overrides_human: false
+    human_final_authority: true
+
+audit:
+  immutable: true
+  supersedes: null

@@ -1,0 +1,46 @@
+artifact:
+  type: engineering.work_order
+  version: v0
+  work_order_id: WORK-ORDER-ENG-001
+  created_at: <ISO-8601 timestamp>
+  authority: pm
+
+inputs:
+  requirements_id: REQ-2025-01-001
+  pm_plan_id: PLAN-2025-01-001
+  guardian_decision_id: GD-2025-01-001
+
+scope:
+  authorized_tasks:
+    - TASK-1
+    - TASK-2
+  prohibited_actions:
+    - Modify requirements
+    - Modify guardian decisions
+    - Introduce new scope
+
+execution:
+  environment:
+    - <repo, runtime, or system>
+  instructions:
+    - <implementation guidance if required>
+  constraints:
+    - Follow PM Plan acceptance criteria
+    - Emit events for task start and completion
+
+deliverables:
+  - <code, artifact, or capability>
+
+acceptance:
+  verified_by: qa
+  criteria:
+    - <pass/fail condition>
+
+handoff:
+  on_completion:
+    emit_event: engineer.completed
+    next_actor: qa
+
+audit:
+  immutable: true
+  supersedes: null

@@ -1,0 +1,32 @@
+artifact:
+  type: mission.run
+  version: v0
+  run_id: RUN-2025-01-001
+  status: AUTHORIZED | RUNNING | PAUSED | COMPLETED | ABORTED
+  created_at: <ISO-8601 timestamp>
+  authority: human
+
+bindings:
+  requirements_id: REQ-2025-01-001
+  guardian_decision_id: GD-2025-01-001
+  mission_id: MISSION-DEFAULT-SDLC
+  mission_validation: guardian.mission.pass
+
+authorization:
+  authorized_by: human:chuck
+  authorized_at: <ISO-8601 timestamp>
+  unattended_allowed: true
+
+runtime_controls:
+  pause_on:
+    - system.escalation.required
+  abort_on:
+    - guardian.mission.reject
+
+visibility:
+  awacs_visible: true
+  guardian_visible: true
+
+audit:
+  immutable: true
+  supersedes: null

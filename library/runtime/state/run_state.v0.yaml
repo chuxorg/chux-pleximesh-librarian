@@ -1,0 +1,4 @@
+state: run_state.v0
+
+run_id: string
+step: received | evaluating | correcting | approved | blocked

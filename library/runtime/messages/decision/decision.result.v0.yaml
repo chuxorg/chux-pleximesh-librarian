@@ -1,0 +1,12 @@
+schema: decision.result.v0
+message_type: decision.result
+from: guardian
+to: maestro
+
+decision:
+  outcome: APPROVE | REJECT
+
+guidance:
+  category: structural | correctness | policy
+  description: string
+  auto_fixable: boolean

@@ -1,0 +1,10 @@
+schema: intent.submission.v0
+message_type: intent.submission
+from: human
+to: maestro
+
+payload:
+  intent: string
+  artifact:
+    type: string
+    content: string

@@ -1,0 +1,17 @@
+schema: task.evaluate.v0
+message_type: task.evaluate
+from: maestro
+to: enforcement_agent
+
+context:
+  run_id: string
+  posture: string
+  intent: string
+
+constraints:
+  preserve_intent: boolean
+  auto_correct_allowed: boolean
+
+artifact:
+  type: string
+  content: string

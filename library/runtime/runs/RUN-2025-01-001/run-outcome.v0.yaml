@@ -1,0 +1,44 @@
+artifact:
+  type: run.outcome
+  version: v0
+  run_id: RUN-2025-01-001
+  recorded_at: <ISO-8601 timestamp>
+  authority: guardian
+
+summary:
+  final_status: SUCCESS | PARTIAL | FAILED | ABORTED
+  description: <one-paragraph summary of what happened>
+
+bindings:
+  requirements_id: REQ-2025-01-001
+  mission_id: MISSION-DEFAULT-SDLC
+  guardian_decision_id: GD-2025-01-001
+
+artifacts_produced:
+  - <artifact path or identifier>
+  - <artifact path or identifier>
+
+verification:
+  qa_result: PASSED | FAILED | NOT_APPLICABLE
+  verification_artifact: <qa artifact reference>
+
+events:
+  terminal_event:
+    type: system.run.completed | system.run.aborted
+    event_id: <terminal event id>
+
+lessons:
+  issues_encountered:
+    - <issue description>
+  recommendations:
+    - <future improvement or rule change>
+
+reuse:
+  reusable_artifacts:
+    - <plans, missions, configs eligible for reuse>
+  non_reusable_artifacts:
+    - <artifacts that must not be reused>
+
+audit:
+  immutable: true
+  supersedes: null

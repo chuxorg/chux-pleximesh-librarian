@@ -1,0 +1,12 @@
+event:
+  type: system.run.started
+  version: v0
+  event_id: RUN-START-2025-01-001
+  timestamp: <ISO-8601 timestamp>
+  actor: system
+
+context:
+  run_id: RUN-2025-01-001
+  mission_id: MISSION-DEFAULT-SDLC
+  requirements_id: REQ-2025-01-001
+  guardian_decision_id: GD-2025-01-001

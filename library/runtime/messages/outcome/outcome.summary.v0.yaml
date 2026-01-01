@@ -1,0 +1,11 @@
+schema: outcome.summary.v0
+message_type: outcome.summary
+from: maestro
+to: human
+
+status: accepted | corrected_and_accepted | blocked
+
+summary: string
+
+learning:
+  - string

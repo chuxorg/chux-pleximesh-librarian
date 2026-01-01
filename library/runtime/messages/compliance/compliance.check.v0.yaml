@@ -1,0 +1,11 @@
+schema: compliance.check.v0
+message_type: compliance.check
+from: enforcement_agent
+to: guardian
+
+artifact:
+  type: string
+  content: string
+
+expectation:
+  posture: string

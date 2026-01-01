@@ -1,0 +1,50 @@
+artifact:
+  type: mission
+  version: v0
+  mission_id: MISSION-DEFAULT-SDLC
+  status: ACTIVE
+  description: Default PlexiMesh software development lifecycle mission
+
+agents:
+  - guardian
+  - pm
+  - engineer
+  - qa
+  - documentation
+
+mission_events:
+  enabled:
+    - notify.log
+  disabled: []
+
+custom_events:
+  - name: SMSTheHuman
+    type: mission_event
+    description: Notify the human via SMS when escalation is required
+
+bindings:
+  - trigger:
+      type: system_event
+      name: system.escalation.required
+    actions:
+      - event: SMSTheHuman
+
+  - trigger:
+      type: agent_lifecycle
+      agent: guardian
+      hook: on_blocked
+    actions:
+      - event: notify.log
+
+constraints:
+  allow_unattended_execution: true
+  human_intervention_required_on:
+    - system.escalation.required
+
+validation:
+  enforce_event_taxonomy: true
+  reject_on_violation: true
+
+audit:
+  immutable: true
+  supersedes: null

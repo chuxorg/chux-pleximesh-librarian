@@ -1,0 +1,9 @@
+event:
+  type: system.run.resumed
+  version: v0
+  event_id: RUN-RESUME-2025-01-001
+  timestamp: <ISO-8601 timestamp>
+  actor: guardian | human
+
+context:
+  run_id: RUN-2025-01-001

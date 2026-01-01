@@ -1,0 +1,68 @@
+artifact:
+  type: runtime.event_stream
+  version: v0
+  status: ACTIVE
+  authority: system
+
+principles:
+  - All events MUST be associated with a run_id
+  - Events without a valid run_id are invalid
+  - System events define execution truth
+  - Event ordering must be deterministic per run
+
+correlation:
+  required_fields:
+    - run_id
+    - event.type
+    - event.timestamp
+    - event.version
+
+ordering:
+  guarantees:
+    - run.started MUST be the first event in a run
+    - run.completed OR run.aborted MUST be the final event
+    - Events MUST be ordered by timestamp within a run
+    - System events take precedence over mission events when simultaneous
+
+event_classes:
+  system:
+    delivery: guaranteed
+    persistence: required
+    consumers:
+      - guardian
+      - awacs
+      - human
+
+  mission:
+    delivery: best_effort
+    persistence: optional
+    consumers:
+      - awacs
+      - human
+
+  agent:
+    delivery: best_effort
+    persistence: required
+    consumers:
+      - awacs
+      - guardian
+
+validation:
+  guardian:
+    must_reject_events_without_run_id: true
+    must_reject_events_outside_run_bounds: true
+
+  awacs:
+    must_display_events_in_run_order: true
+    must_highlight_terminal_event: true
+
+replay:
+  supported: true
+  requirements:
+    - complete event history
+    - immutable events
+    - preserved ordering
+
+audit:
+  immutable: true
+  supersedes: null

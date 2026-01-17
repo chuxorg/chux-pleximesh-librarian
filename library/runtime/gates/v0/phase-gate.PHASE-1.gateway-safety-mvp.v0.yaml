@@ -1,0 +1,29 @@
+phase:
+  id: PHASE-1
+  name: Gateway Safety MVP
+
+mode: advisory
+
+summary:
+  intent: >
+    Enforce Phase 0 contracts in runtime: envelope validation, deterministic ordering, lifecycle truth,
+    terminal behavior, and guardian gating.
+  scope_in:
+    - Runtime event gateway enforcing envelope + schema_version + sequence + lifecycle + terminal rules
+    - Guardian gating enforced at runtime ingress (PASS allow, REVISE block, REJECT abort with evidence)
+    - MISSION-DEFAULT-SDLC wired to emit MVP-required events and obey gates
+    - Repo-wide tests passing
+  scope_out:
+    - CI automation (manual enforcement accepted)
+    - Rehydration tooling
+    - QA agent (post-MVP)
+
+decisions:
+  - id: DEC-PH1-1
+    description: Phase 1 completed as advisory gate; workflow remains lightweight/manual for now.
+    rationale: Maintain momentum while preserving drift control via phase artifacts and tests.
+
+status:
+  state: approved
+  approved_by: human
+  timestamp: 2026-01-17T00:00:00Z

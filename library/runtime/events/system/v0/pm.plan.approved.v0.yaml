@@ -1,0 +1,11 @@
+event:
+  type: pm.plan.approved
+  version: v0
+  event_id: <EVENT-ID>
+  timestamp: <ISO-8601 timestamp>
+  actor: pm
+
+context:
+  run_id: <RUN-ID>
+
+details: {}

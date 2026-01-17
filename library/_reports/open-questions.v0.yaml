@@ -1,0 +1,54 @@
+report:
+  name: open-questions
+  version: v0
+  scope: library
+  generated_at: 2026-01-06T00:04:29Z
+
+questions:
+  - id: OQ-1
+    topic: guardian.decision.outcomes
+    question: Should guardian decisions use PASS|REVISE|REJECT or APPROVE|REJECT, and how should decision.result relate to guardian.decision?
+    paths:
+      - library/agents/guardian/v0/schemas/guardian-decision.v0.yaml
+      - library/runtime/messages/decision/v0/decision.result.v0.yaml
+
+  - id: OQ-2
+    topic: run.lifecycle.state
+    question: What is the canonical lifecycle model for a run, and how should run_state steps map to mission.run status values?
+    paths:
+      - library/runtime/runs/v0/mission-run.v0.yaml
+      - library/runtime/state/v0/run_state.v0.yaml
+
+  - id: OQ-3
+    topic: run.outcome.status
+    question: Should ABORTED be represented only via system.run.aborted or also within system.run.completed outcome values?
+    paths:
+      - library/runtime/events/system/v0/system.run.completed.v0.yaml
+      - library/runtime/events/system/v0/system.run.aborted.v0.yaml
+      - library/runtime/runs/v0/run-outcome.v0.yaml
+
+  - id: OQ-4
+    topic: system.event.payloads
+    question: What are the required context and details payloads for guardian.*, pm.plan.*, qa.verification.*, system.blocked, and system.escalation.required events?
+    paths:
+      - library/runtime/events/system/v0/guardian.requirements.pass.v0.yaml
+      - library/runtime/events/system/v0/guardian.requirements.revise.v0.yaml
+      - library/runtime/events/system/v0/guardian.requirements.reject.v0.yaml
+      - library/runtime/events/system/v0/guardian.decision.recorded.v0.yaml
+      - library/runtime/events/system/v0/pm.plan.created.v0.yaml
+      - library/runtime/events/system/v0/pm.plan.approved.v0.yaml
+      - library/runtime/events/system/v0/qa.verification.passed.v0.yaml
+      - library/runtime/events/system/v0/qa.verification.failed.v0.yaml
+      - library/runtime/events/system/v0/system.blocked.v0.yaml
+      - library/runtime/events/system/v0/system.escalation.required.v0.yaml
+
+  - id: OQ-5
+    topic: missing.charters
+    question: Are there authoritative charters for guardian, pm, engineer, maestro, support, and mission MISSION-DEFAULT-SDLC that should be added to the library?
+    paths:
+      - library/agents/guardian/v0/charter.md
+      - library/agents/pm/v0/charter.md
+      - library/agents/engineer/v0/charter.md
+      - library/agents/maestro/v0/charter.md
+      - library/agents/support/v0/charter.md
+      - library/missions/MISSION-DEFAULT-SDLC/v0/charter.md

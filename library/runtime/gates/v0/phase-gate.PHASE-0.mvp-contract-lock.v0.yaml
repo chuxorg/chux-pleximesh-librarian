@@ -1,0 +1,52 @@
+phase:
+  id: PHASE-0
+  name: MVP Contract Lock
+
+mode: advisory
+
+summary:
+  intent: >
+    Lock the minimal contracts required for MVP safety, determinism, auditability, and replay.
+  scope_in:
+    - Run lifecycle (CREATED/STARTED/PAUSED/COMPLETED/ABORTED)
+    - System lifecycle events (system.run.*)
+    - Event envelope requirements (event_id, timestamp, type, schema_version, run_id, emitter, sequence, trace_id, parent_event_id)
+    - Guardian decision model (PASS|REVISE|REJECT)
+    - Abort semantics (system.run.aborted only)
+    - MVP required event set
+  scope_out:
+    - Multi-mission orchestration
+    - Dynamic replanning
+    - Concurrency and nested runs
+    - Enforcement implementation (Phase 1)
+
+decisions:
+  - id: DEC-LIFECYCLE-1
+    description: Canonical run lifecycle states and transitions locked for MVP.
+    rationale: Determinism and replay-safe execution truth.
+
+  - id: DEC-ENVELOPE-1
+    description: Canonical event envelope locked for MVP; sequence is required ordering key.
+    rationale: Eliminates timestamp-tie ambiguity; enables deterministic replay.
+
+  - id: DEC-GUARDIAN-1
+    description: Guardian outcomes are PASS|REVISE|REJECT; decisions are explicit events.
+    rationale: Prevents implicit approvals; makes gating auditable.
+
+  - id: DEC-ABORT-1
+    description: ABORTED is represented only by system.run.aborted; completed cannot encode aborted.
+    rationale: Removes semantic drift and ambiguity.
+
+  - id: DEC-TAXONOMY-1
+    description: MVP required vs optional event types are defined.
+    rationale: Prevents event soup; ensures minimum audit trail.
+
+risks:
+  - id: RISK-PLACEHOLDERS-1
+    description: Placeholder charters/templates may under-constrain agent behavior during MVP.
+    mitigation: Phase 1 gateway enforcement + Phase 2 minimal charters/templates; post-MVP QA audit.
+
+status:
+  state: approved
+  approved_by: human
+  timestamp: 2026-01-16T00:00:00Z

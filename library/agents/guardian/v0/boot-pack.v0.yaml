@@ -1,0 +1,17 @@
+artifact:
+  type: agent.boot_pack
+  version: v0
+  agent: guardian
+
+references:
+  charter: library/agents/guardian/v0/charter.md
+  laws:
+    - library/governance/laws/runtime-event-stream-principles.v0.md
+    - library/governance/laws/event-taxonomy-principles.v0.md
+  policies:
+    - library/governance/policies/guardian/guardian-requirements-rules.v0.yaml
+    - library/governance/policies/guardian/guardian-learning-rules.v0.yaml
+    - library/governance/policies/guardian/guardian-mission-rules.v0.yaml
+  schemas:
+    - library/agents/guardian/v0/schemas/guardian-decision.v0.yaml
+  prompt_templates: []

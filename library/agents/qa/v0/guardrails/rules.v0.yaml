@@ -1,0 +1,10 @@
+artifact:
+  type: agent.guardrails
+  version: v0
+  agent: qa
+  status: INCOMPLETE
+
+policies: []
+
+notes:
+  - No guardrail policies found in library at time of consolidation.

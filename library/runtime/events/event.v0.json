@@ -1,0 +1,29 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "title": "runtime.event.v0",
+  "type": "object",
+  "required": ["event", "context"],
+  "properties": {
+    "event": {
+      "type": "object",
+      "required": ["type", "version", "event_id", "timestamp", "actor"],
+      "properties": {
+        "type": {"type": "string"},
+        "version": {"type": "string"},
+        "event_id": {"type": "string"},
+        "timestamp": {"type": "string"},
+        "actor": {"type": "string"}
+      },
+      "additionalProperties": false
+    },
+    "context": {
+      "type": "object",
+      "additionalProperties": true
+    },
+    "details": {
+      "type": "object",
+      "additionalProperties": true
+    }
+  },
+  "additionalProperties": false
+}

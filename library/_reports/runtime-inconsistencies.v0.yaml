@@ -1,0 +1,38 @@
+report:
+  name: runtime-inconsistencies
+  version: v0
+  scope: library
+  generated_at: 2026-01-06T00:04:29Z
+
+inconsistencies:
+  - area: decision.outcomes
+    paths:
+      - library/agents/guardian/v0/schemas/guardian-decision.v0.yaml
+      - library/runtime/messages/decision/v0/decision.result.v0.yaml
+    issue: Guardian decision outcomes use PASS|REVISE|REJECT while decision.result message uses APPROVE|REJECT.
+
+  - area: run.lifecycle.state
+    paths:
+      - library/runtime/runs/v0/mission-run.v0.yaml
+      - library/runtime/state/v0/run_state.v0.yaml
+    issue: mission.run status values diverge from run_state step values; no mapping is defined.
+
+  - area: run.outcome.status
+    paths:
+      - library/runtime/events/system/v0/system.run.completed.v0.yaml
+      - library/runtime/runs/v0/run-outcome.v0.yaml
+    issue: run.completed outcome excludes ABORTED while run.outcome final_status includes ABORTED.
+
+  - area: system.event.payloads
+    paths:
+      - library/runtime/events/system/v0/guardian.requirements.pass.v0.yaml
+      - library/runtime/events/system/v0/guardian.requirements.revise.v0.yaml
+      - library/runtime/events/system/v0/guardian.requirements.reject.v0.yaml
+      - library/runtime/events/system/v0/guardian.decision.recorded.v0.yaml
+      - library/runtime/events/system/v0/pm.plan.created.v0.yaml
+      - library/runtime/events/system/v0/pm.plan.approved.v0.yaml
+      - library/runtime/events/system/v0/qa.verification.passed.v0.yaml
+      - library/runtime/events/system/v0/qa.verification.failed.v0.yaml
+      - library/runtime/events/system/v0/system.blocked.v0.yaml
+      - library/runtime/events/system/v0/system.escalation.required.v0.yaml
+    issue: Event schemas exist but details payloads are undefined beyond empty objects.

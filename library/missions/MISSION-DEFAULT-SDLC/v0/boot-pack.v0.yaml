@@ -1,0 +1,14 @@
+artifact:
+  type: mission.boot_pack
+  version: v0
+  mission_id: MISSION-DEFAULT-SDLC
+
+references:
+  charter: library/missions/MISSION-DEFAULT-SDLC/v0/charter.md
+  laws:
+    - library/governance/laws/runtime-event-stream-principles.v0.md
+    - library/governance/laws/event-taxonomy-principles.v0.md
+  policies: []
+  schemas:
+    - library/missions/MISSION-DEFAULT-SDLC/v0/mission.v0.yaml
+  prompt_templates: []

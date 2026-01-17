@@ -1,0 +1,14 @@
+artifact:
+  type: agent.boot_pack
+  version: v0
+  agent: pm
+
+references:
+  charter: library/agents/pm/v0/charter.md
+  laws:
+    - library/governance/laws/runtime-event-stream-principles.v0.md
+    - library/governance/laws/event-taxonomy-principles.v0.md
+  policies: []
+  schemas:
+    - library/agents/pm/v0/schemas/pm-plan.v0.yaml
+  prompt_templates: []

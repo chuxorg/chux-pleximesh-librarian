@@ -1,0 +1,31 @@
+phase:
+  id: PHASE-0
+  name: MVP Contract Lock
+
+mode: advisory | enforced
+
+summary:
+  intent: >
+    Lock the minimal contracts required for MVP safety and determinism.
+  scope_in:
+    - Run lifecycle
+    - Event envelope
+    - Guardian outcomes
+  scope_out:
+    - Multi-mission orchestration
+    - Dynamic replanning
+
+decisions:
+  - id: DEC-1
+    description: Guardian outcomes are PASS|REVISE|REJECT
+    rationale: Needed for SDLC-style gating
+
+risks:
+  - id: RISK-1
+    description: Placeholder charters may under-constrain agents
+    mitigation: MVP-only scope; QA phase to follow
+
+status:
+  state: proposed | approved | rejected
+  approved_by: guardian | human | system
+  timestamp: 2026-01-10T00:00:00Z

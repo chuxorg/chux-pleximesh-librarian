@@ -1,0 +1,18 @@
+event:
+  type: engineer.completed
+  version: v0
+  event_id: ENG-COMPLETE-2025-01-001
+  timestamp: <ISO-8601 timestamp>
+  actor: engineer
+
+context:
+  run_id: <RUN-ID>
+  requirements_id: REQ-2025-01-001
+  work_order_id: WORK-ORDER-ENG-001
+
+details:
+  completed_tasks:
+    - TASK-1
+  deliverables:
+    - <artifact or output reference>
+  handoff_to: qa

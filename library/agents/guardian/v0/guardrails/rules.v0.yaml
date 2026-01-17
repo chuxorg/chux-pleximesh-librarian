@@ -1,0 +1,14 @@
+artifact:
+  type: guardian.guardrails
+  version: v0
+  agent: guardian
+  status: ACTIVE
+
+policies:
+  - library/governance/policies/guardian/guardian-requirements-rules.v0.yaml
+  - library/governance/policies/guardian/guardian-learning-rules.v0.yaml
+  - library/governance/policies/guardian/guardian-mission-rules.v0.yaml
+
+audit:
+  immutable: true
+  supersedes: null

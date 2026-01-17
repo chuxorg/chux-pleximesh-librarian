@@ -4,11 +4,9 @@ artifact:
   status: ACTIVE
   authority: system
 
-principles:
-  - All events MUST be associated with a run_id
-  - Events without a valid run_id are invalid
-  - System events define execution truth
-  - Event ordering must be deterministic per run
+governance:
+  laws:
+    - library/governance/laws/runtime-event-stream-principles.v0.md
 
 correlation:
   required_fields:
@@ -19,8 +17,8 @@ correlation:
 
 ordering:
   guarantees:
-    - run.started MUST be the first event in a run
-    - run.completed OR run.aborted MUST be the final event
+    - system.run.started MUST be the first event in a run
+    - system.run.completed OR system.run.aborted MUST be the final event
     - Events MUST be ordered by timestamp within a run
     - System events take precedence over mission events when simultaneous
 

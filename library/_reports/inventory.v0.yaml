@@ -1,0 +1,122 @@
+report:
+  name: inventory
+  version: v0
+  scope: library
+  generated_at: 2026-01-06T00:04:29Z
+
+artifacts:
+  - path: library/engineering/work-orders/REQ-2025-01-001/WORK-ORDER-ENG-001/engineer-work-order.v0.yaml
+    concept: engineering.work_order
+    role: runtime
+
+  - path: library/events/engineering/REQ-2025-01-001/WORK-ORDER-ENG-001/engineer.progress.v0.yaml
+    concept: event:engineer.progress
+    role: runtime
+
+  - path: library/events/engineering/REQ-2025-01-001/WORK-ORDER-ENG-001/engineer.completed.v0.yaml
+    concept: event:engineer.completed
+    role: runtime
+
+  - path: library/events/engineering/REQ-2025-01-001/WORK-ORDER-ENG-001/engineer.started.v0.yaml
+    concept: event:engineer.started
+    role: runtime
+
+  - path: library/events/runtime/RUN-2025-01-001/run.aborted.v0.yaml
+    concept: event:system.run.aborted
+    role: runtime
+
+  - path: library/events/runtime/RUN-2025-01-001/run.started.v0.yaml
+    concept: event:system.run.started
+    role: runtime
+
+  - path: library/events/runtime/RUN-2025-01-001/run.resumed.v0.yaml
+    concept: event:system.run.resumed
+    role: runtime
+
+  - path: library/events/runtime/RUN-2025-01-001/run.completed.v0.yaml
+    concept: event:system.run.completed
+    role: runtime
+
+  - path: library/events/runtime/RUN-2025-01-001/run.paused.v0.yaml
+    concept: event:system.run.paused
+    role: runtime
+
+  - path: library/guardian/rules/requirements/v0/guardian-requirements-rules.v0.yaml
+    concept: guardian.requirements.rules
+    role: governance
+
+  - path: library/guardian/rules/learning/v0/guardian-learning-rules.v0.yaml
+    concept: guardian.learning.rules
+    role: governance
+
+  - path: library/guardian/rules/missions/v0/guardian-mission-rules.v0.yaml
+    concept: guardian.mission.rules
+    role: governance
+
+  - path: library/guardian/decisions/REQ-2025-01-001/guardian-decision.v0.yaml
+    concept: guardian.decision
+    role: runtime
+
+  - path: library/awacs/views/v0/awacs-runtime-view.v0.yaml
+    concept: awacs.view.runtime
+    role: awacs
+
+  - path: library/awacs/theme/awacs-theming-model.v0.md
+    concept: awacs.theming.model
+    role: awacs
+
+  - path: library/awacs/workspace/awacs-workspace-model.v0.md
+    concept: awacs.workspace.model
+    role: awacs
+
+  - path: library/testing/runtime/plexirt-testing-agent.v0.md
+    concept: agent.testing.plexirt
+    role: agent
+
+  - path: library/runtime/event-stream/v0/run-event-stream.v0.yaml
+    concept: runtime.event_stream
+    role: runtime
+
+  - path: library/runtime/runs/RUN-2025-01-001/run-outcome.v0.yaml
+    concept: run.outcome
+    role: runtime
+
+  - path: library/runtime/runs/RUN-2025-01-001/mission-run.v0.yaml
+    concept: mission.run
+    role: runtime
+
+  - path: library/runtime/events/event-taxonomy.v0.yaml
+    concept: event.taxonomy
+    role: runtime
+
+  - path: library/runtime/state/run_state.v0.yaml
+    concept: runtime.run_state
+    role: runtime
+
+  - path: library/runtime/messages/decision/decision.result.v0.yaml
+    concept: message:decision.result
+    role: runtime
+
+  - path: library/runtime/messages/task/task.evaluate.v0.yaml
+    concept: message:task.evaluate
+    role: runtime
+
+  - path: library/runtime/messages/intent/intent.submission.v0.yaml
+    concept: message:intent.submission
+    role: runtime
+
+  - path: library/runtime/messages/outcome/outcome.summary.v0.yaml
+    concept: message:outcome.summary
+    role: runtime
+
+  - path: library/runtime/messages/compliance/compliance.check.v0.yaml
+    concept: message:compliance.check
+    role: runtime
+
+  - path: library/missions/MISSION-DEFAULT-SDLC/mission.v0.yaml
+    concept: mission:MISSION-DEFAULT-SDLC
+    role: mission
+
+  - path: library/pm/plans/REQ-2025-01-001/pm-plan.v0.yaml
+    concept: pm.plan
+    role: runtime

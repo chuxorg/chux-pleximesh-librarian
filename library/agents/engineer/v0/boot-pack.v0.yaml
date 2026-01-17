@@ -1,0 +1,14 @@
+artifact:
+  type: agent.boot_pack
+  version: v0
+  agent: engineer
+
+references:
+  charter: library/agents/engineer/v0/charter.md
+  laws:
+    - library/governance/laws/runtime-event-stream-principles.v0.md
+    - library/governance/laws/event-taxonomy-principles.v0.md
+  policies: []
+  schemas:
+    - library/agents/engineer/v0/schemas/engineer-work-order.v0.yaml
+  prompt_templates: []

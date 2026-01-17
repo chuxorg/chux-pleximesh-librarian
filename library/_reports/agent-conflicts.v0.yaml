@@ -1,0 +1,11 @@
+report:
+  name: agent-conflicts
+  version: v0
+  scope: library
+  generated_at: 2026-01-06T00:04:29Z
+
+conflicts: []
+
+notes:
+  - No conflicting agent definitions were found within library sources.
+  - Multiple agent charters and prompt templates are missing and recorded elsewhere.

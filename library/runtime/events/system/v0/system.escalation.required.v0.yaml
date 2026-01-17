@@ -1,0 +1,11 @@
+event:
+  type: system.escalation.required
+  version: v0
+  event_id: <EVENT-ID>
+  timestamp: <ISO-8601 timestamp>
+  actor: system
+
+context:
+  run_id: <RUN-ID>
+
+details: {}

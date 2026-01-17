@@ -1,0 +1,18 @@
+report:
+  name: governance-gaps
+  version: v0
+  scope: library
+  generated_at: 2026-01-06T00:04:29Z
+
+gaps:
+  - area: laws
+    description: Only event-stream and event-taxonomy principles are codified as laws; no additional immutable laws exist in the library.
+
+  - area: policies
+    description: No policies are defined for pm, engineer, qa, maestro, or support roles beyond guardian-specific rules.
+
+  - area: decisions
+    description: No decision templates are stored under governance; guardian decision schema remains under agent schemas.
+
+  - area: escalation
+    description: No explicit escalation policy artifact exists despite system.escalation.required events.

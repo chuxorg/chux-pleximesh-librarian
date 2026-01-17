@@ -1,0 +1,60 @@
+report:
+  name: rehydration-coverage
+  version: v0
+  scope: library
+  generated_at: 2026-01-06T00:04:29Z
+
+coverage:
+  agents:
+    guardian:
+      boot_pack: library/agents/guardian/v0/boot-pack.v0.yaml
+      status: partial
+      missing:
+        - Charter content is missing (placeholder only).
+        - Prompt templates are missing.
+    pm:
+      boot_pack: library/agents/pm/v0/boot-pack.v0.yaml
+      status: partial
+      missing:
+        - Charter content is missing (placeholder only).
+        - Guardrail policies are missing.
+        - Prompt templates are missing.
+    engineer:
+      boot_pack: library/agents/engineer/v0/boot-pack.v0.yaml
+      status: partial
+      missing:
+        - Charter content is missing (placeholder only).
+        - Guardrail policies are missing.
+        - Prompt templates are missing.
+    qa:
+      boot_pack: library/agents/qa/v0/boot-pack.v0.yaml
+      status: partial
+      missing:
+        - Guardrail policies are missing.
+        - QA-specific schemas are missing.
+        - Prompt templates are missing.
+    maestro:
+      boot_pack: library/agents/maestro/v0/boot-pack.v0.yaml
+      status: partial
+      missing:
+        - Charter content is missing (placeholder only).
+        - Guardrail policies are missing.
+        - Schemas are missing.
+        - Prompt templates are missing.
+    support:
+      boot_pack: library/agents/support/v0/boot-pack.v0.yaml
+      status: partial
+      missing:
+        - Charter content is missing (placeholder only).
+        - Guardrail policies are missing.
+        - Schemas are missing.
+        - Prompt templates are missing.
+
+  missions:
+    MISSION-DEFAULT-SDLC:
+      boot_pack: library/missions/MISSION-DEFAULT-SDLC/v0/boot-pack.v0.yaml
+      status: partial
+      missing:
+        - Mission charter content is missing (placeholder only).
+        - Mission policies are missing.
+        - Prompt templates are missing.

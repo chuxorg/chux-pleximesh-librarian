@@ -1,0 +1,13 @@
+artifact:
+  type: agent.boot_pack
+  version: v0
+  agent: maestro
+
+references:
+  charter: library/agents/maestro/v0/charter.md
+  laws:
+    - library/governance/laws/runtime-event-stream-principles.v0.md
+    - library/governance/laws/event-taxonomy-principles.v0.md
+  policies: []
+  schemas: []
+  prompt_templates: []

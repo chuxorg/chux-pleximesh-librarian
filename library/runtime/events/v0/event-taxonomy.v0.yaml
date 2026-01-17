@@ -1,0 +1,94 @@
+artifact:
+  type: event.taxonomy
+  version: v0
+  status: ACTIVE
+  authority: system
+
+governance:
+  laws:
+    - library/governance/laws/event-taxonomy-principles.v0.md
+    - library/governance/laws/mvp-required-event-types.v0.md
+
+event_classes:
+  system_events:
+    description: >
+      Fixed, mandatory events required for governance, auditability,
+      escalation, and human authority. These events are immutable and
+      cannot be disabled, renamed, intercepted, or overridden.
+
+    immutability_rules:
+      can_disable: false
+      can_rename: false
+      can_modify_payload: false
+      can_suppress_delivery: false
+      visible_to:
+        - guardian
+        - awacs
+        - human
+
+    events:
+      - guardian.requirements.pass
+      - guardian.requirements.revise
+      - guardian.requirements.reject
+
+      - guardian.decision.recorded
+
+      - pm.plan.created
+      - pm.plan.approved
+
+      - engineer.started
+      - engineer.completed
+
+      - qa.verification.passed
+      - qa.verification.failed
+
+      - system.blocked
+      - system.escalation.required
+      - system.run.started
+      - system.run.paused
+      - system.run.resumed
+      - system.run.completed
+      - system.run.aborted
+
+  mission_events:
+    description: >
+      Configurable events that may be enabled, disabled, added, or
+      bound by a Mission. Mission events may react to system events
+      but may not interfere with their emission or storage.
+
+    mutability_rules:
+      can_enable_disable: true
+      can_add_custom: true
+      can_bind_to_system_events: true
+      can_trigger_side_effects: true
+      can_block_system_events: false
+
+    examples:
+      - notify.sms
+      - notify.email
+      - notify.slack
+      - human.input.requested
+      - human.approval.requested
+      - custom.audit.snapshot
+      - custom.metrics.emit
+
+binding_rules:
+  - Missions may bind mission events to:
+      - agent lifecycle hooks
+      - system events
+  - Missions may not bind actions that suppress, delay, or replace
+    system events
+  - Multiple mission events may subscribe to the same system event
+
+enforcement:
+  guardian:
+    must_enforce_immutability: true
+    must_escalate_on_violation: true
+
+  awacs:
+    must_display_all_system_events: true
+    must_display_mission_events_when_enabled: true
+
+audit:
+  immutable: true
+  supersedes: null

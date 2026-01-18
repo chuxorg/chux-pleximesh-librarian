@@ -1,0 +1,19 @@
+report:
+  name: mongo-migration-results
+  version: v0
+  scope: dynamic-artifacts
+  generated_at: 2026-01-17T22:59:40Z
+
+summary:
+  total_documents: 42
+  inserted: 41
+  skipped_existing: 1
+  conflicts: 0
+  verified_matches: 42
+  missing_after_verification: 0
+
+conflicts: []
+
+notes:
+  - One document already existed in Mongo with matching content; no overwrite performed.
+  - Verification pass confirmed all 42 migrated artifacts match stored content hashes.

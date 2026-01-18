@@ -1,0 +1,10 @@
+report:
+  name: disk-authoritative-artifacts-after
+  version: v0
+  scope: dynamic-artifacts
+  generated_at: 2026-01-17T23:00:40Z
+
+dynamic_artifacts: []
+
+notes:
+  - Dynamic artifacts were quarantined under `library/_quarantine_migrated/` after Mongo verification.

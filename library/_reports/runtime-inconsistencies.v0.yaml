@@ -1,8 +1,8 @@
 report:
   name: runtime-inconsistencies
   version: v0
-  scope: library
-  generated_at: 2026-01-06T00:04:29Z
+  scope: seed-library
+  generated_at: 2026-01-17T22:55:10Z
 
 inconsistencies:
   - area: decision.outcomes

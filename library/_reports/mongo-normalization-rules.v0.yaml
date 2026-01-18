@@ -1,0 +1,27 @@
+report:
+  name: mongo-normalization-rules
+  version: v0
+  scope: mongo-artifacts
+  generated_at: 2026-01-17T22:57:10Z
+
+rules:
+  - id: uri-required
+    statement: uri is the canonical unique key and must be present for every artifact document.
+
+  - id: path-derived
+    statement: path is derived from the uri prefix segments and stored as a list to enable prefix queries.
+
+  - id: filename-derived
+    statement: filename defaults to the final uri segment when not explicitly provided.
+
+  - id: content-format-match
+    statement: content_format must match header.content.format when header is present.
+
+  - id: header-required-for-agent
+    statement: header must include execution and correlation blocks for agent-generated artifacts; missing fields must be recorded as gaps rather than guessed.
+
+  - id: sha256-recorded
+    statement: content sha256 must be stored in metadata or header metadata for integrity validation.
+
+  - id: event-artifact-format
+    statement: event artifacts are stored with artifact_type = event and content_format = json.

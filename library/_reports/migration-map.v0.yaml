@@ -1,146 +1,61 @@
 report:
   name: migration-map
   version: v0
-  scope: library
-  generated_at: 2026-01-06T00:04:29Z
+  scope: seed-library
+  generated_at: 2026-01-17T23:02:40Z
 
 migrations:
-  - from: library/engineering/work-orders/REQ-2025-01-001/WORK-ORDER-ENG-001/engineer-work-order.v0.yaml
-    to: library/agents/engineer/v0/schemas/engineer-work-order.v0.yaml
-    reason: Normalize engineer IO schema under agent directory.
+  - from: charters/documentation-agent.md
+    to: library/agents/documentation/v0/charter.md
+    reason: move legacy charters under library/agents
     merge_required: false
 
-  - from: library/events/engineering/REQ-2025-01-001/WORK-ORDER-ENG-001/engineer.progress.v0.yaml
-    to: library/runtime/events/agent/engineer/v0/engineer.progress.v0.yaml
-    reason: Normalize agent event schemas under runtime/events.
+  - from: governance/laws/persistence-law.md
+    to: library/governance/laws/persistence-law.v0.md
+    reason: move legacy governance docs under library/governance
     merge_required: false
 
-  - from: library/events/engineering/REQ-2025-01-001/WORK-ORDER-ENG-001/engineer.completed.v0.yaml
-    to: library/runtime/events/agent/engineer/v0/engineer.completed.v0.yaml
-    reason: Normalize agent event schemas under runtime/events.
+  - from: governance/mandates/guardian-persistence-preflight.md
+    to: library/governance/policies/guardian/guardian-persistence-preflight.v0.md
+    reason: move legacy governance docs under library/governance
     merge_required: false
 
-  - from: library/events/engineering/REQ-2025-01-001/WORK-ORDER-ENG-001/engineer.started.v0.yaml
-    to: library/runtime/events/agent/engineer/v0/engineer.started.v0.yaml
-    reason: Normalize agent event schemas under runtime/events.
+  - from: governance/librarian/librarian-intake-agent-contract.md
+    to: library/governance/policies/librarian/librarian-intake-agent-contract.v0.md
+    reason: move legacy governance docs under library/governance
     merge_required: false
 
-  - from: library/events/runtime/RUN-2025-01-001/run.aborted.v0.yaml
-    to: library/runtime/events/system/v0/system.run.aborted.v0.yaml
-    reason: Normalize system event schemas under runtime/events.
+  - from: governance/sdlc/versioning-and-release-policy.md
+    to: library/governance/policies/sdlc/versioning-and-release-policy.v0.md
+    reason: move legacy governance docs under library/governance
     merge_required: false
 
-  - from: library/events/runtime/RUN-2025-01-001/run.started.v0.yaml
-    to: library/runtime/events/system/v0/system.run.started.v0.yaml
-    reason: Normalize system event schemas under runtime/events.
+  - from: governance/awacs/authority-matrix-certification.md
+    to: library/governance/policies/awacs/authority-matrix-certification.v0.md
+    reason: move legacy governance docs under library/governance
     merge_required: false
 
-  - from: library/events/runtime/RUN-2025-01-001/run.resumed.v0.yaml
-    to: library/runtime/events/system/v0/system.run.resumed.v0.yaml
-    reason: Normalize system event schemas under runtime/events.
+  - from: governance/awacs/event-taxonomy-v0.md
+    to: library/governance/policies/awacs/event-taxonomy-v0.md
+    reason: move legacy governance docs under library/governance
     merge_required: false
 
-  - from: library/events/runtime/RUN-2025-01-001/run.completed.v0.yaml
-    to: library/runtime/events/system/v0/system.run.completed.v0.yaml
-    reason: Normalize system event schemas under runtime/events.
+  - from: governance/awacs/nfr-charter.md
+    to: library/governance/policies/awacs/nfr-charter.v0.md
+    reason: move legacy governance docs under library/governance
     merge_required: false
 
-  - from: library/events/runtime/RUN-2025-01-001/run.paused.v0.yaml
-    to: library/runtime/events/system/v0/system.run.paused.v0.yaml
-    reason: Normalize system event schemas under runtime/events.
+  - from: governance/awacs/ui/event-stream-v0.md
+    to: library/governance/policies/awacs/ui/event-stream-v0.md
+    reason: move legacy governance docs under library/governance
     merge_required: false
 
-  - from: library/guardian/rules/requirements/v0/guardian-requirements-rules.v0.yaml
-    to: library/agents/guardian/v0/guardrails/rules.v0.yaml
-    reason: Consolidate guardian guardrails into a single canonical ruleset.
-    merge_required: true
-
-  - from: library/guardian/rules/learning/v0/guardian-learning-rules.v0.yaml
-    to: library/agents/guardian/v0/guardrails/rules.v0.yaml
-    reason: Consolidate guardian guardrails into a single canonical ruleset.
-    merge_required: true
-
-  - from: library/guardian/rules/missions/v0/guardian-mission-rules.v0.yaml
-    to: library/agents/guardian/v0/guardrails/rules.v0.yaml
-    reason: Consolidate guardian guardrails into a single canonical ruleset.
-    merge_required: true
-
-  - from: library/guardian/decisions/REQ-2025-01-001/guardian-decision.v0.yaml
-    to: library/agents/guardian/v0/schemas/guardian-decision.v0.yaml
-    reason: Normalize guardian IO schema under agent directory.
+  - from: references/roles/agent-artifact-persistence.md
+    to: library/examples/references/roles/agent-artifact-persistence.md
+    reason: move legacy references under library/examples
     merge_required: false
 
-  - from: library/awacs/views/v0/awacs-runtime-view.v0.yaml
-    to: library/runtime/awacs/views/v0/awacs-runtime-view.v0.yaml
-    reason: Group AWACS runtime contracts with runtime schemas.
-    merge_required: false
-
-  - from: library/awacs/theme/awacs-theming-model.v0.md
-    to: library/runtime/awacs/theme/v0/awacs-theming-model.v0.md
-    reason: Group AWACS runtime contracts with runtime schemas.
-    merge_required: false
-
-  - from: library/awacs/workspace/awacs-workspace-model.v0.md
-    to: library/runtime/awacs/workspace/v0/awacs-workspace-model.v0.md
-    reason: Group AWACS runtime contracts with runtime schemas.
-    merge_required: false
-
-  - from: library/testing/runtime/plexirt-testing-agent.v0.md
-    to: library/agents/qa/v0/definition.v0.yaml
-    reason: Consolidate testing agent definition under QA agent directory.
-    merge_required: true
-
-  - from: library/runtime/runs/RUN-2025-01-001/run-outcome.v0.yaml
-    to: library/runtime/runs/v0/run-outcome.v0.yaml
-    reason: Normalize run artifacts as versioned schemas.
-    merge_required: false
-
-  - from: library/runtime/runs/RUN-2025-01-001/mission-run.v0.yaml
-    to: library/runtime/runs/v0/mission-run.v0.yaml
-    reason: Normalize run artifacts as versioned schemas.
-    merge_required: false
-
-  - from: library/runtime/events/event-taxonomy.v0.yaml
-    to: library/runtime/events/v0/event-taxonomy.v0.yaml
-    reason: Version the event taxonomy schema path.
-    merge_required: false
-
-  - from: library/runtime/state/run_state.v0.yaml
-    to: library/runtime/state/v0/run_state.v0.yaml
-    reason: Version the runtime state schema path.
-    merge_required: false
-
-  - from: library/runtime/messages/decision/decision.result.v0.yaml
-    to: library/runtime/messages/decision/v0/decision.result.v0.yaml
-    reason: Version runtime message schemas uniformly.
-    merge_required: false
-
-  - from: library/runtime/messages/task/task.evaluate.v0.yaml
-    to: library/runtime/messages/task/v0/task.evaluate.v0.yaml
-    reason: Version runtime message schemas uniformly.
-    merge_required: false
-
-  - from: library/runtime/messages/intent/intent.submission.v0.yaml
-    to: library/runtime/messages/intent/v0/intent.submission.v0.yaml
-    reason: Version runtime message schemas uniformly.
-    merge_required: false
-
-  - from: library/runtime/messages/outcome/outcome.summary.v0.yaml
-    to: library/runtime/messages/outcome/v0/outcome.summary.v0.yaml
-    reason: Version runtime message schemas uniformly.
-    merge_required: false
-
-  - from: library/runtime/messages/compliance/compliance.check.v0.yaml
-    to: library/runtime/messages/compliance/v0/compliance.check.v0.yaml
-    reason: Version runtime message schemas uniformly.
-    merge_required: false
-
-  - from: library/missions/MISSION-DEFAULT-SDLC/mission.v0.yaml
-    to: library/missions/MISSION-DEFAULT-SDLC/v0/mission.v0.yaml
-    reason: Version mission definitions uniformly.
-    merge_required: false
-
-  - from: library/pm/plans/REQ-2025-01-001/pm-plan.v0.yaml
-    to: library/agents/pm/v0/schemas/pm-plan.v0.yaml
-    reason: Normalize PM IO schema under agent directory.
+  - from: library/runtime/events/event.v0.json
+    to: library/schemas/events/event.v0.json
+    reason: move event schema to library/schemas/events
     merge_required: false

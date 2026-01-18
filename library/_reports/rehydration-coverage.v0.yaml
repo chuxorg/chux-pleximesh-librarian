@@ -1,8 +1,8 @@
 report:
   name: rehydration-coverage
   version: v0
-  scope: library
-  generated_at: 2026-01-06T00:04:29Z
+  scope: seed-library
+  generated_at: 2026-01-17T23:01:40Z
 
 coverage:
   agents:
@@ -10,20 +10,17 @@ coverage:
       boot_pack: library/agents/guardian/v0/boot-pack.v0.yaml
       status: partial
       missing:
-        - Charter content is missing (placeholder only).
         - Prompt templates are missing.
     pm:
       boot_pack: library/agents/pm/v0/boot-pack.v0.yaml
       status: partial
       missing:
-        - Charter content is missing (placeholder only).
         - Guardrail policies are missing.
         - Prompt templates are missing.
     engineer:
       boot_pack: library/agents/engineer/v0/boot-pack.v0.yaml
       status: partial
       missing:
-        - Charter content is missing (placeholder only).
         - Guardrail policies are missing.
         - Prompt templates are missing.
     qa:
@@ -37,7 +34,6 @@ coverage:
       boot_pack: library/agents/maestro/v0/boot-pack.v0.yaml
       status: partial
       missing:
-        - Charter content is missing (placeholder only).
         - Guardrail policies are missing.
         - Schemas are missing.
         - Prompt templates are missing.
@@ -45,7 +41,13 @@ coverage:
       boot_pack: library/agents/support/v0/boot-pack.v0.yaml
       status: partial
       missing:
-        - Charter content is missing (placeholder only).
+        - Guardrail policies are missing.
+        - Schemas are missing.
+        - Prompt templates are missing.
+    documentation:
+      boot_pack: library/agents/documentation/v0/boot-pack.v0.yaml
+      status: partial
+      missing:
         - Guardrail policies are missing.
         - Schemas are missing.
         - Prompt templates are missing.
@@ -55,6 +57,5 @@ coverage:
       boot_pack: library/missions/MISSION-DEFAULT-SDLC/v0/boot-pack.v0.yaml
       status: partial
       missing:
-        - Mission charter content is missing (placeholder only).
         - Mission policies are missing.
         - Prompt templates are missing.

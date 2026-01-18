@@ -1,0 +1,306 @@
+report:
+  name: mongo-migration-plan
+  version: v0
+  scope: dynamic-artifacts
+  generated_at: 2026-01-17T23:00:05Z
+
+assumptions:
+  - Owner agent inferred from top-level directory for prompts/results; otherwise set to "human".
+  - URIs derived from disk paths when no explicit canonical URI is present in content.
+  - Status defaults to "canonical" unless "draft" appears in the path or filename.
+
+artifacts:
+  - source_path: data/awacs/phases/phase2.2/guardian-authorization-draft.md
+    target_uri: "central-librarian://awacs/phases/phase2.2/guardian-authorization-draft.md"
+    artifact_type: reference
+    owner_agent: human
+    content_format: markdown
+    status: draft
+    reference_count: 1
+  - source_path: data/project13/gates/mission-rail-implementation-gate.md
+    target_uri: "central-librarian://project13/gates/mission-rail-implementation-gate.md"
+    artifact_type: reference
+    owner_agent: human
+    content_format: markdown
+    status: canonical
+    reference_count: 1
+  - source_path: data/prompts/engineer/2025-12-23T18-17-04Z_prompt_root-1766513824107397000-entrypoint_4c2e7c92-fd8c-4f75-a12d-558dbc0ad70a.md
+    target_uri: "central-librarian://prompts/engineer/2025-12-23T18-17-04Z_prompt_root-1766513824107397000-entrypoint_4c2e7c92-fd8c-4f75-a12d-558dbc0ad70a.md"
+    artifact_type: prompt
+    owner_agent: engineer
+    content_format: markdown
+    status: canonical
+    reference_count: 0
+  - source_path: data/prompts/pm/20251225T215831Z_awacs-project13-follow-up_prompt.md
+    target_uri: "central-librarian://prompts/pm/20251225T215831Z_awacs-project13-follow-up_prompt.md"
+    artifact_type: prompt
+    owner_agent: pm
+    content_format: markdown
+    status: canonical
+    reference_count: 0
+  - source_path: data/prompts/ui/20251225T221558Z_awacs-task-ack_prompt.md
+    target_uri: "central-librarian://prompts/ui/20251225T221558Z_awacs-task-ack_prompt.md"
+    artifact_type: prompt
+    owner_agent: ui
+    content_format: markdown
+    status: canonical
+    reference_count: 0
+  - source_path: data/prompts/ui/20251225T222021Z_procedure-ladder-guardrails_prompt.md
+    target_uri: "central-librarian://prompts/ui/20251225T222021Z_procedure-ladder-guardrails_prompt.md"
+    artifact_type: prompt
+    owner_agent: ui
+    content_format: markdown
+    status: canonical
+    reference_count: 0
+  - source_path: data/results/engineer/2025-12-23T18-17-04Z_result_root-1766513824107397000-entrypoint_4c2e7c92-fd8c-4f75-a12d-558dbc0ad70a.md
+    target_uri: "central-librarian://results/engineer/2025-12-23T18-17-04Z_result_root-1766513824107397000-entrypoint_4c2e7c92-fd8c-4f75-a12d-558dbc0ad70a.md"
+    artifact_type: result
+    owner_agent: engineer
+    content_format: markdown
+    status: canonical
+    reference_count: 0
+  - source_path: decisions/architecture/awacs-mission-rail-scaling.md
+    target_uri: "central-librarian://decisions/architecture/awacs-mission-rail-scaling.md"
+    artifact_type: decision
+    owner_agent: human
+    content_format: markdown
+    status: canonical
+    reference_count: 0
+  - source_path: decisions/architecture/awacs-procedure-ladder-guardrails.md
+    target_uri: "central-librarian://decisions/architecture/awacs-procedure-ladder-guardrails.md"
+    artifact_type: decision
+    owner_agent: human
+    content_format: markdown
+    status: canonical
+    reference_count: 0
+  - source_path: prompts/guardian/sprint-2-refocus.md
+    target_uri: "central-librarian://prompts/guardian/sprint-2-refocus.md"
+    artifact_type: prompt
+    owner_agent: guardian
+    content_format: markdown
+    status: canonical
+    reference_count: 0
+  - source_path: prompts/pm/persistence-enforcement.md
+    target_uri: "central-librarian://prompts/pm/persistence-enforcement.md"
+    artifact_type: prompt
+    owner_agent: pm
+    content_format: markdown
+    status: canonical
+    reference_count: 0
+  - source_path: prompts/pm/sprint-2-execution-substrate-hardening.md
+    target_uri: "central-librarian://prompts/pm/sprint-2-execution-substrate-hardening.md"
+    artifact_type: prompt
+    owner_agent: pm
+    content_format: markdown
+    status: canonical
+    reference_count: 0
+  - source_path: prompts/ui/vscode-mining-prompt.md
+    target_uri: "central-librarian://prompts/ui/vscode-mining-prompt.md"
+    artifact_type: prompt
+    owner_agent: ui
+    content_format: markdown
+    status: canonical
+    reference_count: 0
+  - source_path: results/engineer/librarian-mongo-persistence-step2-prompt-20251228T012703Z.md
+    target_uri: "central-librarian://results/engineer/librarian-mongo-persistence-step2-prompt-20251228T012703Z.md"
+    artifact_type: result
+    owner_agent: engineer
+    content_format: markdown
+    status: canonical
+    reference_count: 1
+  - source_path: results/engineer/librarian-mongo-persistence-step2-response-20251228T012703Z.md
+    target_uri: "central-librarian://results/engineer/librarian-mongo-persistence-step2-response-20251228T012703Z.md"
+    artifact_type: result
+    owner_agent: engineer
+    content_format: markdown
+    status: canonical
+    reference_count: 0
+  - source_path: results/engineer/thread-b-pr-auth-prompt-20251228T120448Z.md
+    target_uri: "central-librarian://results/engineer/thread-b-pr-auth-prompt-20251228T120448Z.md"
+    artifact_type: result
+    owner_agent: engineer
+    content_format: markdown
+    status: canonical
+    reference_count: 0
+  - source_path: results/engineer/thread-b-pr-auth-response-20251228T120448Z.md
+    target_uri: "central-librarian://results/engineer/thread-b-pr-auth-response-20251228T120448Z.md"
+    artifact_type: result
+    owner_agent: engineer
+    content_format: markdown
+    status: canonical
+    reference_count: 0
+  - source_path: results/engineer/thread-b-pr-finalization-prompt-20251228T120218Z.md
+    target_uri: "central-librarian://results/engineer/thread-b-pr-finalization-prompt-20251228T120218Z.md"
+    artifact_type: result
+    owner_agent: engineer
+    content_format: markdown
+    status: canonical
+    reference_count: 0
+  - source_path: results/engineer/thread-b-pr-finalization-response-20251228T120218Z.md
+    target_uri: "central-librarian://results/engineer/thread-b-pr-finalization-response-20251228T120218Z.md"
+    artifact_type: result
+    owner_agent: engineer
+    content_format: markdown
+    status: canonical
+    reference_count: 0
+  - source_path: results/engineer/thread-b-prompt-20251228T114024Z.md
+    target_uri: "central-librarian://results/engineer/thread-b-prompt-20251228T114024Z.md"
+    artifact_type: result
+    owner_agent: engineer
+    content_format: markdown
+    status: canonical
+    reference_count: 0
+  - source_path: results/engineer/thread-b-response-20251228T114024Z.md
+    target_uri: "central-librarian://results/engineer/thread-b-response-20251228T114024Z.md"
+    artifact_type: result
+    owner_agent: engineer
+    content_format: markdown
+    status: canonical
+    reference_count: 0
+  - source_path: results/guardian/awacs-vscode-ui-mining-review.md
+    target_uri: "central-librarian://results/guardian/awacs-vscode-ui-mining-review.md"
+    artifact_type: result
+    owner_agent: guardian
+    content_format: markdown
+    status: canonical
+    reference_count: 0
+  - source_path: results/pm/awacs-mission-rail-authorization-prompt-20251225T221700Z.md
+    target_uri: "central-librarian://results/pm/awacs-mission-rail-authorization-prompt-20251225T221700Z.md"
+    artifact_type: result
+    owner_agent: pm
+    content_format: markdown
+    status: canonical
+    reference_count: 1
+  - source_path: results/pm/awacs-mission-rail-authorization-response-20251225T221700Z.md
+    target_uri: "central-librarian://results/pm/awacs-mission-rail-authorization-response-20251225T221700Z.md"
+    artifact_type: result
+    owner_agent: pm
+    content_format: markdown
+    status: canonical
+    reference_count: 2
+  - source_path: results/pm/awacs-mission-rail-implementation-gate-prompt-20251226T150834Z.md
+    target_uri: "central-librarian://results/pm/awacs-mission-rail-implementation-gate-prompt-20251226T150834Z.md"
+    artifact_type: result
+    owner_agent: pm
+    content_format: markdown
+    status: canonical
+    reference_count: 1
+  - source_path: results/pm/awacs-mission-rail-implementation-gate-response-20251226T150834Z.md
+    target_uri: "central-librarian://results/pm/awacs-mission-rail-implementation-gate-response-20251226T150834Z.md"
+    artifact_type: result
+    owner_agent: pm
+    content_format: markdown
+    status: canonical
+    reference_count: 2
+  - source_path: results/pm/awacs-project13-follow-up-prompt.md
+    target_uri: "central-librarian://results/pm/awacs-project13-follow-up-prompt.md"
+    artifact_type: result
+    owner_agent: pm
+    content_format: markdown
+    status: canonical
+    reference_count: 0
+  - source_path: results/pm/awacs-project13-follow-up-response-20251225T215831Z.md
+    target_uri: "central-librarian://results/pm/awacs-project13-follow-up-response-20251225T215831Z.md"
+    artifact_type: result
+    owner_agent: pm
+    content_format: markdown
+    status: canonical
+    reference_count: 0
+  - source_path: results/pm/awacs-project13-follow-up-response.md
+    target_uri: "central-librarian://results/pm/awacs-project13-follow-up-response.md"
+    artifact_type: result
+    owner_agent: pm
+    content_format: markdown
+    status: canonical
+    reference_count: 0
+  - source_path: results/pm/awacs-project13-follow-up-tasks-20251225T215831Z.md
+    target_uri: "central-librarian://results/pm/awacs-project13-follow-up-tasks-20251225T215831Z.md"
+    artifact_type: result
+    owner_agent: pm
+    content_format: markdown
+    status: canonical
+    reference_count: 0
+  - source_path: results/pm/awacs-project13-follow-up-tasks.md
+    target_uri: "central-librarian://results/pm/awacs-project13-follow-up-tasks.md"
+    artifact_type: result
+    owner_agent: pm
+    content_format: markdown
+    status: canonical
+    reference_count: 0
+  - source_path: results/pm/awacs-project13-task-creation-prompt-20251225T220336Z.md
+    target_uri: "central-librarian://results/pm/awacs-project13-task-creation-prompt-20251225T220336Z.md"
+    artifact_type: result
+    owner_agent: pm
+    content_format: markdown
+    status: canonical
+    reference_count: 0
+  - source_path: results/pm/awacs-project13-task-creation-response-20251225T220336Z.md
+    target_uri: "central-librarian://results/pm/awacs-project13-task-creation-response-20251225T220336Z.md"
+    artifact_type: result
+    owner_agent: pm
+    content_format: markdown
+    status: canonical
+    reference_count: 0
+  - source_path: results/pm/awacs-project13-task-creation-tasks-20251225T220336Z.md
+    target_uri: "central-librarian://results/pm/awacs-project13-task-creation-tasks-20251225T220336Z.md"
+    artifact_type: result
+    owner_agent: pm
+    content_format: markdown
+    status: canonical
+    reference_count: 0
+  - source_path: results/pm/awacs-task-orchestration-and-source-control.md
+    target_uri: "central-librarian://results/pm/awacs-task-orchestration-and-source-control.md"
+    artifact_type: result
+    owner_agent: pm
+    content_format: markdown
+    status: canonical
+    reference_count: 0
+  - source_path: results/pm/awacs-ui-authorization-confirmation-20251225T221253Z.md
+    target_uri: "central-librarian://results/pm/awacs-ui-authorization-confirmation-20251225T221253Z.md"
+    artifact_type: result
+    owner_agent: pm
+    content_format: markdown
+    status: canonical
+    reference_count: 0
+  - source_path: results/pm/awacs-ui-authorization-prompt-20251225T221253Z.md
+    target_uri: "central-librarian://results/pm/awacs-ui-authorization-prompt-20251225T221253Z.md"
+    artifact_type: result
+    owner_agent: pm
+    content_format: markdown
+    status: canonical
+    reference_count: 0
+  - source_path: results/pm/mission-rail-implementation-authorization-prompt-20251226T215646Z.md
+    target_uri: "central-librarian://results/pm/mission-rail-implementation-authorization-prompt-20251226T215646Z.md"
+    artifact_type: result
+    owner_agent: pm
+    content_format: markdown
+    status: canonical
+    reference_count: 1
+  - source_path: results/pm/mission-rail/mission-rail-implementation-authorization-response-20251226T215646Z.md
+    target_uri: "central-librarian://results/pm/mission-rail-implementation-authorization-response-20251226T215646Z.md"
+    artifact_type: result
+    owner_agent: pm
+    content_format: markdown
+    status: canonical
+    reference_count: 1
+  - source_path: results/ui/awacs-project13-task-ack-20251225T221558Z.md
+    target_uri: "central-librarian://results/ui/awacs-project13-task-ack-20251225T221558Z.md"
+    artifact_type: result
+    owner_agent: ui
+    content_format: markdown
+    status: canonical
+    reference_count: 0
+  - source_path: results/ui/procedure-ladder-guardrails-plan-20251225T222021Z.md
+    target_uri: "central-librarian://results/ui/procedure-ladder-guardrails-plan-20251225T222021Z.md"
+    artifact_type: result
+    owner_agent: ui
+    content_format: markdown
+    status: canonical
+    reference_count: 0
+  - source_path: results/ui/uiagent-vscode-report.md
+    target_uri: "central-librarian://results/ui/uiagent-vscode-report.md"
+    artifact_type: result
+    owner_agent: ui
+    content_format: markdown
+    status: canonical
+    reference_count: 0

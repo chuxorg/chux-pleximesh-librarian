@@ -1,8 +1,8 @@
 report:
   name: open-questions
   version: v0
-  scope: library
-  generated_at: 2026-01-06T00:04:29Z
+  scope: seed-library
+  generated_at: 2026-01-17T23:03:40Z
 
 questions:
   - id: OQ-1
@@ -43,12 +43,26 @@ questions:
       - library/runtime/events/system/v0/system.escalation.required.v0.yaml
 
   - id: OQ-5
-    topic: missing.charters
-    question: Are there authoritative charters for guardian, pm, engineer, maestro, support, and mission MISSION-DEFAULT-SDLC that should be added to the library?
+    topic: migration.attribution
+    question: Should quarantined dynamic artifacts under `library/_quarantine_migrated/` be attributed to specific agents (pm/guardian/ui) instead of the default "human" owner_agent?
     paths:
-      - library/agents/guardian/v0/charter.md
-      - library/agents/pm/v0/charter.md
-      - library/agents/engineer/v0/charter.md
-      - library/agents/maestro/v0/charter.md
-      - library/agents/support/v0/charter.md
-      - library/missions/MISSION-DEFAULT-SDLC/v0/charter.md
+      - library/_reports/mongo-migration-plan.v0.yaml
+      - library/_quarantine_migrated/
+
+  - id: OQ-6
+    topic: agent.prompts
+    question: When will authoritative prompt templates be added for the agents, and which missions require them first?
+    paths:
+      - library/agents/guardian/v0/prompts
+      - library/agents/pm/v0/prompts
+      - library/agents/engineer/v0/prompts
+      - library/agents/qa/v0/prompts
+      - library/agents/maestro/v0/prompts
+      - library/agents/support/v0/prompts
+      - library/agents/documentation/v0/prompts
+
+  - id: OQ-7
+    topic: decision.templates
+    question: Are there canonical decision templates that should be stored under `library/governance/decision-templates/`?
+    paths:
+      - library/governance/decision-templates/

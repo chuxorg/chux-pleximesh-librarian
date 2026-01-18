@@ -1,41 +1,8 @@
 report:
   name: duplication-report
   version: v0
-  scope: library
-  generated_at: 2026-01-06T00:04:29Z
+  scope: repo-artifacts
+  generated_at: 2026-01-18T01:33:06Z
 
 duplications:
-  - concept: event:engineer.started
-    paths:
-      - library/events/engineering/REQ-2025-01-001/WORK-ORDER-ENG-001/engineer.started.v0.yaml
-      - library/runtime/events/event-taxonomy.v0.yaml
-    overlap: partial
-    notes: Event taxonomy lists the event type; event schema defines payload and context.
-
-  - concept: event:engineer.completed
-    paths:
-      - library/events/engineering/REQ-2025-01-001/WORK-ORDER-ENG-001/engineer.completed.v0.yaml
-      - library/runtime/events/event-taxonomy.v0.yaml
-    overlap: partial
-    notes: Event taxonomy lists the event type; event schema defines payload and context.
-
-  - concept: guardian.decision.outcome
-    paths:
-      - library/guardian/decisions/REQ-2025-01-001/guardian-decision.v0.yaml
-      - library/runtime/messages/decision/decision.result.v0.yaml
-    overlap: conflicting
-    notes: Guardian decision artifact uses PASS|REVISE|REJECT while decision.result message uses APPROVE|REJECT.
-
-  - concept: run.outcome.status
-    paths:
-      - library/events/runtime/RUN-2025-01-001/run.completed.v0.yaml
-      - library/runtime/runs/RUN-2025-01-001/run-outcome.v0.yaml
-    overlap: partial
-    notes: run.completed event defines SUCCESS|PARTIAL|FAILED, while run.outcome adds ABORTED and references terminal events.
-
-  - concept: run.lifecycle.state
-    paths:
-      - library/runtime/runs/RUN-2025-01-001/mission-run.v0.yaml
-      - library/runtime/state/run_state.v0.yaml
-    overlap: conflicting
-    notes: mission.run uses AUTHORIZED|RUNNING|PAUSED|COMPLETED|ABORTED while run_state defines received|evaluating|correcting|approved|blocked.
+  []

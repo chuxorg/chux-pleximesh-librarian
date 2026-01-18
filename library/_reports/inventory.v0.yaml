@@ -1,122 +1,523 @@
 report:
   name: inventory
   version: v0
-  scope: library
-  generated_at: 2026-01-06T00:04:29Z
+  scope: repo-artifacts
+  generated_at: 2026-01-18T01:33:06Z
 
 artifacts:
-  - path: library/engineering/work-orders/REQ-2025-01-001/WORK-ORDER-ENG-001/engineer-work-order.v0.yaml
-    concept: engineering.work_order
-    role: runtime
-
-  - path: library/events/engineering/REQ-2025-01-001/WORK-ORDER-ENG-001/engineer.progress.v0.yaml
-    concept: event:engineer.progress
-    role: runtime
-
-  - path: library/events/engineering/REQ-2025-01-001/WORK-ORDER-ENG-001/engineer.completed.v0.yaml
-    concept: event:engineer.completed
-    role: runtime
-
-  - path: library/events/engineering/REQ-2025-01-001/WORK-ORDER-ENG-001/engineer.started.v0.yaml
-    concept: event:engineer.started
-    role: runtime
-
-  - path: library/events/runtime/RUN-2025-01-001/run.aborted.v0.yaml
-    concept: event:system.run.aborted
-    role: runtime
-
-  - path: library/events/runtime/RUN-2025-01-001/run.started.v0.yaml
-    concept: event:system.run.started
-    role: runtime
-
-  - path: library/events/runtime/RUN-2025-01-001/run.resumed.v0.yaml
-    concept: event:system.run.resumed
-    role: runtime
-
-  - path: library/events/runtime/RUN-2025-01-001/run.completed.v0.yaml
-    concept: event:system.run.completed
-    role: runtime
-
-  - path: library/events/runtime/RUN-2025-01-001/run.paused.v0.yaml
-    concept: event:system.run.paused
-    role: runtime
-
-  - path: library/guardian/rules/requirements/v0/guardian-requirements-rules.v0.yaml
-    concept: guardian.requirements.rules
-    role: governance
-
-  - path: library/guardian/rules/learning/v0/guardian-learning-rules.v0.yaml
-    concept: guardian.learning.rules
-    role: governance
-
-  - path: library/guardian/rules/missions/v0/guardian-mission-rules.v0.yaml
-    concept: guardian.mission.rules
-    role: governance
-
-  - path: library/guardian/decisions/REQ-2025-01-001/guardian-decision.v0.yaml
-    concept: guardian.decision
-    role: runtime
-
-  - path: library/awacs/views/v0/awacs-runtime-view.v0.yaml
-    concept: awacs.view.runtime
-    role: awacs
-
-  - path: library/awacs/theme/awacs-theming-model.v0.md
-    concept: awacs.theming.model
-    role: awacs
-
-  - path: library/awacs/workspace/awacs-workspace-model.v0.md
-    concept: awacs.workspace.model
-    role: awacs
-
-  - path: library/testing/runtime/plexirt-testing-agent.v0.md
-    concept: agent.testing.plexirt
-    role: agent
-
+  - path: library/_quarantine_migrated/data/awacs/phases/phase2.2/guardian-authorization-draft.md
+    classification: dynamic
+    concept: "quarantine:guardian-authorization-draft"
+  - path: library/_quarantine_migrated/data/project13/gates/mission-rail-implementation-gate.md
+    classification: dynamic
+    concept: "quarantine:mission-rail-implementation-gate"
+  - path: library/_quarantine_migrated/data/prompts/engineer/2025-12-23T18-17-04Z_prompt_root-1766513824107397000-entrypoint_4c2e7c92-fd8c-4f75-a12d-558dbc0ad70a.md
+    classification: dynamic
+    concept: "quarantine:2025-12-23T18-17-04Z_prompt_root-1766513824107397000-entrypoint_4c2e7c92-fd8c-4f75-a12d-558dbc0ad70a"
+  - path: library/_quarantine_migrated/data/prompts/pm/20251225T215831Z_awacs-project13-follow-up_prompt.md
+    classification: dynamic
+    concept: "quarantine:20251225T215831Z_awacs-project13-follow-up_prompt"
+  - path: library/_quarantine_migrated/data/prompts/ui/20251225T221558Z_awacs-task-ack_prompt.md
+    classification: dynamic
+    concept: "quarantine:20251225T221558Z_awacs-task-ack_prompt"
+  - path: library/_quarantine_migrated/data/prompts/ui/20251225T222021Z_procedure-ladder-guardrails_prompt.md
+    classification: dynamic
+    concept: "quarantine:20251225T222021Z_procedure-ladder-guardrails_prompt"
+  - path: library/_quarantine_migrated/data/results/engineer/2025-12-23T18-17-04Z_result_root-1766513824107397000-entrypoint_4c2e7c92-fd8c-4f75-a12d-558dbc0ad70a.md
+    classification: dynamic
+    concept: "quarantine:2025-12-23T18-17-04Z_result_root-1766513824107397000-entrypoint_4c2e7c92-fd8c-4f75-a12d-558dbc0ad70a"
+  - path: library/_quarantine_migrated/decisions/architecture/.gitkeep
+    classification: ignore
+    concept: "quarantine:.gitkeep"
+  - path: library/_quarantine_migrated/decisions/architecture/awacs-mission-rail-scaling.md
+    classification: dynamic
+    concept: "quarantine:awacs-mission-rail-scaling"
+  - path: library/_quarantine_migrated/decisions/architecture/awacs-procedure-ladder-guardrails.md
+    classification: dynamic
+    concept: "quarantine:awacs-procedure-ladder-guardrails"
+  - path: library/_quarantine_migrated/decisions/process/.gitkeep
+    classification: ignore
+    concept: "quarantine:.gitkeep"
+  - path: library/_quarantine_migrated/legacy/governance/escalations/.gitkeep
+    classification: ignore
+    concept: "quarantine:.gitkeep"
+  - path: library/_quarantine_migrated/legacy/governance/laws/.gitkeep
+    classification: ignore
+    concept: "quarantine:.gitkeep"
+  - path: library/_quarantine_migrated/legacy/governance/mandates/.gitkeep
+    classification: ignore
+    concept: "quarantine:.gitkeep"
+  - path: library/_quarantine_migrated/legacy/governance/sdlc/.gitkeep
+    classification: ignore
+    concept: "quarantine:.gitkeep"
+  - path: library/_quarantine_migrated/legacy/references/directory-standards/.gitkeep
+    classification: ignore
+    concept: "quarantine:.gitkeep"
+  - path: library/_quarantine_migrated/legacy/references/naming/.gitkeep
+    classification: ignore
+    concept: "quarantine:.gitkeep"
+  - path: library/_quarantine_migrated/legacy/references/roles/.gitkeep
+    classification: ignore
+    concept: "quarantine:.gitkeep"
+  - path: library/_quarantine_migrated/legacy/references/taxonomies/.gitkeep
+    classification: ignore
+    concept: "quarantine:.gitkeep"
+  - path: library/_quarantine_migrated/prompts/codex/.gitkeep
+    classification: ignore
+    concept: "quarantine:.gitkeep"
+  - path: library/_quarantine_migrated/prompts/documentation/.gitkeep
+    classification: ignore
+    concept: "quarantine:.gitkeep"
+  - path: library/_quarantine_migrated/prompts/engineering/.gitkeep
+    classification: ignore
+    concept: "quarantine:.gitkeep"
+  - path: library/_quarantine_migrated/prompts/guardian/.gitkeep
+    classification: ignore
+    concept: "quarantine:.gitkeep"
+  - path: library/_quarantine_migrated/prompts/guardian/sprint-2-refocus.md
+    classification: dynamic
+    concept: "quarantine:sprint-2-refocus"
+  - path: library/_quarantine_migrated/prompts/pm/.gitkeep
+    classification: ignore
+    concept: "quarantine:.gitkeep"
+  - path: library/_quarantine_migrated/prompts/pm/persistence-enforcement.md
+    classification: dynamic
+    concept: "quarantine:persistence-enforcement"
+  - path: library/_quarantine_migrated/prompts/pm/sprint-2-execution-substrate-hardening.md
+    classification: dynamic
+    concept: "quarantine:sprint-2-execution-substrate-hardening"
+  - path: library/_quarantine_migrated/prompts/qa/.gitkeep
+    classification: ignore
+    concept: "quarantine:.gitkeep"
+  - path: library/_quarantine_migrated/prompts/ui/vscode-mining-prompt.md
+    classification: dynamic
+    concept: "quarantine:vscode-mining-prompt"
+  - path: library/_quarantine_migrated/results/codex/.gitkeep
+    classification: ignore
+    concept: "quarantine:.gitkeep"
+  - path: library/_quarantine_migrated/results/documentation/.gitkeep
+    classification: ignore
+    concept: "quarantine:.gitkeep"
+  - path: library/_quarantine_migrated/results/engineer/.gitkeep
+    classification: ignore
+    concept: "quarantine:.gitkeep"
+  - path: library/_quarantine_migrated/results/engineer/librarian-mongo-persistence-step2-prompt-20251228T012703Z.md
+    classification: dynamic
+    concept: "quarantine:librarian-mongo-persistence-step2-prompt-20251228T012703Z"
+  - path: library/_quarantine_migrated/results/engineer/librarian-mongo-persistence-step2-response-20251228T012703Z.md
+    classification: dynamic
+    concept: "quarantine:librarian-mongo-persistence-step2-response-20251228T012703Z"
+  - path: library/_quarantine_migrated/results/engineer/thread-b-pr-auth-prompt-20251228T120448Z.md
+    classification: dynamic
+    concept: "quarantine:thread-b-pr-auth-prompt-20251228T120448Z"
+  - path: library/_quarantine_migrated/results/engineer/thread-b-pr-auth-response-20251228T120448Z.md
+    classification: dynamic
+    concept: "quarantine:thread-b-pr-auth-response-20251228T120448Z"
+  - path: library/_quarantine_migrated/results/engineer/thread-b-pr-finalization-prompt-20251228T120218Z.md
+    classification: dynamic
+    concept: "quarantine:thread-b-pr-finalization-prompt-20251228T120218Z"
+  - path: library/_quarantine_migrated/results/engineer/thread-b-pr-finalization-response-20251228T120218Z.md
+    classification: dynamic
+    concept: "quarantine:thread-b-pr-finalization-response-20251228T120218Z"
+  - path: library/_quarantine_migrated/results/engineer/thread-b-prompt-20251228T114024Z.md
+    classification: dynamic
+    concept: "quarantine:thread-b-prompt-20251228T114024Z"
+  - path: library/_quarantine_migrated/results/engineer/thread-b-response-20251228T114024Z.md
+    classification: dynamic
+    concept: "quarantine:thread-b-response-20251228T114024Z"
+  - path: library/_quarantine_migrated/results/guardian/.gitkeep
+    classification: ignore
+    concept: "quarantine:.gitkeep"
+  - path: library/_quarantine_migrated/results/guardian/awacs-vscode-ui-mining-review.md
+    classification: dynamic
+    concept: "quarantine:awacs-vscode-ui-mining-review"
+  - path: library/_quarantine_migrated/results/pm/.gitkeep
+    classification: ignore
+    concept: "quarantine:.gitkeep"
+  - path: library/_quarantine_migrated/results/pm/awacs-mission-rail-authorization-prompt-20251225T221700Z.md
+    classification: dynamic
+    concept: "quarantine:awacs-mission-rail-authorization-prompt-20251225T221700Z"
+  - path: library/_quarantine_migrated/results/pm/awacs-mission-rail-authorization-response-20251225T221700Z.md
+    classification: dynamic
+    concept: "quarantine:awacs-mission-rail-authorization-response-20251225T221700Z"
+  - path: library/_quarantine_migrated/results/pm/awacs-mission-rail-implementation-gate-prompt-20251226T150834Z.md
+    classification: dynamic
+    concept: "quarantine:awacs-mission-rail-implementation-gate-prompt-20251226T150834Z"
+  - path: library/_quarantine_migrated/results/pm/awacs-mission-rail-implementation-gate-response-20251226T150834Z.md
+    classification: dynamic
+    concept: "quarantine:awacs-mission-rail-implementation-gate-response-20251226T150834Z"
+  - path: library/_quarantine_migrated/results/pm/awacs-project13-follow-up-prompt.md
+    classification: dynamic
+    concept: "quarantine:awacs-project13-follow-up-prompt"
+  - path: library/_quarantine_migrated/results/pm/awacs-project13-follow-up-response-20251225T215831Z.md
+    classification: dynamic
+    concept: "quarantine:awacs-project13-follow-up-response-20251225T215831Z"
+  - path: library/_quarantine_migrated/results/pm/awacs-project13-follow-up-response.md
+    classification: dynamic
+    concept: "quarantine:awacs-project13-follow-up-response"
+  - path: library/_quarantine_migrated/results/pm/awacs-project13-follow-up-tasks-20251225T215831Z.md
+    classification: dynamic
+    concept: "quarantine:awacs-project13-follow-up-tasks-20251225T215831Z"
+  - path: library/_quarantine_migrated/results/pm/awacs-project13-follow-up-tasks.md
+    classification: dynamic
+    concept: "quarantine:awacs-project13-follow-up-tasks"
+  - path: library/_quarantine_migrated/results/pm/awacs-project13-task-creation-prompt-20251225T220336Z.md
+    classification: dynamic
+    concept: "quarantine:awacs-project13-task-creation-prompt-20251225T220336Z"
+  - path: library/_quarantine_migrated/results/pm/awacs-project13-task-creation-response-20251225T220336Z.md
+    classification: dynamic
+    concept: "quarantine:awacs-project13-task-creation-response-20251225T220336Z"
+  - path: library/_quarantine_migrated/results/pm/awacs-project13-task-creation-tasks-20251225T220336Z.md
+    classification: dynamic
+    concept: "quarantine:awacs-project13-task-creation-tasks-20251225T220336Z"
+  - path: library/_quarantine_migrated/results/pm/awacs-task-orchestration-and-source-control.md
+    classification: dynamic
+    concept: "quarantine:awacs-task-orchestration-and-source-control"
+  - path: library/_quarantine_migrated/results/pm/awacs-ui-authorization-confirmation-20251225T221253Z.md
+    classification: dynamic
+    concept: "quarantine:awacs-ui-authorization-confirmation-20251225T221253Z"
+  - path: library/_quarantine_migrated/results/pm/awacs-ui-authorization-prompt-20251225T221253Z.md
+    classification: dynamic
+    concept: "quarantine:awacs-ui-authorization-prompt-20251225T221253Z"
+  - path: library/_quarantine_migrated/results/pm/mission-rail-implementation-authorization-prompt-20251226T215646Z.md
+    classification: dynamic
+    concept: "quarantine:mission-rail-implementation-authorization-prompt-20251226T215646Z"
+  - path: library/_quarantine_migrated/results/pm/mission-rail/mission-rail-implementation-authorization-response-20251226T215646Z.md
+    classification: dynamic
+    concept: "quarantine:mission-rail-implementation-authorization-response-20251226T215646Z"
+  - path: library/_quarantine_migrated/results/qa/.gitkeep
+    classification: ignore
+    concept: "quarantine:.gitkeep"
+  - path: library/_quarantine_migrated/results/ui/awacs-project13-task-ack-20251225T221558Z.md
+    classification: dynamic
+    concept: "quarantine:awacs-project13-task-ack-20251225T221558Z"
+  - path: library/_quarantine_migrated/results/ui/procedure-ladder-guardrails-plan-20251225T222021Z.md
+    classification: dynamic
+    concept: "quarantine:procedure-ladder-guardrails-plan-20251225T222021Z"
+  - path: library/_quarantine_migrated/results/ui/uiagent-vscode-report.md
+    classification: dynamic
+    concept: "quarantine:uiagent-vscode-report"
+  - path: library/_reports/agent-conflicts.v0.yaml
+    classification: ignore
+    concept: "artifact:agent-conflicts"
+  - path: library/_reports/canonical-layout.v0.yaml
+    classification: ignore
+    concept: "artifact:canonical-layout"
+  - path: library/_reports/disk-authoritative-artifacts-after.v0.yaml
+    classification: ignore
+    concept: "artifact:disk-authoritative-artifacts-after"
+  - path: library/_reports/duplication-report.v0.yaml
+    classification: ignore
+    concept: "artifact:duplication-report"
+  - path: library/_reports/dynamic-artifact-locations.v0.yaml
+    classification: ignore
+    concept: "artifact:dynamic-artifact-locations"
+  - path: library/_reports/final-audit.v0.md
+    classification: ignore
+    concept: "artifact:final-audit"
+  - path: library/_reports/governance-gaps.v0.yaml
+    classification: ignore
+    concept: "artifact:governance-gaps"
+  - path: library/_reports/inventory.v0.yaml
+    classification: ignore
+    concept: "artifact:inventory"
+  - path: library/_reports/migration-map.v0.yaml
+    classification: ignore
+    concept: "artifact:migration-map"
+  - path: library/_reports/mongo-artifact-contract.v0.yaml
+    classification: ignore
+    concept: "artifact:mongo-artifact-contract"
+  - path: library/_reports/mongo-migration-plan.v0.yaml
+    classification: ignore
+    concept: "artifact:mongo-migration-plan"
+  - path: library/_reports/mongo-migration-results.v0.yaml
+    classification: ignore
+    concept: "artifact:mongo-migration-results"
+  - path: library/_reports/mongo-normalization-rules.v0.yaml
+    classification: ignore
+    concept: "artifact:mongo-normalization-rules"
+  - path: library/_reports/mongo-sample-integrity.v0.yaml
+    classification: ignore
+    concept: "artifact:mongo-sample-integrity"
+  - path: library/_reports/open-questions.v0.yaml
+    classification: ignore
+    concept: "artifact:open-questions"
+  - path: library/_reports/prompt-size-risk-areas.v0.yaml
+    classification: ignore
+    concept: "artifact:prompt-size-risk-areas"
+  - path: library/_reports/rehydration-coverage.v0.yaml
+    classification: ignore
+    concept: "artifact:rehydration-coverage"
+  - path: library/_reports/runtime-inconsistencies.v0.yaml
+    classification: ignore
+    concept: "artifact:runtime-inconsistencies"
+  - path: library/agents/documentation/v0/boot-pack.v0.yaml
+    classification: seed
+    concept: "agent:documentation.boot-pack"
+  - path: library/agents/documentation/v0/charter.md
+    classification: seed
+    concept: "agent:documentation.charter"
+  - path: library/agents/documentation/v0/definition.v0.yaml
+    classification: seed
+    concept: "agent:documentation.definition"
+  - path: library/agents/documentation/v0/guardrails/rules.v0.yaml
+    classification: seed
+    concept: "agent:documentation.guardrails"
+  - path: library/agents/engineer/v0/boot-pack.v0.yaml
+    classification: seed
+    concept: "agent:engineer.boot-pack"
+  - path: library/agents/engineer/v0/charter.md
+    classification: seed
+    concept: "agent:engineer.charter"
+  - path: library/agents/engineer/v0/definition.v0.yaml
+    classification: seed
+    concept: "agent:engineer.definition"
+  - path: library/agents/engineer/v0/guardrails/rules.v0.yaml
+    classification: seed
+    concept: "agent:engineer.guardrails"
+  - path: library/agents/engineer/v0/schemas/engineer-work-order.v0.yaml
+    classification: seed
+    concept: "agent:engineer.schema:engineer-work-order"
+  - path: library/agents/guardian/v0/boot-pack.v0.yaml
+    classification: seed
+    concept: "agent:guardian.boot-pack"
+  - path: library/agents/guardian/v0/charter.md
+    classification: seed
+    concept: "agent:guardian.charter"
+  - path: library/agents/guardian/v0/definition.v0.yaml
+    classification: seed
+    concept: "agent:guardian.definition"
+  - path: library/agents/guardian/v0/guardrails/rules.v0.yaml
+    classification: seed
+    concept: "agent:guardian.guardrails"
+  - path: library/agents/guardian/v0/schemas/guardian-decision.v0.yaml
+    classification: seed
+    concept: "agent:guardian.schema:guardian-decision"
+  - path: library/agents/maestro/v0/boot-pack.v0.yaml
+    classification: seed
+    concept: "agent:maestro.boot-pack"
+  - path: library/agents/maestro/v0/charter.md
+    classification: seed
+    concept: "agent:maestro.charter"
+  - path: library/agents/maestro/v0/definition.v0.yaml
+    classification: seed
+    concept: "agent:maestro.definition"
+  - path: library/agents/maestro/v0/guardrails/rules.v0.yaml
+    classification: seed
+    concept: "agent:maestro.guardrails"
+  - path: library/agents/pm/v0/boot-pack.v0.yaml
+    classification: seed
+    concept: "agent:pm.boot-pack"
+  - path: library/agents/pm/v0/charter.md
+    classification: seed
+    concept: "agent:pm.charter"
+  - path: library/agents/pm/v0/definition.v0.yaml
+    classification: seed
+    concept: "agent:pm.definition"
+  - path: library/agents/pm/v0/guardrails/rules.v0.yaml
+    classification: seed
+    concept: "agent:pm.guardrails"
+  - path: library/agents/pm/v0/schemas/pm-plan.v0.yaml
+    classification: seed
+    concept: "agent:pm.schema:pm-plan"
+  - path: library/agents/qa/v0/boot-pack.v0.yaml
+    classification: seed
+    concept: "agent:qa.boot-pack"
+  - path: library/agents/qa/v0/charter.md
+    classification: seed
+    concept: "agent:qa.charter"
+  - path: library/agents/qa/v0/definition.v0.yaml
+    classification: seed
+    concept: "agent:qa.definition"
+  - path: library/agents/qa/v0/guardrails/rules.v0.yaml
+    classification: seed
+    concept: "agent:qa.guardrails"
+  - path: library/agents/support/v0/boot-pack.v0.yaml
+    classification: seed
+    concept: "agent:support.boot-pack"
+  - path: library/agents/support/v0/charter.md
+    classification: seed
+    concept: "agent:support.charter"
+  - path: library/agents/support/v0/definition.v0.yaml
+    classification: seed
+    concept: "agent:support.definition"
+  - path: library/agents/support/v0/guardrails/rules.v0.yaml
+    classification: seed
+    concept: "agent:support.guardrails"
+  - path: library/examples/references/roles/agent-artifact-persistence.md
+    classification: seed
+    concept: "example:agent-artifact-persistence"
+  - path: library/governance/laws/dev-workflow-enforcement.v0.md
+    classification: seed
+    concept: "law:dev-workflow-enforcement"
+  - path: library/governance/laws/dev-workflow-minimums.v0.md
+    classification: seed
+    concept: "law:dev-workflow-minimums"
+  - path: library/governance/laws/event-taxonomy-principles.v0.md
+    classification: seed
+    concept: "law:event-taxonomy-principles"
+  - path: library/governance/laws/mvp-required-event-types.v0.md
+    classification: seed
+    concept: "law:mvp-required-event-types"
+  - path: library/governance/laws/persistence-law.v0.md
+    classification: seed
+    concept: "law:persistence-law"
+  - path: library/governance/laws/run-abort-semantics.v0.md
+    classification: seed
+    concept: "law:run-abort-semantics"
+  - path: library/governance/laws/runtime-event-stream-principles.v0.md
+    classification: seed
+    concept: "law:runtime-event-stream-principles"
+  - path: library/governance/policies/awacs/authority-matrix-certification.v0.md
+    classification: seed
+    concept: "policy:authority-matrix-certification"
+  - path: library/governance/policies/awacs/event-taxonomy-v0.md
+    classification: seed
+    concept: "policy:event-taxonomy-v0"
+  - path: library/governance/policies/awacs/nfr-charter.v0.md
+    classification: seed
+    concept: "policy:nfr-charter"
+  - path: library/governance/policies/awacs/ui/event-stream-v0.md
+    classification: seed
+    concept: "policy:event-stream-v0"
+  - path: library/governance/policies/guardian/guardian-learning-rules.v0.yaml
+    classification: seed
+    concept: "policy:guardian-learning-rules"
+  - path: library/governance/policies/guardian/guardian-mission-rules.v0.yaml
+    classification: seed
+    concept: "policy:guardian-mission-rules"
+  - path: library/governance/policies/guardian/guardian-persistence-preflight.v0.md
+    classification: seed
+    concept: "policy:guardian-persistence-preflight"
+  - path: library/governance/policies/guardian/guardian-requirements-rules.v0.yaml
+    classification: seed
+    concept: "policy:guardian-requirements-rules"
+  - path: library/governance/policies/librarian/librarian-intake-agent-contract.v0.md
+    classification: seed
+    concept: "policy:librarian-intake-agent-contract"
+  - path: library/governance/policies/performance/binary-content-readiness.v0.md
+    classification: seed
+    concept: "policy:binary-content-readiness"
+  - path: library/governance/policies/performance/reference-first-prompts.v0.md
+    classification: seed
+    concept: "policy:reference-first-prompts"
+  - path: library/governance/policies/sdlc/versioning-and-release-policy.v0.md
+    classification: seed
+    concept: "policy:versioning-and-release-policy"
+  - path: library/missions/MISSION-DEFAULT-SDLC/v0/boot-pack.v0.yaml
+    classification: seed
+    concept: "mission:MISSION-DEFAULT-SDLC.boot-pack"
+  - path: library/missions/MISSION-DEFAULT-SDLC/v0/charter.md
+    classification: seed
+    concept: "mission:MISSION-DEFAULT-SDLC.charter"
+  - path: library/missions/MISSION-DEFAULT-SDLC/v0/mission.v0.yaml
+    classification: seed
+    concept: "mission:MISSION-DEFAULT-SDLC"
+  - path: library/runtime/awacs/theme/v0/awacs-theming-model.v0.md
+    classification: seed
+    concept: "awacs:awacs-theming-model"
+  - path: library/runtime/awacs/views/v0/awacs-runtime-view.v0.yaml
+    classification: seed
+    concept: "awacs:awacs-runtime-view"
+  - path: library/runtime/awacs/workspace/v0/awacs-workspace-model.v0.md
+    classification: seed
+    concept: "awacs:awacs-workspace-model"
   - path: library/runtime/event-stream/v0/run-event-stream.v0.yaml
-    concept: runtime.event_stream
-    role: runtime
-
-  - path: library/runtime/runs/RUN-2025-01-001/run-outcome.v0.yaml
-    concept: run.outcome
-    role: runtime
-
-  - path: library/runtime/runs/RUN-2025-01-001/mission-run.v0.yaml
-    concept: mission.run
-    role: runtime
-
-  - path: library/runtime/events/event-taxonomy.v0.yaml
+    classification: seed
+    concept: "event-stream:run-event-stream"
+  - path: library/runtime/events/agent/engineer/v0/engineer.completed.v0.yaml
+    classification: seed
+    concept: "event:engineer.completed"
+  - path: library/runtime/events/agent/engineer/v0/engineer.progress.v0.yaml
+    classification: seed
+    concept: "event:engineer.progress"
+  - path: library/runtime/events/agent/engineer/v0/engineer.started.v0.yaml
+    classification: seed
+    concept: "event:engineer.started"
+  - path: library/runtime/events/system/v0/guardian.decision.recorded.v0.yaml
+    classification: seed
+    concept: "event:guardian.decision.recorded"
+  - path: library/runtime/events/system/v0/guardian.requirements.pass.v0.yaml
+    classification: seed
+    concept: "event:guardian.requirements.pass"
+  - path: library/runtime/events/system/v0/guardian.requirements.reject.v0.yaml
+    classification: seed
+    concept: "event:guardian.requirements.reject"
+  - path: library/runtime/events/system/v0/guardian.requirements.revise.v0.yaml
+    classification: seed
+    concept: "event:guardian.requirements.revise"
+  - path: library/runtime/events/system/v0/pm.plan.approved.v0.yaml
+    classification: seed
+    concept: "event:pm.plan.approved"
+  - path: library/runtime/events/system/v0/pm.plan.created.v0.yaml
+    classification: seed
+    concept: "event:pm.plan.created"
+  - path: library/runtime/events/system/v0/qa.verification.failed.v0.yaml
+    classification: seed
+    concept: "event:qa.verification.failed"
+  - path: library/runtime/events/system/v0/qa.verification.passed.v0.yaml
+    classification: seed
+    concept: "event:qa.verification.passed"
+  - path: library/runtime/events/system/v0/system.blocked.v0.yaml
+    classification: seed
+    concept: "event:system.blocked"
+  - path: library/runtime/events/system/v0/system.escalation.required.v0.yaml
+    classification: seed
+    concept: "event:system.escalation.required"
+  - path: library/runtime/events/system/v0/system.run.aborted.v0.yaml
+    classification: seed
+    concept: "event:system.run.aborted"
+  - path: library/runtime/events/system/v0/system.run.completed.v0.yaml
+    classification: seed
+    concept: "event:system.run.completed"
+  - path: library/runtime/events/system/v0/system.run.paused.v0.yaml
+    classification: seed
+    concept: "event:system.run.paused"
+  - path: library/runtime/events/system/v0/system.run.resumed.v0.yaml
+    classification: seed
+    concept: "event:system.run.resumed"
+  - path: library/runtime/events/system/v0/system.run.started.v0.yaml
+    classification: seed
+    concept: "event:system.run.started"
+  - path: library/runtime/events/v0/event-taxonomy.v0.yaml
+    classification: seed
     concept: event.taxonomy
-    role: runtime
-
-  - path: library/runtime/state/run_state.v0.yaml
-    concept: runtime.run_state
-    role: runtime
-
-  - path: library/runtime/messages/decision/decision.result.v0.yaml
-    concept: message:decision.result
-    role: runtime
-
-  - path: library/runtime/messages/task/task.evaluate.v0.yaml
-    concept: message:task.evaluate
-    role: runtime
-
-  - path: library/runtime/messages/intent/intent.submission.v0.yaml
-    concept: message:intent.submission
-    role: runtime
-
-  - path: library/runtime/messages/outcome/outcome.summary.v0.yaml
-    concept: message:outcome.summary
-    role: runtime
-
-  - path: library/runtime/messages/compliance/compliance.check.v0.yaml
-    concept: message:compliance.check
-    role: runtime
-
-  - path: library/missions/MISSION-DEFAULT-SDLC/mission.v0.yaml
-    concept: mission:MISSION-DEFAULT-SDLC
-    role: mission
-
-  - path: library/pm/plans/REQ-2025-01-001/pm-plan.v0.yaml
-    concept: pm.plan
-    role: runtime
+  - path: library/runtime/gates/v0/phase-gate.PHASE-0.mvp-contract-lock.v0.yaml
+    classification: seed
+    concept: "runtime.gate:phase-gate.PHASE-0.mvp-contract-lock"
+  - path: library/runtime/gates/v0/phase-gate.PHASE-1.gateway-safety-mvp.v0.yaml
+    classification: seed
+    concept: "runtime.gate:phase-gate.PHASE-1.gateway-safety-mvp"
+  - path: library/runtime/gates/v0/phase-gate.v0.yaml
+    classification: seed
+    concept: "runtime.gate:phase-gate"
+  - path: library/runtime/messages/compliance/v0/compliance.check.v0.yaml
+    classification: seed
+    concept: "message:compliance.check"
+  - path: library/runtime/messages/decision/v0/decision.result.v0.yaml
+    classification: seed
+    concept: "message:decision.result"
+  - path: library/runtime/messages/intent/v0/intent.submission.v0.yaml
+    classification: seed
+    concept: "message:intent.submission"
+  - path: library/runtime/messages/outcome/v0/outcome.summary.v0.yaml
+    classification: seed
+    concept: "message:outcome.summary"
+  - path: library/runtime/messages/task/v0/task.evaluate.v0.yaml
+    classification: seed
+    concept: "message:task.evaluate"
+  - path: library/runtime/rehydration/chat-gpt-recovery-prompt.md
+    classification: seed
+    concept: "rehydration:chat-gpt-recovery-prompt"
+  - path: library/runtime/runs/v0/mission-run.v0.yaml
+    classification: seed
+    concept: "run:mission-run"
+  - path: library/runtime/runs/v0/run-outcome.v0.yaml
+    classification: seed
+    concept: "run:run-outcome"
+  - path: library/runtime/state/v0/run_state.v0.yaml
+    classification: seed
+    concept: "runtime.state:run_state"
+  - path: library/schemas/events/event.v0.json
+    classification: seed
+    concept: "schema:event"

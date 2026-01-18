@@ -1,11 +1,11 @@
 report:
   name: agent-conflicts
   version: v0
-  scope: library
-  generated_at: 2026-01-06T00:04:29Z
+  scope: seed-library
+  generated_at: 2026-01-17T22:51:30Z
 
 conflicts: []
 
 notes:
-  - No conflicting agent definitions were found within library sources.
-  - Multiple agent charters and prompt templates are missing and recorded elsewhere.
+  - Documentation agent charter was found only in legacy `charters/` and is now canonicalized under `library/agents/documentation/v0/charter.md`.
+  - Prompt templates remain absent for all agents; no prompt text was synthesized.

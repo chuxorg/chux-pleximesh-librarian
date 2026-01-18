@@ -1,0 +1,11 @@
+artifact:
+  type: agent.boot_pack
+  version: v0
+  agent: documentation
+
+references:
+  charter: library/agents/documentation/v0/charter.md
+  laws: []
+  policies: []
+  schemas: []
+  prompt_templates: []

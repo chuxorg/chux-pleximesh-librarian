@@ -1,0 +1,85 @@
+report:
+  name: mongo-artifact-contract
+  version: v0
+  scope: mongo-artifacts
+  generated_at: 2026-01-17T22:56:40Z
+
+sources:
+  - Mongo sample document (artifacts collection)
+  - server.py MongoArtifactStore._document_from_artifact
+
+observed_fields:
+  - uri
+  - path
+  - filename
+  - artifact_type
+  - owner_agent
+  - created_by
+  - created_at
+  - updated_at
+  - status
+  - references
+  - metadata
+  - content
+  - content_format
+  - header
+
+server_written_fields:
+  - uri
+  - path
+  - relative_path
+  - canonical_prefix
+  - filename
+  - artifact_type
+  - owner_agent
+  - execution_id
+  - parent_execution_id
+  - root_execution_id
+  - prompt_id
+  - correlation_prompt_id
+  - created_by
+  - created_at
+  - updated_at
+  - status
+  - is_canonical
+  - supersedes
+  - deprecated_by
+  - references
+  - metadata
+  - content
+  - content_format
+  - content_sha256
+  - header
+  - digest
+
+header_shape:
+  artifact_type: string
+  timestamp: string
+  agent:
+    role: string
+    id: string | null
+  execution:
+    execution_id: string
+    parent_execution_id: string | null
+    phase: string | null
+  correlation:
+    root_execution_id: string
+    prompt_id: string | null
+  source:
+    repo: string | null
+    branch: string | null
+    commit: string | null
+  content:
+    format: string
+  metadata:
+    client_timestamp: string | null
+    tags: list[string]
+    notes: string | null
+    agent_id: string | null
+    status: string
+    supersedes: list[string]
+    deprecated_by: list[string]
+    canonical: boolean
+
+notes:
+  - The sample document lacks fields that the current server write path includes (e.g., relative_path, canonical_prefix, content_sha256, digest); treat those as expected for newly written artifacts.

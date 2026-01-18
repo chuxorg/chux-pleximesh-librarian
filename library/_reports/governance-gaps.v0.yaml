@@ -1,18 +1,18 @@
 report:
   name: governance-gaps
   version: v0
-  scope: library
-  generated_at: 2026-01-06T00:04:29Z
+  scope: seed-library
+  generated_at: 2026-01-17T22:54:40Z
 
 gaps:
   - area: laws
-    description: Only event-stream and event-taxonomy principles are codified as laws; no additional immutable laws exist in the library.
+    description: Core laws exist (dev workflow, persistence, runtime event stream, event taxonomy, run abort, MVP required events) but no release/versioning law is codified as immutable law.
 
   - area: policies
-    description: No policies are defined for pm, engineer, qa, maestro, or support roles beyond guardian-specific rules.
+    description: Policies exist for guardian, awacs, librarian intake, and SDLC release versioning; no policies are defined for pm, engineer, qa, maestro, support, or documentation roles.
 
   - area: decisions
-    description: No decision templates are stored under governance; guardian decision schema remains under agent schemas.
+    description: No decision templates are stored under `library/governance/decision-templates/`.
 
   - area: escalation
-    description: No explicit escalation policy artifact exists despite system.escalation.required events.
+    description: No explicit escalation policy artifact exists despite `system.escalation.required` events.

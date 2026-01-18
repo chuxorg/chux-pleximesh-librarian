@@ -1,22 +1,29 @@
-# Final Audit Report (v0)
+# Final Audit (v0)
 
-## Changes Executed
-- Normalized agent artifacts into `library/agents/<agent>/v0/` with charters, definitions, guardrails, schemas, and boot-packs.
-- Relocated guardian rule artifacts into governance policies and indexed them from the guardian guardrails file.
-- Centralized runtime event schemas under `library/runtime/events/` with system and agent namespaces; added missing system event schemas.
-- Added a generic event JSON schema at `library/runtime/events/event.v0.json` and updated engineer events to include `run_id` in context.
-- Versioned runtime message schemas, run schemas, and state schema paths under `library/runtime/**/v0/`.
-- Moved AWACS runtime models under `library/runtime/awacs/`.
-- Added governance laws for event stream and event taxonomy principles and linked them from runtime contracts.
-- Created a mission boot-pack and charter placeholder for MISSION-DEFAULT-SDLC.
+Generated: 2026-01-17T23:04:40Z
 
-## Merged or Consolidated
-- Guardian requirements, learning, and mission rules consolidated under governance policies and referenced by guardian guardrails.
-- Event stream principles and event taxonomy principles moved into governance law files.
+## Summary
+- Seed library is consolidated under `library/agents/`, `library/missions/`, `library/governance/`, `library/runtime/`, `library/schemas/`, and `library/examples/`.
+- Dynamic artifacts were migrated into Mongo and quarantined under `library/_quarantine_migrated/` after verification.
+- No conflicts were detected during Mongo migration; all 42 artifacts match stored content hashes.
 
-## Deprecated or Relocated Paths
-- Prior locations for agent-related artifacts, events, and AWACS models are superseded by canonical paths in `library/agents/`, `library/runtime/`, and `library/governance/`.
-- A complete old-to-new mapping is recorded in `library/_reports/migration-map.v0.yaml`.
+## Seed Canonicalization
+Moves and consolidations recorded in `library/_reports/migration-map.v0.yaml`:
+- Legacy governance documents moved into `library/governance/laws/` and `library/governance/policies/`.
+- Legacy charter moved into `library/agents/documentation/v0/charter.md` and a documentation agent definition/boot-pack scaffold added.
+- Event schema relocated to `library/schemas/events/event.v0.json`.
+- Legacy references moved under `library/examples/references/`.
 
-## Ambiguities Remaining
-- Outstanding ambiguities and required confirmations are listed in `library/_reports/open-questions.v0.yaml`.
+## Dynamic Artifact Migration
+- Mongo migration plan: `library/_reports/mongo-migration-plan.v0.yaml`.
+- Results: `library/_reports/mongo-migration-results.v0.yaml`.
+- Verification: `library/_reports/mongo-sample-integrity.v0.yaml`.
+- Quarantine: dynamic artifacts are retained on disk under `library/_quarantine_migrated/` (gitignored).
+
+## Remaining Gaps
+- Guardrail policies and prompt templates are still missing for multiple agents (see `library/_reports/rehydration-coverage.v0.yaml`).
+- Decision templates and escalation policies remain undefined (see `library/_reports/governance-gaps.v0.yaml`).
+- Runtime schema inconsistencies remain unresolved (see `library/_reports/runtime-inconsistencies.v0.yaml`).
+
+## Open Questions
+See `library/_reports/open-questions.v0.yaml` for unresolved decisions and attribution questions.

@@ -1,0 +1,27 @@
+report:
+  name: prompt-size-risk-areas
+  version: v0
+  scope: dynamic-artifacts
+  generated_at: 2026-01-18T01:32:08Z
+
+largest_artifacts:
+  - path: library/_quarantine_migrated/prompts/pm/sprint-2-execution-substrate-hardening.md
+    size_bytes: 5573
+  - path: library/_quarantine_migrated/data/project13/gates/mission-rail-implementation-gate.md
+    size_bytes: 5250
+  - path: library/_quarantine_migrated/results/ui/uiagent-vscode-report.md
+    size_bytes: 4817
+  - path: library/_quarantine_migrated/results/pm/awacs-project13-task-creation-tasks-20251225T220336Z.md
+    size_bytes: 4405
+  - path: library/_quarantine_migrated/results/pm/awacs-project13-follow-up-tasks-20251225T215831Z.md
+    size_bytes: 4195
+  - path: library/_quarantine_migrated/results/pm/awacs-project13-follow-up-tasks.md
+    size_bytes: 3975
+  - path: library/_quarantine_migrated/results/pm/awacs-ui-authorization-confirmation-20251225T221253Z.md
+    size_bytes: 3529
+  - path: library/_quarantine_migrated/results/pm/awacs-project13-task-creation-prompt-20251225T220336Z.md
+    size_bytes: 3517
+  - path: library/_quarantine_migrated/results/engineer/librarian-mongo-persistence-step2-prompt-20251228T012703Z.md
+    size_bytes: 3375
+  - path: library/_quarantine_migrated/results/pm/awacs-ui-authorization-prompt-20251225T221253Z.md
+    size_bytes: 3310

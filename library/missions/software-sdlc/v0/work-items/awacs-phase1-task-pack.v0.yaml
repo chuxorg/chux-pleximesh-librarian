@@ -1,0 +1,201 @@
+# AWACS Engineer Task Pack (Phase: Workbench + Real Data + Testability)
+
+pack_id: AWACS-PHASE-1
+repo: chux-pleximesh-awacs
+base_branch: development
+branch_prefix: eng/
+pr_target_branch: development
+constraints:
+
+* never_push_to_main_or_master: true
+* engineer_never_merges: true
+* pr_required: true
+* no_secrets_committed: true
+* no_invented_state_in_ui: true
+
+global_acceptance:
+
+* "AWACS runs via Electron in production mode (compiled build)."
+* "AWACS supports a fast dev loop (hot reload or auto reload)."
+* "Renderer does not require Node.js integration (contextIsolation true, nodeIntegration false)."
+* "AWACS reads real artifacts from Librarian (read-only) and renders runs/timelines deterministically."
+* "Test harness foundations exist to support a future dedicated UI Test Agent."
+
+tasks:
+
+* task_id: AWACS-ENG-001
+  title: "Harden Electron security with preload bridge"
+  intent: >
+  Convert Electron posture from scaffolding to production-safe:
+  contextIsolation true, nodeIntegration false, minimal IPC bridge via preload.
+  branch: "eng/AWACS-ENG-001-electron-preload-bridge"
+  files_expected:
+
+  * electron/main.js
+  * electron/preload.js
+  * renderer/ (may require small changes)
+    steps:
+  * "Create task branch from latest development."
+  * "Update BrowserWindow webPreferences: contextIsolation:true, nodeIntegration:false, sandbox:true (if feasible), enableRemoteModule:false."
+  * "Add preload script exposing a tiny API: window.awacs.getConfig/setConfig/log/event (only what is needed)."
+  * "Replace any direct Node usage in renderer with calls to window.awacs.*."
+  * "Ensure baseline mode and mission rail mode still work."
+    acceptance:
+  * "Electron launches successfully."
+  * "Renderer runs with Node disabled."
+  * "Baseline mode still shows messages."
+  * "Mission rail view still renders sample missions."
+  * "No new security regressions (no broad IPC like 'eval' or arbitrary fs access)."
+    verification:
+  * "npm run build"
+  * "npm run electron"
+    commit:
+    type: chore
+    scope: electron
+    message: "chore(electron): enable context isolation and preload bridge"
+    pr:
+    title: "[AWACS-ENG-001] Harden Electron security with preload bridge"
+    body_sections: ["Summary", "Changes", "How to test", "Risk/Notes"]
+
+* task_id: AWACS-ENG-002
+  title: "Add a real dev loop for renderer iteration"
+  intent: >
+  Enable fast UI iteration (required for VS Code-grade UX):
+  dev server + reload or hot reload for renderer.
+  branch: "eng/AWACS-ENG-002-dev-loop"
+  approach_options:
+  preferred: "Vite for renderer (TypeScript), Electron loads localhost in dev, file:// in prod"
+  fallback: "tsc -w + electron reload tooling"
+  steps:
+
+  * "Introduce a dev script: npm run dev"
+  * "Dev: start renderer dev server + launch Electron pointing to dev URL"
+  * "Prod: npm run build emits dist + Electron loads built renderer assets"
+  * "Ensure minimal friction: single command to run"
+    acceptance:
+  * "`npm run dev` launches Electron and auto-reloads renderer changes."
+  * "`npm run electron` (or prod run) still works using built assets."
+  * "No breaking changes to mission rail domain code."
+    verification:
+  * "npm run dev (manual sanity: modify UI text and see reload)"
+  * "npm run build && npm run electron"
+    commit:
+    type: chore
+    scope: dev
+    message: "chore(dev): add renderer dev loop"
+    pr:
+    title: "[AWACS-ENG-002] Add a real dev loop for renderer iteration"
+    body_sections: ["Summary", "Changes", "How to test", "Risk/Notes"]
+
+* task_id: AWACS-ENG-003
+  title: "Modularize renderer into typed Workbench + Surfaces"
+  intent: >
+  Replace the single large renderer script with a maintainable Workbench architecture
+  and typed surface modules, while preserving current behavior.
+  branch: "eng/AWACS-ENG-003-renderer-modularization"
+  design_rules:
+
+  * "Keep mission rail domain pure TS (no DOM dependencies)."
+  * "Renderer becomes TS modules with clear separation: layout, surfaces, data, common UI."
+  * "No behavior change required; this is structure + type safety."
+    target_structure:
+  * "src/renderer/workbench/ (layout + pane management + command palette placeholder)"
+  * "src/renderer/surfaces/missionRail/"
+  * "src/renderer/surfaces/baselineObserver/"
+  * "src/renderer/surfaces/inspector/"
+  * "src/renderer/data/ (baseline bus now, Librarian later)"
+  * "src/renderer/ui/ (common controls)"
+    steps:
+  * "Create modules and move code from renderer.js into TS."
+  * "Keep existing HTML skeleton; wire entrypoint to new TS bundle."
+  * "Preserve baseline observer mode and mission rail sample mode."
+    acceptance:
+  * "No user-visible behavior regression in baseline or mission rail mode."
+  * "Renderer code is no longer a monolith; modules compile cleanly."
+  * "Typecheck passes."
+    verification:
+  * "npm run typecheck"
+  * "npm run build && npm run electron"
+    commit:
+    type: refactor
+    scope: renderer
+    message: "refactor(renderer): modularize workbench and surfaces"
+    pr:
+    title: "[AWACS-ENG-003] Modularize renderer into typed Workbench + Surfaces"
+    body_sections: ["Summary", "Changes", "How to test", "Risk/Notes"]
+
+* task_id: AWACS-ENG-004
+  title: "Add Librarian read-only client and Run Explorer MVP"
+  intent: >
+  Make AWACS useful with real data: connect to Librarian (Mongo-backed artifacts),
+  discover runs, and render a run timeline deterministically without inventing state.
+  branch: "eng/AWACS-ENG-004-librarian-run-explorer"
+  contract_assumptions:
+
+  * "Librarian exposes read endpoints for artifacts by uri/prefix (or equivalent)."
+  * "Run identity derives from header.correlation.root_execution_id."
+  * "Ordering derives from header.timestamp; later we add seq."
+    steps:
+  * "Create a small Librarian client module (read-only)."
+  * "Add config UI for Librarian base URL (persist locally via preload API)."
+  * "Implement Runs list view: group artifacts by root_execution_id."
+  * "Implement Run detail view: timeline list with filters (artifact_type, agent.role, tags)."
+  * "Add Artifact Viewer: header + metadata + content preview; references clickable."
+  * "If an expected artifact is missing, show 'missing artifact' (no inference)."
+    acceptance:
+  * "User can configure Librarian base URL."
+  * "AWACS lists runs (root_execution_id) based on stored artifacts."
+  * "Selecting a run shows a deterministic timeline ordered by timestamp."
+  * "Artifact viewer shows header.execution and header.correlation clearly."
+  * "No writes to Librarian; read-only."
+    verification:
+  * "Manual: point to running Librarian docker and load at least one real run."
+  * "npm run build && npm run electron"
+    commit:
+    type: feat
+    scope: awacs
+    message: "feat(awacs): add librarian client and run explorer timeline"
+    pr:
+    title: "[AWACS-ENG-004] Add Librarian client and Run Explorer MVP"
+    body_sections: ["Summary", "Changes", "How to test", "Risk/Notes", "Screenshots optional"]
+
+* task_id: AWACS-ENG-005
+  title: "Foundation for UI Test Agent: Playwright + Electron smoke harness"
+  intent: >
+  Prepare AWACS for a dedicated UI Test Agent by adding a real UI test harness:
+  Electron launch, basic navigation, and deterministic smoke tests.
+  branch: "eng/AWACS-ENG-005-ui-test-harness"
+  notes:
+
+  * "Do not attempt full UI coverage yet; focus on harness + 2-3 smoke tests."
+  * "Avoid flaky tests: target stable selectors and deterministic fixtures."
+    steps:
+  * "Add Playwright test dependency and configuration for Electron (or equivalent stable harness)."
+  * "Add a test that launches Electron, verifies Workbench loads."
+  * "Add a test that toggles a pane or opens a surface."
+  * "If Librarian integration exists, add a mocked mode or fixture dataset for deterministic runs."
+  * "Wire tests into npm scripts: npm test should run smoke suite."
+    acceptance:
+  * "`npm test` runs a real Electron UI smoke test suite."
+  * "Tests are deterministic and do not require external services unless explicitly configured."
+  * "Selectors are stable (data-testid attributes or equivalent)."
+    verification:
+  * "npm test"
+    commit:
+    type: test
+    scope: ui
+    message: "test(ui): add electron smoke harness for future ui test agent"
+    pr:
+    title: "[AWACS-ENG-005] Add UI test harness foundation"
+    body_sections: ["Summary", "Changes", "How to test", "Risk/Notes"]
+
+pm_merge_checklist:
+
+* "All PRs target development; no direct pushes to master/main."
+* "No secrets committed (.env.local, PATs, tokens)."
+* "Electron security posture verified for production (ENG-001)."
+* "Dev loop present and documented (ENG-002)."
+* "Renderer modularized without regression (ENG-003)."
+* "Librarian read-only integration works and does not invent state (ENG-004)."
+* "UI test harness exists and is runnable (ENG-005)."
+* "README updated where needed (dev instructions, configuration)."

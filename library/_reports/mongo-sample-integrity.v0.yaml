@@ -1,0 +1,26 @@
+report:
+  name: mongo-sample-integrity
+  version: v0
+  scope: dynamic-artifacts
+  generated_at: 2026-01-17T23:00:10Z
+
+samples:
+  - uri: central-librarian://awacs/phases/phase2.2/guardian-authorization-draft.md
+    status: match
+    notes: content_sha256 matched
+
+  - uri: central-librarian://project13/gates/mission-rail-implementation-gate.md
+    status: match
+    notes: content_sha256 matched
+
+  - uri: central-librarian://prompts/engineer/2025-12-23T18-17-04Z_prompt_root-1766513824107397000-entrypoint_4c2e7c92-fd8c-4f75-a12d-558dbc0ad70a.md
+    status: match
+    notes: content_sha256 matched
+
+  - uri: central-librarian://results/engineer/2025-12-23T18-17-04Z_result_root-1766513824107397000-entrypoint_4c2e7c92-fd8c-4f75-a12d-558dbc0ad70a.md
+    status: match
+    notes: content_sha256 matched
+
+  - uri: central-librarian://results/pm/awacs-project13-task-creation-response-20251225T220336Z.md
+    status: match
+    notes: content_sha256 matched

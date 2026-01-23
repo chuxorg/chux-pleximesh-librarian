@@ -12,6 +12,7 @@ references:
     - library/governance/policies/guardian/guardian-requirements-rules.v0.yaml
     - library/governance/policies/guardian/guardian-learning-rules.v0.yaml
     - library/governance/policies/guardian/guardian-mission-rules.v0.yaml
+    - library/governance/policies/engineer/pr-policy.v0.md
   schemas:
     - library/agents/guardian/v0/schemas/guardian-decision.v0.yaml
   prompt_templates: []

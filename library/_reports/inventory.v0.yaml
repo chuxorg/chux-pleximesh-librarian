@@ -380,6 +380,9 @@ artifacts:
   - path: library/governance/policies/awacs/ui/event-stream-v0.md
     classification: seed
     concept: "policy:event-stream-v0"
+  - path: library/governance/policies/engineer/pr-policy.v0.md
+    classification: seed
+    concept: "policy:pr-policy"
   - path: library/governance/policies/guardian/guardian-learning-rules.v0.yaml
     classification: seed
     concept: "policy:guardian-learning-rules"

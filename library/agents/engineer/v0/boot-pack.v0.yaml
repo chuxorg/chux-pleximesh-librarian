@@ -8,7 +8,8 @@ references:
   laws:
     - library/governance/laws/runtime-event-stream-principles.v0.md
     - library/governance/laws/event-taxonomy-principles.v0.md
-  policies: []
+  policies:
+    - library/governance/policies/engineer/pr-policy.v0.md
   schemas:
     - library/agents/engineer/v0/schemas/engineer-work-order.v0.yaml
   prompt_templates: []

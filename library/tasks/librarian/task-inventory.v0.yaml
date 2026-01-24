@@ -29,3 +29,11 @@ tasks:
     derived_responsibilities:
       - "Postman collection maintenance"
     execution: Engineer
+  - task_id: LIB-005
+    title: "Librarian Read-Path Smoke Tests (Spec ↔ Implementation)"
+    version: v0
+    status: Active
+    path: library/tasks/librarian/LIB-005.v0.md
+    phase: library/governance/phases/PHASE-LIBRARY-HARDENING.v0.md
+    governing_pr_policy: library/governance/policies/engineer/pr-policy.v0.md
+    execution: Engineer

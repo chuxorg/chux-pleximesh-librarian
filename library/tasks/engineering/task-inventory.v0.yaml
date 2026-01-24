@@ -1,0 +1,20 @@
+inventory:
+  name: engineering-task-inventory
+  version: v0
+  updated_at: 2026-01-23
+
+tasks:
+  - task_id: ENG-UI-001
+    title: "AWACS Application Shell (Postman-Style)"
+    version: v0
+    status: Planned
+    path: library/tasks/engineering/ENG-UI-001.v0.md
+    associations:
+      execution:
+        - Engineer
+      scope_enforcement:
+        - PM
+        - Guardian
+      acceptance:
+        - PM
+        - Guardian

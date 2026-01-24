@@ -22,9 +22,10 @@ tasks:
   - task_id: LIB-004
     title: "Librarian REST API OpenAPI Specification"
     version: v0
-    status: Planned
+    status: Active
     path: library/tasks/librarian/LIB-004.v0.md
     phase: library/governance/phases/PHASE-LIBRARY-HARDENING.v0.md
     governing_pr_policy: library/governance/policies/engineer/pr-policy.v0.md
     derived_responsibilities:
       - "Postman collection maintenance"
+    execution: Engineer

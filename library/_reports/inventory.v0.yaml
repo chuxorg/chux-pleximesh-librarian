@@ -380,6 +380,9 @@ artifacts:
   - path: library/governance/policies/awacs/ui/event-stream-v0.md
     classification: seed
     concept: "policy:event-stream-v0"
+  - path: runtime/hardening/runtime-hardening-phase1-complete.v0.md
+    classification: seed
+    concept: "runtime-hardening:phase1-complete"
   - path: library/governance/policies/engineer/pr-policy.v0.md
     classification: seed
     concept: "policy:pr-policy"

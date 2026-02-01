@@ -1,0 +1,84 @@
+{
+  "artifacts": [
+    {
+      "artifact_id": "ENG-UI-001",
+      "checksum": "56d85a266d15ee6899250d32ea5e9508713f59d3682548869be9506f616a6d74",
+      "domain": "engineering",
+      "kind": "task",
+      "source_path": "library_seed/tasks/ENG-UI-001.v0.md",
+      "status": "planned",
+      "version": "v0"
+    },
+    {
+      "artifact_id": "LIB-002",
+      "checksum": "45ea163251f4068b9561ae59a43605c421b0e29baa0a3238860a08c67a085b1a",
+      "domain": "librarian",
+      "kind": "task",
+      "source_path": "library_seed/tasks/LIB-002.v0.md",
+      "status": "active",
+      "version": "v0"
+    },
+    {
+      "artifact_id": "LIB-003",
+      "checksum": "413382cc53079ac259f1b76a8af70c1a0987331594365e290d8b50094f64ccf7",
+      "domain": "librarian",
+      "kind": "task",
+      "source_path": "library_seed/tasks/LIB-003.v0.md",
+      "status": "active",
+      "version": "v0"
+    },
+    {
+      "artifact_id": "LIB-004",
+      "checksum": "3d3220a6755657e5497121b9c9fa6548c935592bcbba890ccb6435b7487bef5e",
+      "domain": "librarian",
+      "kind": "task",
+      "source_path": "library_seed/tasks/LIB-004.v0.md",
+      "status": "active",
+      "version": "v0"
+    },
+    {
+      "artifact_id": "LIB-005",
+      "checksum": "53efca2f31edd9156c09dbdc268ed726cece6e88172a0a67836613a19582b148",
+      "domain": "librarian",
+      "kind": "task",
+      "source_path": "library_seed/tasks/LIB-005.v0.md",
+      "status": "active",
+      "version": "v0"
+    },
+    {
+      "artifact_id": "PHASE-LIBRARY-HARDENING",
+      "checksum": "e3d303c1dfa1adce59db9c9fc25a85deb2f85de88cfba19d303d3c51d18f064c",
+      "domain": "governance",
+      "kind": "phase",
+      "source_path": "library_seed/phases/PHASE-LIBRARY-HARDENING.v0.md",
+      "status": "active",
+      "version": "v0"
+    },
+    {
+      "artifact_id": "pr-policy",
+      "checksum": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "domain": "governance",
+      "kind": "policy",
+      "source_path": "library_seed/policies/pr-policy.v0.md",
+      "status": "active",
+      "version": "v0"
+    }
+  ],
+  "report": {
+    "generated_at": "2026-01-25T12:19:20Z",
+    "name": "lib-003-migration",
+    "version": "v0"
+  },
+  "reset": {
+    "database": "librarian",
+    "dropped_collections": [
+      "artifacts",
+      "artifact_events"
+    ],
+    "justification": "LIB-003 Mongo reset before canonical seed import"
+  },
+  "seed_manifest": {
+    "artifact_count": 7,
+    "path": "library_seed/seed-manifest.v0.yaml"
+  }
+}

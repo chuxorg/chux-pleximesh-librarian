@@ -1,296 +1,107 @@
 {
   "info": {
     "_postman_id": "817057dc-4635-4b41-a4af-9ddfceb64832",
-    "name": "PlexiMesh Librarian API",
-    "description": "Reference collection for exercising the PlexiMesh Librarian REST API (Mongo-backed persistence for governance, prompts, and results). Includes canonical examples for POST, GET, EXISTS, and LIST endpoints.",
+    "name": "PlexiMesh Librarian Read API",
+    "description": "Read-only collection aligned with librarian/openapi/librarian.v0.yaml. Write operations are intentionally excluded.",
     "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
   },
   "item": [
     {
-      "name": "POST /artifacts \u2014 Store Artifact",
+      "name": "GET /artifacts/{artifact_id} \u2014 Latest Active",
       "request": {
-        "method": "POST",
+        "method": "GET",
         "header": [
           {
-            "key": "Content-Type",
+            "key": "Accept",
             "value": "application/json"
           }
         ],
-        "body": {
-          "mode": "raw",
-          "raw": "{\n  \"artifact_type\": \"prompt\",\n  \"agent\": {\n    \"role\": \"documentation\",\n    \"id\": \"doc-agent-01\"\n  },\n  \"execution\": {\n    \"execution_id\": \"{{sampleExecutionId}}\",\n    \"phase\": \"discovery\",\n    \"parent_execution_id\": null\n  },\n  \"correlation\": {\n    \"root_execution_id\": \"{{sampleRootExecutionId}}\"\n  },\n  \"source\": {\n    \"repo\": \"github.com/chuxorg/chux-pleximesh-librarian\",\n    \"branch\": \"dev\",\n    \"commit\": \"<git-sha>\"\n  },\n  \"content\": {\n    \"format\": \"markdown\",\n    \"body\": \"# Sample Prompt\\nDocument Librarian persistence contract.\"\n  },\n  \"metadata\": {\n    \"tags\": [\n      \"demo\",\n      \"postman\"\n    ],\n    \"notes\": \"Example request body\"\n  }\n}"
-        },
-        "url": {
-          "raw": "{{protocol}}://{{host}}:{{port}}/artifacts",
-          "protocol": "{{protocol}}",
-          "host": [
-            "{{host}}"
-          ],
-          "port": "{{port}}",
-          "path": [
-            "artifacts"
-          ]
-        },
-        "description": "Creates or replaces an artifact at its canonical Librarian URI.\n\n**Required JSON properties**\n- `artifact_type` \u2014 one of `prompt`, `result`, `governance`, `decision`, `reference`.\n- `agent.role` \u2014 must match a supported role (guardian, pm, engineer, qa, documentation, codex).\n- `execution.execution_id` \u2014 unique per submission.\n- `correlation.root_execution_id` \u2014 ties the artifact to a reasoning session.\n- `content.format` + `content.body`.\n\n**Optional properties**\n- `agent.id`, `execution.parent_execution_id`, `execution.phase`, `correlation.prompt_id` (required for `result`), `source`, `metadata`, `references`, `status`.\n\n**Error codes**\n- `400` for validation errors (missing execution id, invalid artifact_type, etc.).\n- `500` for Mongo persistence failures.\n"
-      },
-      "response": [
-        {
-          "name": "201 Created \u2014 Stored",
-          "originalRequest": {
-            "method": "POST",
-            "header": [
-              {
-                "key": "Content-Type",
-                "value": "application/json"
-              }
-            ],
-            "body": {
-              "mode": "raw",
-              "raw": "{\n  \"artifact_type\": \"prompt\",\n  \"agent\": {\n    \"role\": \"documentation\",\n    \"id\": \"doc-agent-01\"\n  },\n  \"execution\": {\n    \"execution_id\": \"{{sampleExecutionId}}\",\n    \"phase\": \"discovery\",\n    \"parent_execution_id\": null\n  },\n  \"correlation\": {\n    \"root_execution_id\": \"{{sampleRootExecutionId}}\"\n  },\n  \"source\": {\n    \"repo\": \"github.com/chuxorg/chux-pleximesh-librarian\",\n    \"branch\": \"dev\",\n    \"commit\": \"<git-sha>\"\n  },\n  \"content\": {\n    \"format\": \"markdown\",\n    \"body\": \"# Sample Prompt\\nDocument Librarian persistence contract.\"\n  },\n  \"metadata\": {\n    \"tags\": [\n      \"demo\",\n      \"postman\"\n    ],\n    \"notes\": \"Example request body\"\n  }\n}"
-            },
-            "url": {
-              "raw": "{{protocol}}://{{host}}:{{port}}/artifacts",
-              "protocol": "{{protocol}}",
-              "host": [
-                "{{host}}"
-              ],
-              "port": "{{port}}",
-              "path": [
-                "artifacts"
-              ]
-            },
-            "description": "Creates or replaces an artifact at its canonical Librarian URI.\n\n**Required JSON properties**\n- `artifact_type` \u2014 one of `prompt`, `result`, `governance`, `decision`, `reference`.\n- `agent.role` \u2014 must match a supported role (guardian, pm, engineer, qa, documentation, codex).\n- `execution.execution_id` \u2014 unique per submission.\n- `correlation.root_execution_id` \u2014 ties the artifact to a reasoning session.\n- `content.format` + `content.body`.\n\n**Optional properties**\n- `agent.id`, `execution.parent_execution_id`, `execution.phase`, `correlation.prompt_id` (required for `result`), `source`, `metadata`, `references`, `status`.\n\n**Error codes**\n- `400` for validation errors (missing execution id, invalid artifact_type, etc.).\n- `500` for Mongo persistence failures.\n"
-          },
-          "status": "Created",
-          "code": 201,
-          "_postman_previewlanguage": "json",
-          "header": [
-            {
-              "key": "Content-Type",
-              "value": "application/json"
-            }
-          ],
-          "body": "{\n  \"status\": \"stored\",\n  \"uri\": \"central-librarian://prompts/documentation/2025-12-28T10-00-00Z_prompt_exec-sample-001_123e4567-e89b-12d3-a456-426614174000.md\",\n  \"path\": \"prompts/documentation/2025-12-28T10-00-00Z_prompt_exec-sample-001_123e4567-e89b-12d3-a456-426614174000.md\",\n  \"artifact_type\": \"prompt\",\n  \"agent_role\": \"documentation\",\n  \"execution_id\": \"exec-sample-001\",\n  \"prompt_id\": \"123e4567-e89b-12d3-a456-426614174000\",\n  \"root_execution_id\": \"root-sample-001\",\n  \"timestamp\": \"2025-12-28T10:00:00Z\"\n}"
-        }
-      ]
-    },
-    {
-      "name": "GET /artifacts \u2014 Fetch Artifact",
-      "request": {
-        "method": "GET",
-        "header": [],
-        "url": {
-          "raw": "{{protocol}}://{{host}}:{{port}}/artifacts?uri={{sampleArtifactUri}}",
-          "protocol": "{{protocol}}",
-          "host": [
-            "{{host}}"
-          ],
-          "port": "{{port}}",
-          "path": [
-            "artifacts"
-          ],
-          "query": [
-            {
-              "key": "uri",
-              "value": "{{sampleArtifactUri}}",
-              "description": "Canonical Librarian URI to retrieve (required)."
-            }
-          ]
-        },
-        "description": "Fetches the stored artifact document, including metadata and body, for a canonical URI.\n\n**Query parameters**\n- `uri` (required) \u2014 canonical path such as `central-librarian://prompts/documentation/...`.\n\n**Error codes**\n- `400` when `uri` is missing.\n- `404` when no artifact exists for the supplied URI.\n- `500` on Mongo read failure.\n"
-      },
-      "response": [
-        {
-          "name": "200 OK \u2014 Artifact",
-          "originalRequest": {
-            "method": "GET",
-            "header": [],
-            "url": {
-              "raw": "{{protocol}}://{{host}}:{{port}}/artifacts?uri={{sampleArtifactUri}}",
-              "protocol": "{{protocol}}",
-              "host": [
-                "{{host}}"
-              ],
-              "port": "{{port}}",
-              "path": [
-                "artifacts"
-              ],
-              "query": [
-                {
-                  "key": "uri",
-                  "value": "{{sampleArtifactUri}}",
-                  "description": "Canonical Librarian URI to retrieve (required)."
-                }
-              ]
-            },
-            "description": "Fetches the stored artifact document, including metadata and body, for a canonical URI.\n\n**Query parameters**\n- `uri` (required) \u2014 canonical path such as `central-librarian://prompts/documentation/...`.\n\n**Error codes**\n- `400` when `uri` is missing.\n- `404` when no artifact exists for the supplied URI.\n- `500` on Mongo read failure.\n"
-          },
-          "status": "OK",
-          "code": 200,
-          "_postman_previewlanguage": "json",
-          "header": [
-            {
-              "key": "Content-Type",
-              "value": "application/json"
-            }
-          ],
-          "body": "{\n  \"uri\": \"central-librarian://prompts/documentation/2025-12-28T10-00-00Z_prompt_exec-sample-001_123e4567-e89b-12d3-a456-426614174000.md\",\n  \"path\": [\n    \"prompts\",\n    \"documentation\"\n  ],\n  \"filename\": \"2025-12-28T10-00-00Z_prompt_exec-sample-001_123e4567-e89b-12d3-a456-426614174000.md\",\n  \"artifact_type\": \"prompt\",\n  \"owner_agent\": \"documentation\",\n  \"created_by\": \"doc-agent-01\",\n  \"created_at\": \"2025-12-28T10:00:00Z\",\n  \"updated_at\": \"2025-12-28T10:00:00Z\",\n  \"status\": \"canonical\",\n  \"references\": [],\n  \"metadata\": {\n    \"client_timestamp\": null,\n    \"tags\": [\n      \"demo\",\n      \"postman\"\n    ],\n    \"notes\": \"Example request body\",\n    \"agent_id\": \"doc-agent-01\",\n    \"status\": \"canonical\"\n  },\n  \"content\": \"# Sample Prompt\\\\nDocument Librarian persistence contract.\",\n  \"content_format\": \"markdown\",\n  \"header\": {\n    \"artifact_type\": \"prompt\",\n    \"timestamp\": \"2025-12-28T10:00:00Z\",\n    \"agent\": {\n      \"role\": \"documentation\",\n      \"id\": \"doc-agent-01\"\n    },\n    \"execution\": {\n      \"execution_id\": \"exec-sample-001\",\n      \"parent_execution_id\": null,\n      \"phase\": \"discovery\"\n    },\n    \"correlation\": {\n      \"root_execution_id\": \"root-sample-001\",\n      \"prompt_id\": \"123e4567-e89b-12d3-a456-426614174000\"\n    },\n    \"source\": {\n      \"repo\": \"github.com/chuxorg/chux-pleximesh-librarian\",\n      \"branch\": \"dev\",\n      \"commit\": \"<git-sha>\"\n    },\n    \"content\": {\n      \"format\": \"markdown\"\n    },\n    \"metadata\": {\n      \"client_timestamp\": null,\n      \"tags\": [\n        \"demo\",\n        \"postman\"\n      ],\n      \"notes\": \"Example request body\",\n      \"agent_id\": \"doc-agent-01\",\n      \"status\": \"canonical\"\n    }\n  }\n}"
-        }
-      ]
-    },
-    {
-      "name": "GET /artifacts/exists \u2014 Existence Check",
-      "request": {
-        "method": "GET",
-        "header": [],
-        "url": {
-          "raw": "{{protocol}}://{{host}}:{{port}}/artifacts/exists?uri={{sampleArtifactUri}}",
-          "protocol": "{{protocol}}",
-          "host": [
-            "{{host}}"
-          ],
-          "port": "{{port}}",
-          "path": [
-            "artifacts",
-            "exists"
-          ],
-          "query": [
-            {
-              "key": "uri",
-              "value": "{{sampleArtifactUri}}",
-              "description": "Canonical URI to check (required)."
-            }
-          ]
-        },
-        "description": "Returns `{ \"exists\": true|false }` for a canonical Librarian URI. Use before GET when you only need presence checks.\n\n**Query parameters**\n- `uri` (required) \u2014 canonical artifact URI.\n\n**Error codes**\n- `400` for missing `uri`.\n- `500` on Mongo read failure.\n"
-      },
-      "response": [
-        {
-          "name": "200 OK \u2014 Exists",
-          "originalRequest": {
-            "method": "GET",
-            "header": [],
-            "url": {
-              "raw": "{{protocol}}://{{host}}:{{port}}/artifacts/exists?uri={{sampleArtifactUri}}",
-              "protocol": "{{protocol}}",
-              "host": [
-                "{{host}}"
-              ],
-              "port": "{{port}}",
-              "path": [
-                "artifacts",
-                "exists"
-              ],
-              "query": [
-                {
-                  "key": "uri",
-                  "value": "{{sampleArtifactUri}}",
-                  "description": "Canonical URI to check (required)."
-                }
-              ]
-            },
-            "description": "Returns `{ \"exists\": true|false }` for a canonical Librarian URI. Use before GET when you only need presence checks.\n\n**Query parameters**\n- `uri` (required) \u2014 canonical artifact URI.\n\n**Error codes**\n- `400` for missing `uri`.\n- `500` on Mongo read failure.\n"
-          },
-          "status": "OK",
-          "code": 200,
-          "_postman_previewlanguage": "json",
-          "header": [
-            {
-              "key": "Content-Type",
-              "value": "application/json"
-            }
-          ],
-          "body": "{\n  \"uri\": \"central-librarian://prompts/documentation/2025-12-28T10-00-00Z_prompt_exec-sample-001_123e4567-e89b-12d3-a456-426614174000.md\",\n  \"exists\": true\n}"
-        }
-      ]
-    },
-    {
-      "name": "GET /artifacts/list \u2014 List Artifacts",
-      "request": {
-        "method": "GET",
-        "header": [],
-        "url": {
-          "raw": "{{protocol}}://{{host}}:{{port}}/artifacts/list?prefix={{samplePrefix}}",
-          "protocol": "{{protocol}}",
-          "host": [
-            "{{host}}"
-          ],
-          "port": "{{port}}",
-          "path": [
-            "artifacts",
-            "list"
-          ],
-          "query": [
-            {
-              "key": "prefix",
-              "value": "{{samplePrefix}}",
-              "description": "Optional URI prefix filter. Leave empty to list everything."
-            }
-          ]
-        },
-        "description": "Enumerates artifacts whose canonical URIs start with the supplied prefix. Results are sorted by `created_at` ascending.\n\n**Query parameters**\n- `prefix` (optional) \u2014 canonical prefix such as `central-librarian://project13/`. Empty string lists every artifact.\n\n**Error codes**\n- `500` when Mongo fails to list documents.\n"
-      },
-      "response": [
-        {
-          "name": "200 OK \u2014 Artifact List",
-          "originalRequest": {
-            "method": "GET",
-            "header": [],
-            "url": {
-              "raw": "{{protocol}}://{{host}}:{{port}}/artifacts/list?prefix={{samplePrefix}}",
-              "protocol": "{{protocol}}",
-              "host": [
-                "{{host}}"
-              ],
-              "port": "{{port}}",
-              "path": [
-                "artifacts",
-                "list"
-              ],
-              "query": [
-                {
-                  "key": "prefix",
-                  "value": "{{samplePrefix}}",
-                  "description": "Optional URI prefix filter. Leave empty to list everything."
-                }
-              ]
-            },
-            "description": "Enumerates artifacts whose canonical URIs start with the supplied prefix. Results are sorted by `created_at` ascending.\n\n**Query parameters**\n- `prefix` (optional) \u2014 canonical prefix such as `central-librarian://project13/`. Empty string lists every artifact.\n\n**Error codes**\n- `500` when Mongo fails to list documents.\n"
-          },
-          "status": "OK",
-          "code": 200,
-          "_postman_previewlanguage": "json",
-          "header": [
-            {
-              "key": "Content-Type",
-              "value": "application/json"
-            }
-          ],
-          "body": "{\n  \"prefix\": \"central-librarian://project13/\",\n  \"artifacts\": [\n    {\n      \"uri\": \"central-librarian://project13/gates/mission-rail-implementation-gate.md\",\n      \"path\": [\n        \"project13\",\n        \"gates\"\n      ],\n      \"filename\": \"mission-rail-implementation-gate.md\",\n      \"artifact_type\": \"decision\",\n      \"owner_agent\": \"pm\",\n      \"created_at\": \"2025-12-28T09:00:00Z\",\n      \"updated_at\": \"2025-12-28T09:00:00Z\",\n      \"status\": \"canonical\"\n    },\n    {\n      \"uri\": \"central-librarian://project13/mission-rail/review/guardian-decision.md\",\n      \"path\": [\n        \"project13\",\n        \"mission-rail\",\n        \"review\"\n      ],\n      \"filename\": \"guardian-decision.md\",\n      \"artifact_type\": \"decision\",\n      \"owner_agent\": \"guardian\",\n      \"created_at\": \"2025-12-28T09:05:00Z\",\n      \"updated_at\": \"2025-12-28T09:05:00Z\",\n      \"status\": \"canonical\"\n    }\n  ]\n}"
-        }
-      ]
-    }
-  ],
-  "event": [
-    {
-      "listen": "prerequest",
-      "script": {
-        "type": "text/javascript",
-        "exec": [
-          "// No prerequest logic required; add auth/bootstrap code here if needed."
-        ]
+        "url": "{{baseUrl}}/artifacts/{{artifactId}}",
+        "description": "Returns the latest active version. Deterministic ordering is applied internally when selecting the latest version."
       }
     },
     {
-      "listen": "test",
-      "script": {
-        "type": "text/javascript",
-        "exec": [
-          "// Basic smoke test hook; extend as needed",
-          "pm.test('Status code is < 500', function () {",
-          "  pm.response.to.have.status.within(200, 499);",
-          "});"
-        ]
+      "name": "GET /artifacts/{artifact_id}?version=vX \u2014 Exact Version",
+      "request": {
+        "method": "GET",
+        "header": [
+          {
+            "key": "Accept",
+            "value": "application/json"
+          }
+        ],
+        "url": "{{baseUrl}}/artifacts/{{artifactId}}?version={{versionParam}}",
+        "description": "Exact version lookup (vN)."
+      }
+    },
+    {
+      "name": "GET /tasks/{task_id} \u2014 Latest Active",
+      "request": {
+        "method": "GET",
+        "header": [
+          {
+            "key": "Accept",
+            "value": "application/json"
+          }
+        ],
+        "url": "{{baseUrl}}/tasks/{{taskId}}",
+        "description": "Typed alias for task artifacts."
+      }
+    },
+    {
+      "name": "GET /policies/{policy_id} \u2014 Latest Active",
+      "request": {
+        "method": "GET",
+        "header": [
+          {
+            "key": "Accept",
+            "value": "application/json"
+          }
+        ],
+        "url": "{{baseUrl}}/policies/{{policyId}}",
+        "description": "Typed alias for policy artifacts."
+      }
+    },
+    {
+      "name": "GET /phases/{phase_id} \u2014 Latest Active",
+      "request": {
+        "method": "GET",
+        "header": [
+          {
+            "key": "Accept",
+            "value": "application/json"
+          }
+        ],
+        "url": "{{baseUrl}}/phases/{{phaseId}}",
+        "description": "Typed alias for phase artifacts."
+      }
+    },
+    {
+      "name": "GET /artifacts \u2014 List",
+      "request": {
+        "method": "GET",
+        "header": [
+          {
+            "key": "Accept",
+            "value": "application/json"
+          }
+        ],
+        "url": "{{baseUrl}}/artifacts?kind={{kindFilter}}&domain={{domainFilter}}&status={{statusFilter}}&tag={{tagFilter}}",
+        "description": "Lists artifacts filtered by kind/domain/status/tag. Results are ordered by (artifact_id, version)."
+      }
+    },
+    {
+      "name": "GET /health \u2014 Expected 404",
+      "request": {
+        "method": "GET",
+        "header": [
+          {
+            "key": "Accept",
+            "value": "application/json"
+          }
+        ],
+        "url": "{{baseUrl}}/health",
+        "description": "No health endpoint is implemented; expect 404 Unknown path."
       }
     }
   ]

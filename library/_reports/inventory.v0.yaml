@@ -380,9 +380,72 @@ artifacts:
   - path: library/governance/policies/awacs/ui/event-stream-v0.md
     classification: seed
     concept: "policy:event-stream-v0"
+  - path: library/governance/policies/ui/ui-socket-model.v0.md
+    classification: seed
+    concept: "canon:ui-socket-model"
+  - path: library/governance/phases/PHASE-UI-FOUNDATION.v0.md
+    classification: seed
+    concept: "phase:PHASE-UI-FOUNDATION"
+  - path: library/governance/phases/PHASE-UI-QA-FOUNDATION.v0.md
+    classification: seed
+    concept: "phase:PHASE-UI-QA-FOUNDATION"
+  - path: library/governance/phases/PHASE-UI-LIBRARY-VIEWER.v0.md
+    classification: seed
+    concept: "phase:PHASE-UI-LIBRARY-VIEWER"
+  - path: library/governance/policies/ui/ui-qa-gate-workflow.v0.md
+    classification: seed
+    concept: "gate:ui-qa-workflow"
+  - path: library/governance/policies/ui/ui-qa-agent-policy.v0.md
+    classification: seed
+    concept: "policy:ui-qa-agent-policy"
+  - path: library/governance/policies/ui/ui-qa-agent-policy-electron-amendment.v0.md
+    classification: seed
+    concept: "policy:ui-qa-agent-policy-electron-amendment"
+  - path: library/governance/operational/ui-qa-assignment-message.v0.md
+    classification: seed
+    concept: "operational:ui-qa-assignment-message"
+  - path: library/governance/task-inventories/ui-foundation-task-inventory.v0.md
+    classification: seed
+    concept: "task-inventory:UI-FOUNDATION"
+  - path: library/governance/task-inventories/ui-library-viewer-task-inventory.v0.md
+    classification: seed
+    concept: "task-inventory:UI-LIBRARY-VIEWER"
+  - path: library/governance/task-inventories/ui-runtime-viewer-task-inventory.v0.md
+    classification: seed
+    concept: "task-inventory:UI-RUNTIME-VIEWER"
+  - path: releases/spine/release-spine.v0.md
+    classification: seed
+    concept: "release:spine"
+  - path: releases/records/release-record.template.v0.md
+    classification: seed
+    concept: "release:record-template"
+  - path: runtime/hardening/runtime-hardening-phase1.v0.md
+    classification: seed
+    concept: "runtime-hardening:phase1-spine"
   - path: runtime/hardening/runtime-hardening-phase1-complete.v0.md
     classification: seed
     concept: "runtime-hardening:phase1-complete"
+  - path: recovery/seed-prompts/PLEXIMESH_PROJECT_STATE_SNAPSHOT.v1.md
+    classification: seed
+    concept: "recovery:seed-prompt.pleximesh-project-state-snapshot.v1"
+  - path: recovery/seed-prompts/MASTER_SEED_PROMPT.v1.md
+    classification: seed
+    concept: "recovery:seed-prompt.master-seed-prompt.v1"
+  - path: recovery/seed-prompts/GUARDIAN_ROLE_SEED.v1.md
+    classification: seed
+    concept: "recovery:seed-prompt.guardian-role-seed.v1"
+  - path: recovery/seed-prompts/LIBRARIAN_ROLE_SEED_AND_RECOVERY.v1.md
+    classification: seed
+    concept: "recovery:seed-prompt.librarian-role-seed-and-recovery.v1"
+  - path: recovery/seed-prompts/PANIC_PROMPT.v1.md
+    classification: seed
+    concept: "recovery:seed-prompt.panic-prompt.v1"
+  - path: recovery/seed-prompts/CONVERSATION_ROLLOVER_PROTOCOL.v1.md
+    classification: seed
+    concept: "recovery:seed-prompt.conversation-rollover-protocol.v1"
+  - path: recovery/contracts/LLM_MEMORY_CONTRACT.v1.md
+    classification: seed
+    concept: "recovery:contract.llm-memory.v1"
   - path: library/governance/policies/engineer/pr-policy.v0.md
     classification: seed
     concept: "policy:pr-policy"

@@ -1,0 +1,464 @@
+openapi: 3.1.0
+info:
+  title: PlexiMesh Librarian Read API
+  version: v0
+  description: |
+    Canonical, read-only API for Librarian artifacts.
+
+    Artifact identity is defined by: artifact_id, kind, domain, version.
+
+    Version semantics:
+    - Exact version resolution only when the version query parameter is provided.
+    - Latest active resolution selects the highest vN version deterministically.
+
+    Determinism guarantees:
+    - Artifact list responses are ordered by (artifact_id, version).
+    - JSON responses are serialized with stable key ordering.
+
+    Known limitations:
+    - No explicit health endpoint is implemented; unknown paths return 404.
+    - Write operations are disabled; POST/PUT/DELETE return 405.
+servers:
+  - url: http://localhost:8000
+    description: Local development
+
+paths:
+  /artifacts:
+    get:
+      summary: List artifacts
+      description: |
+        Lists artifacts filtered by kind/domain/status/tag. Results are ordered
+        by (artifact_id, version).
+      parameters:
+        - name: kind
+          in: query
+          required: false
+          schema:
+            type: string
+            enum: [task, policy, phase, law, report, schema]
+        - name: domain
+          in: query
+          required: false
+          schema:
+            type: string
+            enum: [engineering, governance, librarian, ui, runtime]
+        - name: status
+          in: query
+          required: false
+          schema:
+            type: string
+            enum: [planned, active, deprecated, archived]
+        - name: tag
+          in: query
+          required: false
+          schema:
+            type: string
+      responses:
+        "200":
+          description: List of artifacts
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ArtifactListResponse"
+              examples:
+                list:
+                  summary: Artifact list
+                  value:
+                    filters:
+                      kind: task
+                      domain: librarian
+                      status: active
+                      tag: null
+                    artifacts:
+                      - artifact_id: LIB-003
+                        kind: task
+                        domain: librarian
+                        version: v0
+                        status: active
+                        content_type: text/markdown
+                        content: "# LIB-003 — Mongo Reset, Migration & Seed Import\n..."
+                        checksum: "sha256:example"
+                        source: seed-import
+                        created_at: 2026-01-25T12:14:13Z
+                        effective_at: 2026-01-25T12:14:13Z
+                        metadata:
+                          tags: [seed-import]
+                          notes: "LIB-003 seed import"
+                        links:
+                          seed_path: library_seed/tasks/LIB-003.v0.md
+        "400":
+          $ref: "#/components/responses/BadRequest"
+        "422":
+          $ref: "#/components/responses/UnprocessableEntity"
+        "500":
+          $ref: "#/components/responses/InternalError"
+    post:
+      summary: Write artifact (not supported)
+      description: Write operations are disabled in the read-only API.
+      responses:
+        "405":
+          $ref: "#/components/responses/MethodNotAllowed"
+    put:
+      summary: Write artifact (not supported)
+      description: Write operations are disabled in the read-only API.
+      responses:
+        "405":
+          $ref: "#/components/responses/MethodNotAllowed"
+    delete:
+      summary: Delete artifact (not supported)
+      description: Write operations are disabled in the read-only API.
+      responses:
+        "405":
+          $ref: "#/components/responses/MethodNotAllowed"
+
+  /artifacts/{artifact_id}:
+    get:
+      summary: Get artifact (latest active)
+      description: |
+        Returns the latest active version of the artifact. If a version query
+        parameter is provided, returns the exact version only.
+      parameters:
+        - $ref: "#/components/parameters/ArtifactId"
+        - $ref: "#/components/parameters/Version"
+      responses:
+        "200":
+          description: Artifact document
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Artifact"
+              examples:
+                artifact:
+                  summary: LIB-003 task
+                  value:
+                    artifact_id: LIB-003
+                    kind: task
+                    domain: librarian
+                    version: v0
+                    status: active
+                    content_type: text/markdown
+                    content: "# LIB-003 — Mongo Reset, Migration & Seed Import\n..."
+                    checksum: "sha256:example"
+                    source: seed-import
+                    created_at: 2026-01-25T12:14:13Z
+                    effective_at: 2026-01-25T12:14:13Z
+                    metadata:
+                      tags: [seed-import]
+                      notes: "LIB-003 seed import"
+                    links:
+                      seed_path: library_seed/tasks/LIB-003.v0.md
+        "400":
+          $ref: "#/components/responses/BadRequest"
+        "404":
+          $ref: "#/components/responses/NotFound"
+        "409":
+          $ref: "#/components/responses/Conflict"
+        "422":
+          $ref: "#/components/responses/UnprocessableEntity"
+        "500":
+          $ref: "#/components/responses/InternalError"
+
+  /tasks/{task_id}:
+    get:
+      summary: Get task (latest active)
+      description: Returns the latest active task artifact (404 if none active).
+      parameters:
+        - $ref: "#/components/parameters/TaskId"
+        - $ref: "#/components/parameters/Version"
+      responses:
+        "200":
+          description: Task artifact document
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Artifact"
+              examples:
+                task:
+                  summary: LIB-003 task
+                  value:
+                    artifact_id: LIB-003
+                    kind: task
+                    domain: librarian
+                    version: v0
+                    status: active
+                    content_type: text/markdown
+                    content: "# LIB-003 — Mongo Reset, Migration & Seed Import\n..."
+                    checksum: "sha256:example"
+                    source: seed-import
+                    created_at: 2026-01-25T12:14:13Z
+                    effective_at: 2026-01-25T12:14:13Z
+        "400":
+          $ref: "#/components/responses/BadRequest"
+        "404":
+          $ref: "#/components/responses/NotFound"
+        "409":
+          $ref: "#/components/responses/Conflict"
+        "422":
+          $ref: "#/components/responses/UnprocessableEntity"
+        "500":
+          $ref: "#/components/responses/InternalError"
+
+  /policies/{policy_id}:
+    get:
+      summary: Get policy (latest active)
+      description: Returns the latest active policy artifact.
+      parameters:
+        - $ref: "#/components/parameters/PolicyId"
+        - $ref: "#/components/parameters/Version"
+      responses:
+        "200":
+          description: Policy artifact document
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Artifact"
+              examples:
+                policy:
+                  summary: pr-policy
+                  value:
+                    artifact_id: pr-policy
+                    kind: policy
+                    domain: governance
+                    version: v0
+                    status: active
+                    content_type: text/markdown
+                    content: "# PR Policy\n..."
+                    checksum: "sha256:example"
+                    source: seed-import
+                    created_at: 2026-01-25T12:14:13Z
+                    effective_at: 2026-01-25T12:14:13Z
+        "400":
+          $ref: "#/components/responses/BadRequest"
+        "404":
+          $ref: "#/components/responses/NotFound"
+        "409":
+          $ref: "#/components/responses/Conflict"
+        "422":
+          $ref: "#/components/responses/UnprocessableEntity"
+        "500":
+          $ref: "#/components/responses/InternalError"
+
+  /phases/{phase_id}:
+    get:
+      summary: Get phase (latest active)
+      description: Returns the latest active phase artifact.
+      parameters:
+        - $ref: "#/components/parameters/PhaseId"
+        - $ref: "#/components/parameters/Version"
+      responses:
+        "200":
+          description: Phase artifact document
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Artifact"
+              examples:
+                phase:
+                  summary: PHASE-LIBRARY-HARDENING
+                  value:
+                    artifact_id: PHASE-LIBRARY-HARDENING
+                    kind: phase
+                    domain: governance
+                    version: v0
+                    status: active
+                    content_type: text/markdown
+                    content: "# PHASE — Library Hardening\n..."
+                    checksum: "sha256:example"
+                    source: seed-import
+                    created_at: 2026-01-25T12:14:13Z
+                    effective_at: 2026-01-25T12:14:13Z
+        "400":
+          $ref: "#/components/responses/BadRequest"
+        "404":
+          $ref: "#/components/responses/NotFound"
+        "409":
+          $ref: "#/components/responses/Conflict"
+        "422":
+          $ref: "#/components/responses/UnprocessableEntity"
+        "500":
+          $ref: "#/components/responses/InternalError"
+
+components:
+  parameters:
+    ArtifactId:
+      name: artifact_id
+      in: path
+      required: true
+      schema:
+        type: string
+      description: Canonical artifact identifier.
+    TaskId:
+      name: task_id
+      in: path
+      required: true
+      schema:
+        type: string
+    PolicyId:
+      name: policy_id
+      in: path
+      required: true
+      schema:
+        type: string
+    PhaseId:
+      name: phase_id
+      in: path
+      required: true
+      schema:
+        type: string
+    Version:
+      name: version
+      in: query
+      required: false
+      schema:
+        type: string
+        pattern: "^v\\d+$"
+      description: |
+        Exact version to fetch (vN).
+
+  schemas:
+    Artifact:
+      type: object
+      required:
+        - artifact_id
+        - kind
+        - domain
+        - version
+        - status
+        - content_type
+        - content
+        - checksum
+        - source
+        - created_at
+        - effective_at
+      properties:
+        artifact_id:
+          type: string
+        kind:
+          type: string
+          enum: [task, policy, phase, law, report, schema]
+        domain:
+          type: string
+          enum: [engineering, governance, librarian, ui, runtime]
+        version:
+          type: string
+          description: Version identifier (vN).
+        status:
+          type: string
+          enum: [planned, active, deprecated, archived]
+        content_type:
+          type: string
+          enum: [text/markdown, application/yaml, application/json]
+        content:
+          type: string
+        checksum:
+          type: string
+        metadata:
+          type: object
+          additionalProperties: true
+        links:
+          type: object
+          additionalProperties: true
+        source:
+          type: string
+          enum: [seed-import, api-write, migration]
+        created_at:
+          type: string
+        effective_at:
+          type: string
+    ArtifactListResponse:
+      type: object
+      required: [filters, artifacts]
+      properties:
+        filters:
+          type: object
+          properties:
+            kind:
+              type: [string, "null"]
+            domain:
+              type: [string, "null"]
+            status:
+              type: [string, "null"]
+            tag:
+              type: [string, "null"]
+        artifacts:
+          type: array
+          items:
+            $ref: "#/components/schemas/Artifact"
+    ErrorResponse:
+      type: object
+      required: [error]
+      properties:
+        error:
+          type: string
+
+  responses:
+    BadRequest:
+      description: Invalid request parameters.
+      content:
+        application/json:
+          schema:
+            $ref: "#/components/schemas/ErrorResponse"
+          examples:
+            invalid-version:
+              summary: Invalid version format
+              value:
+                error: version must match vN
+    NotFound:
+      description: Artifact or path not found.
+      content:
+        application/json:
+          schema:
+            $ref: "#/components/schemas/ErrorResponse"
+          examples:
+            unknown-path:
+              summary: Unknown path
+              value:
+                error: Unknown path
+            not-found:
+              summary: Artifact not found
+              value:
+                error: Artifact not found
+    Conflict:
+      description: Reserved error model (not emitted by current read-only implementation).
+      content:
+        application/json:
+          schema:
+            $ref: "#/components/schemas/ErrorResponse"
+          examples:
+            conflict:
+              summary: Reserved conflict
+              value:
+                error: Conflict
+    UnprocessableEntity:
+      description: Reserved error model (not emitted by current read-only implementation).
+      content:
+        application/json:
+          schema:
+            $ref: "#/components/schemas/ErrorResponse"
+          examples:
+            validation:
+              summary: Reserved validation error
+              value:
+                error: Unprocessable entity
+    InternalError:
+      description: Server error when Mongo reads or validations fail.
+      content:
+        application/json:
+          schema:
+            $ref: "#/components/schemas/ErrorResponse"
+          examples:
+            data-integrity:
+              summary: Invalid version format
+              value:
+                error: Invalid version format: v0
+    MethodNotAllowed:
+      description: Write operations are not supported.
+      content:
+        application/json:
+          schema:
+            $ref: "#/components/schemas/ErrorResponse"
+          examples:
+            write-disabled:
+              summary: Write operations are not supported
+              value:
+                error: Write operations are not supported

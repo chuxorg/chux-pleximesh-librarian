@@ -1,0 +1,61 @@
+{
+  "report": {
+    "name": "lib-005-smoke-tests",
+    "version": "v0",
+    "generated_at": "2026-01-25T12:44:34Z",
+    "base_url": "http://localhost:8000",
+    "passed": true
+  },
+  "results": [
+    {
+      "name": "latest artifact",
+      "passed": true,
+      "details": "ok"
+    },
+    {
+      "name": "versioned artifact",
+      "passed": true,
+      "details": "ok"
+    },
+    {
+      "name": "task alias",
+      "passed": true,
+      "details": "ok"
+    },
+    {
+      "name": "policy alias",
+      "passed": true,
+      "details": "ok"
+    },
+    {
+      "name": "phase alias",
+      "passed": true,
+      "details": "ok"
+    },
+    {
+      "name": "list artifacts",
+      "passed": true,
+      "details": "ok"
+    },
+    {
+      "name": "invalid version",
+      "passed": true,
+      "details": "ok"
+    },
+    {
+      "name": "unknown path",
+      "passed": true,
+      "details": "ok"
+    },
+    {
+      "name": "invalid filter",
+      "passed": true,
+      "details": "ok"
+    },
+    {
+      "name": "not found",
+      "passed": true,
+      "details": "ok"
+    }
+  ]
+}

@@ -177,10 +177,94 @@ layout:
     canonical_path: library/governance/policies/awacs/ui/event-stream-v0.md
     source_paths:
       - library/governance/policies/awacs/ui/event-stream-v0.md
+  - concept: "canon:ui-socket-model"
+    canonical_path: library/governance/policies/ui/ui-socket-model.v0.md
+    source_paths:
+      - library/governance/policies/ui/ui-socket-model.v0.md
+  - concept: "phase:PHASE-UI-FOUNDATION"
+    canonical_path: library/governance/phases/PHASE-UI-FOUNDATION.v0.md
+    source_paths:
+      - library/governance/phases/PHASE-UI-FOUNDATION.v0.md
+  - concept: "phase:PHASE-UI-QA-FOUNDATION"
+    canonical_path: library/governance/phases/PHASE-UI-QA-FOUNDATION.v0.md
+    source_paths:
+      - library/governance/phases/PHASE-UI-QA-FOUNDATION.v0.md
+  - concept: "phase:PHASE-UI-LIBRARY-VIEWER"
+    canonical_path: library/governance/phases/PHASE-UI-LIBRARY-VIEWER.v0.md
+    source_paths:
+      - library/governance/phases/PHASE-UI-LIBRARY-VIEWER.v0.md
+  - concept: "gate:ui-qa-workflow"
+    canonical_path: library/governance/policies/ui/ui-qa-gate-workflow.v0.md
+    source_paths:
+      - library/governance/policies/ui/ui-qa-gate-workflow.v0.md
+  - concept: "policy:ui-qa-agent-policy"
+    canonical_path: library/governance/policies/ui/ui-qa-agent-policy.v0.md
+    source_paths:
+      - library/governance/policies/ui/ui-qa-agent-policy.v0.md
+  - concept: "policy:ui-qa-agent-policy-electron-amendment"
+    canonical_path: library/governance/policies/ui/ui-qa-agent-policy-electron-amendment.v0.md
+    source_paths:
+      - library/governance/policies/ui/ui-qa-agent-policy-electron-amendment.v0.md
+  - concept: "operational:ui-qa-assignment-message"
+    canonical_path: library/governance/operational/ui-qa-assignment-message.v0.md
+    source_paths:
+      - library/governance/operational/ui-qa-assignment-message.v0.md
+  - concept: "task-inventory:UI-FOUNDATION"
+    canonical_path: library/governance/task-inventories/ui-foundation-task-inventory.v0.md
+    source_paths:
+      - library/governance/task-inventories/ui-foundation-task-inventory.v0.md
+  - concept: "task-inventory:UI-LIBRARY-VIEWER"
+    canonical_path: library/governance/task-inventories/ui-library-viewer-task-inventory.v0.md
+    source_paths:
+      - library/governance/task-inventories/ui-library-viewer-task-inventory.v0.md
+  - concept: "task-inventory:UI-RUNTIME-VIEWER"
+    canonical_path: library/governance/task-inventories/ui-runtime-viewer-task-inventory.v0.md
+    source_paths:
+      - library/governance/task-inventories/ui-runtime-viewer-task-inventory.v0.md
+  - concept: "release:spine"
+    canonical_path: releases/spine/release-spine.v0.md
+    source_paths:
+      - releases/spine/release-spine.v0.md
+  - concept: "release:record-template"
+    canonical_path: releases/records/release-record.template.v0.md
+    source_paths:
+      - releases/records/release-record.template.v0.md
+  - concept: "runtime-hardening:phase1-spine"
+    canonical_path: runtime/hardening/runtime-hardening-phase1.v0.md
+    source_paths:
+      - runtime/hardening/runtime-hardening-phase1.v0.md
   - concept: "runtime-hardening:phase1-complete"
     canonical_path: runtime/hardening/runtime-hardening-phase1-complete.v0.md
     source_paths:
       - runtime/hardening/runtime-hardening-phase1-complete.v0.md
+  - concept: "recovery:seed-prompt.pleximesh-project-state-snapshot.v1"
+    canonical_path: recovery/seed-prompts/PLEXIMESH_PROJECT_STATE_SNAPSHOT.v1.md
+    source_paths:
+      - recovery/seed-prompts/PLEXIMESH_PROJECT_STATE_SNAPSHOT.v1.md
+  - concept: "recovery:seed-prompt.master-seed-prompt.v1"
+    canonical_path: recovery/seed-prompts/MASTER_SEED_PROMPT.v1.md
+    source_paths:
+      - recovery/seed-prompts/MASTER_SEED_PROMPT.v1.md
+  - concept: "recovery:seed-prompt.guardian-role-seed.v1"
+    canonical_path: recovery/seed-prompts/GUARDIAN_ROLE_SEED.v1.md
+    source_paths:
+      - recovery/seed-prompts/GUARDIAN_ROLE_SEED.v1.md
+  - concept: "recovery:seed-prompt.librarian-role-seed-and-recovery.v1"
+    canonical_path: recovery/seed-prompts/LIBRARIAN_ROLE_SEED_AND_RECOVERY.v1.md
+    source_paths:
+      - recovery/seed-prompts/LIBRARIAN_ROLE_SEED_AND_RECOVERY.v1.md
+  - concept: "recovery:seed-prompt.panic-prompt.v1"
+    canonical_path: recovery/seed-prompts/PANIC_PROMPT.v1.md
+    source_paths:
+      - recovery/seed-prompts/PANIC_PROMPT.v1.md
+  - concept: "recovery:seed-prompt.conversation-rollover-protocol.v1"
+    canonical_path: recovery/seed-prompts/CONVERSATION_ROLLOVER_PROTOCOL.v1.md
+    source_paths:
+      - recovery/seed-prompts/CONVERSATION_ROLLOVER_PROTOCOL.v1.md
+  - concept: "recovery:contract.llm-memory.v1"
+    canonical_path: recovery/contracts/LLM_MEMORY_CONTRACT.v1.md
+    source_paths:
+      - recovery/contracts/LLM_MEMORY_CONTRACT.v1.md
   - concept: "policy:pr-policy"
     canonical_path: library/governance/policies/engineer/pr-policy.v0.md
     source_paths:

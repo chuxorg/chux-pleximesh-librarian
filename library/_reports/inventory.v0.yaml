@@ -368,6 +368,27 @@ artifacts:
   - path: library/governance/laws/runtime-event-stream-principles.v0.md
     classification: seed
     concept: "law:runtime-event-stream-principles"
+  - path: library/governance/github/PR_EXECUTION_LAW.v2.md
+    classification: seed
+    concept: "law:pr-execution-law"
+  - path: library/ui/library/ux/awacs-library-ui-figma-make-prompt.v1.md
+    classification: seed
+    concept: "prompt:awacs-library-ui-figma-make-prompt"
+  - path: library/ui/library/ux/awacs-library-ui-codex-implementation-prompt.v1.md
+    classification: seed
+    concept: "prompt:awacs-library-ui-codex-implementation-prompt"
+  - path: library/ui/contracts/UI-CONTRACT-AWACS.v1.yaml
+    classification: seed
+    concept: "ui-contract:awacs"
+  - path: library/seeds/PHASE_OPEN_SEED_DELTA.v1.md
+    classification: seed
+    concept: "seed:phase-open-seed-delta"
+  - path: library/guardian/interfaces/GUARDIAN_SERVICE_INTERFACE.v1.md
+    classification: seed
+    concept: "interface:guardian-service-interface"
+  - path: library/guardian/laws/GUARDIAN_LAW_PHASE_CLOSE.v1.md
+    classification: seed
+    concept: "law:guardian-law-phase-close"
   - path: library/governance/policies/awacs/authority-matrix-certification.v0.md
     classification: seed
     concept: "policy:authority-matrix-certification"
@@ -392,6 +413,12 @@ artifacts:
   - path: library/governance/phases/PHASE-UI-LIBRARY-VIEWER.v0.md
     classification: seed
     concept: "phase:PHASE-UI-LIBRARY-VIEWER"
+  - path: library/phases/PHASE-GUARDIAN-WORKBENCH.v1.md
+    classification: seed
+    concept: "phase:PHASE-GUARDIAN-WORKBENCH"
+  - path: library/phases/PHASE-AGENT-OBSERVABILITY.v1.md
+    classification: seed
+    concept: "phase:PHASE-AGENT-OBSERVABILITY"
   - path: library/governance/policies/ui/ui-qa-gate-workflow.v0.md
     classification: seed
     concept: "gate:ui-qa-workflow"
@@ -446,9 +473,15 @@ artifacts:
   - path: recovery/contracts/LLM_MEMORY_CONTRACT.v1.md
     classification: seed
     concept: "recovery:contract.llm-memory.v1"
+  - path: library/ui/awacs/seeds/AWACS_UI_CONTEXT_SEED.v3.md
+    classification: seed
+    concept: "recovery:seed-prompt.awacs-ui-context-seed.v3"
   - path: library/governance/policies/engineer/pr-policy.v0.md
     classification: seed
     concept: "policy:pr-policy"
+  - path: library/governance/decisions/process/2026-02-04-ui-contract-awacs-implementation-binding.v0.md
+    classification: seed
+    concept: "binding:ui-contract-awacs-implementation"
   - path: library/governance/policies/guardian/guardian-learning-rules.v0.yaml
     classification: seed
     concept: "policy:guardian-learning-rules"

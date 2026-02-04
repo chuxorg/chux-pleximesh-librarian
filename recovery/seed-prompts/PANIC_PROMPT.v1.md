@@ -5,7 +5,7 @@ System state may be degraded or incomplete.
 Immediate actions:
 
 * Do NOT infer prior intent
-* Request `PLEXIMESH_PROJECT_STATE_SNAPSHOT.v1`
+* Request `PLEXIMESH_PROJECT_STATE_SNAPSHOT.v2`
 * Request Guardian role seed
 * Request Librarian recovery protocol
 

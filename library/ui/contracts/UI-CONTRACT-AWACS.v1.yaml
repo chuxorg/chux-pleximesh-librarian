@@ -1,0 +1,68 @@
+artifact:
+  artifact_id: UI-CONTRACT-AWACS
+  version: v1
+  kind: ui_contract
+  authority: canonical
+  status: active
+  scope: AWACS UI foundation and layout contracts
+  created_at: 2026-02-04T19:53:06Z
+  applies_to: all_ui_agents
+  authoritative_for: ui_related_agent_actions
+
+zones:
+  - zone_id: topbar
+    semantic_purpose: top app menubar and primary session controls
+    dom_selector: "[data-zone='zone-1']"
+    mutability: false
+    notes: Structural container is immutable; content updates are limited to read-only display.
+  - zone_id: sidebar
+    semantic_purpose: left control plane for navigation and contextual trees
+    dom_selector: "[data-zone='zone-2']"
+    mutability: false
+    notes: Navigation structure is fixed; selection state may change but no edits or drag/drop.
+  - zone_id: main_content
+    semantic_purpose: primary read-only viewing surface for artifacts and records
+    dom_selector: "[data-zone='zone-3']"
+    mutability: false
+    notes: Container layout is frozen; content renders are read-only and scroll within the viewer.
+  - zone_id: artifact_viewer
+    semantic_purpose: framed, read-only artifact record display within main content
+    dom_selector: "[data-zone='zone-3'] [data-surface='artifact-viewer']"
+    mutability: false
+    notes: Header/metadata/body/footer structure is contractual; data rendering only.
+  - zone_id: detail_panel
+    semantic_purpose: contextual details pane within the control plane
+    dom_selector: "[data-zone='zone-2'] [data-surface='detail-panel']"
+    mutability: false
+    notes: Panel exists for read-only context; structure and placement are fixed.
+
+global_ui_rules:
+  - id: no_new_zones_without_contract_revision
+    statement: No agent may introduce new zones without a contract revision.
+  - id: token_driven_styling_only
+    statement: Styling must be token-driven; no raw hex values or ad-hoc spacing.
+  - id: structural_html_is_stable
+    statement: Structural HTML is stable unless explicitly authorized by contract revision.
+  - id: read_only_zones_no_mutation
+    statement: Read-only zones may not be mutated by UI agents.
+
+token_governance:
+  tokens_only: true
+  token_domains:
+    - typography
+    - color
+    - spacing
+  token_changes_are_non_structural: true
+
+agent_boundaries:
+  allowed:
+    - Update read-only content rendering within existing zone surfaces.
+    - Adjust tokens within approved token sets.
+  requires_contract_revision:
+    - Add or remove zones.
+    - Change zone geometry, spacing, or layout.
+    - Rename or remove stable DOM selectors.
+  forbidden:
+    - Introduce editable or mutating controls in read-only zones.
+    - Bypass token governance with raw styles.
+    - Alter structural HTML without explicit contract revision.

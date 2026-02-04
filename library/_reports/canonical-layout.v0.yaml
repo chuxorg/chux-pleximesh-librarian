@@ -161,6 +161,34 @@ layout:
     canonical_path: library/governance/laws/runtime-event-stream-principles.v0.md
     source_paths:
       - library/governance/laws/runtime-event-stream-principles.v0.md
+  - concept: "law:pr-execution-law"
+    canonical_path: library/governance/github/PR_EXECUTION_LAW.v2.md
+    source_paths:
+      - library/governance/github/PR_EXECUTION_LAW.v2.md
+  - concept: "prompt:awacs-library-ui-figma-make-prompt"
+    canonical_path: library/ui/library/ux/awacs-library-ui-figma-make-prompt.v1.md
+    source_paths:
+      - library/ui/library/ux/awacs-library-ui-figma-make-prompt.v1.md
+  - concept: "prompt:awacs-library-ui-codex-implementation-prompt"
+    canonical_path: library/ui/library/ux/awacs-library-ui-codex-implementation-prompt.v1.md
+    source_paths:
+      - library/ui/library/ux/awacs-library-ui-codex-implementation-prompt.v1.md
+  - concept: "ui-contract:awacs"
+    canonical_path: library/ui/contracts/UI-CONTRACT-AWACS.v1.yaml
+    source_paths:
+      - library/ui/contracts/UI-CONTRACT-AWACS.v1.yaml
+  - concept: "seed:phase-open-seed-delta"
+    canonical_path: library/seeds/PHASE_OPEN_SEED_DELTA.v1.md
+    source_paths:
+      - library/seeds/PHASE_OPEN_SEED_DELTA.v1.md
+  - concept: "interface:guardian-service-interface"
+    canonical_path: library/guardian/interfaces/GUARDIAN_SERVICE_INTERFACE.v1.md
+    source_paths:
+      - library/guardian/interfaces/GUARDIAN_SERVICE_INTERFACE.v1.md
+  - concept: "law:guardian-law-phase-close"
+    canonical_path: library/guardian/laws/GUARDIAN_LAW_PHASE_CLOSE.v1.md
+    source_paths:
+      - library/guardian/laws/GUARDIAN_LAW_PHASE_CLOSE.v1.md
   - concept: "policy:authority-matrix-certification"
     canonical_path: library/governance/policies/awacs/authority-matrix-certification.v0.md
     source_paths:
@@ -193,6 +221,14 @@ layout:
     canonical_path: library/governance/phases/PHASE-UI-LIBRARY-VIEWER.v0.md
     source_paths:
       - library/governance/phases/PHASE-UI-LIBRARY-VIEWER.v0.md
+  - concept: "phase:PHASE-GUARDIAN-WORKBENCH"
+    canonical_path: library/phases/PHASE-GUARDIAN-WORKBENCH.v1.md
+    source_paths:
+      - library/phases/PHASE-GUARDIAN-WORKBENCH.v1.md
+  - concept: "phase:PHASE-AGENT-OBSERVABILITY"
+    canonical_path: library/phases/PHASE-AGENT-OBSERVABILITY.v1.md
+    source_paths:
+      - library/phases/PHASE-AGENT-OBSERVABILITY.v1.md
   - concept: "gate:ui-qa-workflow"
     canonical_path: library/governance/policies/ui/ui-qa-gate-workflow.v0.md
     source_paths:
@@ -265,10 +301,18 @@ layout:
     canonical_path: recovery/contracts/LLM_MEMORY_CONTRACT.v1.md
     source_paths:
       - recovery/contracts/LLM_MEMORY_CONTRACT.v1.md
+  - concept: "recovery:seed-prompt.awacs-ui-context-seed.v3"
+    canonical_path: library/ui/awacs/seeds/AWACS_UI_CONTEXT_SEED.v3.md
+    source_paths:
+      - library/ui/awacs/seeds/AWACS_UI_CONTEXT_SEED.v3.md
   - concept: "policy:pr-policy"
     canonical_path: library/governance/policies/engineer/pr-policy.v0.md
     source_paths:
       - library/governance/policies/engineer/pr-policy.v0.md
+  - concept: "binding:ui-contract-awacs-implementation"
+    canonical_path: library/governance/decisions/process/2026-02-04-ui-contract-awacs-implementation-binding.v0.md
+    source_paths:
+      - library/governance/decisions/process/2026-02-04-ui-contract-awacs-implementation-binding.v0.md
   - concept: "policy:guardian-learning-rules"
     canonical_path: library/governance/policies/guardian/guardian-learning-rules.v0.yaml
     source_paths:

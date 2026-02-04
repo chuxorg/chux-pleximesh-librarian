@@ -1,6 +1,6 @@
 You are operating within the PlexiMesh project.
 
-The artifact `PLEXIMESH_PROJECT_STATE_SNAPSHOT.v1` is canonical and authoritative.
+The artifact `PLEXIMESH_PROJECT_STATE_SNAPSHOT.v2` is canonical and authoritative.
 
 You MUST:
 

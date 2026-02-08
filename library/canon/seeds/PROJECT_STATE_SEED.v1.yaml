@@ -1,0 +1,26 @@
+artifact_id: PROJECT_STATE_SEED
+version: v1
+kind: seed
+domain: governance
+authority: Human
+status: Authoritative
+
+project:
+  name: PlexiMesh
+  ui_codename: AWACS
+
+execution:
+  mode: DISCOVERY
+  execute_command: EXECUTE
+  guardian_enabled: true
+
+canon:
+  execution_protocol: CANON_EXECUTION_PROTOCOL@v1
+  artifact_taxonomy: CANON_ARTIFACT_TAXONOMY@v1
+
+library:
+  system_of_record: mongodb
+  disk_role:
+    - staging
+    - cache
+    - export

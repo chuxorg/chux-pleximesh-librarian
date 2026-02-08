@@ -1,0 +1,148 @@
+<!--
+  YANZI CANONICAL UI SHELL v3
+  This file defines immutable layout invariants.
+  Zone dimensions and structure must not be changed
+  without explicit architectural review.
+-->
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Yanzi – Canonical Shell v3</title>
+
+    <style>
+      /* ===============================
+         GLOBAL RESET
+         =============================== */
+      * {
+        box-sizing: border-box;
+      }
+
+      html, body {
+        height: 100%;
+        margin: 0;
+      }
+
+      body {
+        display: grid;
+        place-items: center;
+        background: #ffffff;
+        font-family: "IBM Plex Sans", "Segoe UI", "Helvetica Neue", Arial, sans-serif;
+      }
+
+      /* ===============================
+         FRAME (LOCKED CANVAS)
+         =============================== */
+      .frame {
+        width: 1440px;
+        height: 900px;
+        display: grid;
+        grid-template-rows:
+          44px       /* Zone 1: Top bar */
+          1fr        /* Zones 2–4: Middle */
+          28px;      /* Zone 5: Status bar */
+        background: #ffffff;
+      }
+
+      /* ===============================
+         ZONE 1 — TOP BAR
+         =============================== */
+      .topbar {
+        background: #fafafa;
+        border-bottom: 1px solid #e5e5e5;
+      }
+
+      /* ===============================
+         MIDDLE ROW (ZONES 2–4)
+         =============================== */
+      .middle {
+        display: grid;
+        grid-template-columns:
+          72px       /* Zone 2a: Toolbar */
+          280px      /* Zone 2b: Context */
+          1fr        /* Zone 3: Main */
+          48px;      /* Zone 4: Inspector */
+        height: 100%;
+      }
+
+      /* ===============================
+         ZONE 2a — TOOLBAR
+         =============================== */
+      .toolbar {
+        background: #e5e5e5;
+        border-right: 1px solid #e5e5e5;
+      }
+
+      /* ===============================
+         ZONE 2b — CONTEXT PANEL
+         =============================== */
+      .context {
+        background: #f5f5f5;
+        border-right: 1px solid #e5e5e5;
+        display: grid;
+        grid-template-rows:
+          32px       /* Panel header */
+          1fr;       /* Panel body */
+      }
+
+      .context-header {
+        background: #e5e5e5;
+        border-bottom: 1px solid #e5e5e5;
+      }
+
+      .context-body {
+        background: #f5f5f5;
+      }
+
+      /* ===============================
+         ZONE 3 — MAIN CONTENT
+         =============================== */
+      .main {
+        background: #f5f5f5;
+      }
+
+      /* ===============================
+         ZONE 4 — INSPECTOR
+         =============================== */
+      .inspector {
+        background: #e5e5e5;
+        border-left: 1px solid #e5e5e5;
+      }
+
+      /* ===============================
+         ZONE 5 — STATUS BAR
+         =============================== */
+      .statusbar {
+        background: #f5f5f5;
+        border-top: 1px solid #e5e5e5;
+      }
+    </style>
+  </head>
+
+  <body>
+    <div class="frame">
+
+      <!-- Zone 1 -->
+      <header class="topbar"></header>
+
+      <!-- Zones 2–4 -->
+      <div class="middle">
+        <aside class="toolbar"></aside>
+
+        <section class="context">
+          <div class="context-header"></div>
+          <div class="context-body"></div>
+        </section>
+
+        <main class="main"></main>
+
+        <aside class="inspector"></aside>
+      </div>
+
+      <!-- Zone 5 -->
+      <footer class="statusbar"></footer>
+
+    </div>
+  </body>
+</html>

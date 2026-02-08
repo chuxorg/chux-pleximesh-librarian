@@ -1,0 +1,28 @@
+pack_id: PLEXIMESH_AWACS_PROJECT_PACK
+version: v1
+
+target: chatgpt-session
+scope: project
+role: none
+
+includes:
+
+  rules:
+    - CANON_EXECUTION_PROTOCOL@v1
+    - CANON_ARTIFACT_TAXONOMY@v1
+
+  seeds:
+    - PROJECT_STATE_SEED@v1
+
+  snapshots:
+    - LATEST
+
+resolution_rules:
+  order:
+    - rules
+    - seeds
+    - snapshots
+
+  validation:
+    - all references must resolve
+    - missing references are fatal

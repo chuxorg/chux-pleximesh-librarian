@@ -1,0 +1,158 @@
+apiVersion: yanzi.ai/plan/v1
+kind: Plan
+
+metadata:
+plan_id: PLAN-YANZI-V1
+name: "Yanzi v1 Foundational Build"
+workspace_id: WS-DEFAULT
+project_id: PRJ-YANZI
+created_at: "2026-02-07T00:00:00Z"
+created_by:
+actor_type: human
+actor_id: user
+
+intent:
+goal: "Build Yanzi as a multi-user, plan-driven AI engineering system with traceable intent and execution."
+success_criteria:
+- "Users can define intent and produce executable plans."
+- "Runtime executes plans with observable state and artifacts."
+- "Library preserves canonical memory."
+non_goals:
+- "Enterprise SSO"
+- "Fully custom RBAC authoring"
+
+invariants:
+requires_audit_log: true
+requires_gate_approvals: true
+
+process:
+process_template_id: PROC-DEFAULT
+phases:
+
+- phase_id: PH-01
+  name: "Foundation"
+  description: "Identity, accounts, security, and structural UI."
+  gates:
+    - gate_id: G-01
+      name: "Foundation Ready"
+      required: true
+      acceptance:
+        - "Users, teams, roles exist"
+        - "UI shell and zones are canonical"
+  tasks:
+    - task_id: T-01
+      title: "Profiles, users, and teams"
+      owner: role:PM
+      target_service: ui
+      depends_on: []
+      tags: [identity, security]
+      context:
+        authoritative:
+          - UI_SHELL_YANZI.v3
+          - UI_ZONES_YANZI.v1
+        informative: []
+
+- phase_id: PH-02
+  name: "Workspaces & Projects"
+  description: "Workspace container and multi-service project model."
+  gates:
+    - gate_id: G-02
+      name: "Projects Ready"
+      required: true
+      acceptance:
+        - "Workspace create/list"
+        - "Projects map to UI/Runtime/Library"
+  tasks:
+    - task_id: T-02
+      title: "Workspace and project model"
+      owner: role:PM
+      target_service: ui
+      depends_on: [T-01]
+      tags: [workspace, project]
+      context:
+        authoritative:
+          - UI_SHELL_YANZI.v3
+        informative: []
+
+- phase_id: PH-03
+  name: "Library & Memory"
+  description: "Artifact catalog, visibility, and canonical memory."
+  gates:
+    - gate_id: G-03
+      name: "Library Operational"
+      required: true
+      acceptance:
+        - "Artifacts visible by permission"
+        - "Canonical vs draft enforced socially"
+  tasks:
+    - task_id: T-03
+      title: "Library browse and artifact lifecycle"
+      owner: role:ENGINEER
+      target_service: library
+      depends_on: [T-02]
+      tags: [library, artifacts]
+      context:
+        authoritative:
+          - UI_ZONES_YANZI.v1
+        informative: []
+
+- phase_id: PH-04
+  name: "Intent → Plan"
+  description: "Capture user intent and generate structured plans."
+  gates:
+    - gate_id: G-04
+      name: "Intent Pipeline Ready"
+      required: true
+      acceptance:
+        - "Guardian asks clarifying questions"
+        - "Executable plan produced"
+  tasks:
+    - task_id: T-04
+      title: "Intent intake and plan generator"
+      owner: role:GUARDIAN
+      target_service: runtime
+      depends_on: [T-03]
+      tags: [intent, planning]
+      context:
+        authoritative:
+          - YANZI_PLAN_SCHEMA.v1
+        informative: []
+
+- phase_id: PH-05
+  name: "Runtime Execution"
+  description: "Execute plans with observable state."
+  gates:
+    - gate_id: G-05
+      name: "Runtime Executes Plans"
+      required: true
+      acceptance:
+        - "Runs created from plan"
+        - "Tasks progress tracked"
+  tasks:
+    - task_id: T-05
+      title: "Runtime plan execution"
+      owner: role:ENGINEER
+      target_service: runtime
+      depends_on: [T-04]
+      tags: [runtime, execution]
+      context:
+        authoritative:
+          - YANZI_PLAN_SCHEMA.v1
+        informative: []
+
+services:
+
+service_id: svc-ui
+name: UI
+language: ts
+repo: null
+
+service_id: svc-runtime
+name: Runtime
+language: go
+repo: null
+
+service_id: svc-library
+name: Library
+language: python
+repo: null

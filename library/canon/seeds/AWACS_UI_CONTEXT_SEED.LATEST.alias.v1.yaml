@@ -1,0 +1,7 @@
+alias: LATEST
+target_artifact: AWACS_UI_CONTEXT_SEED
+target_version: v3
+kind: seed-alias
+domain: ui
+scope: project
+resolution: deterministic

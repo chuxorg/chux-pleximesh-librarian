@@ -1,0 +1,4 @@
+alias: LATEST
+target: PLEXIMESH_PHASE_SNAPSHOT_LIBRARY_MVC@v1
+scope: project
+resolution: deterministic

@@ -1,0 +1,47 @@
+pack_id: AWACS_UI_AGENT_PACK
+version: v1
+
+target: chatgpt-session
+scope: agent
+role: ui-agent
+
+authority:
+  source: librarian
+  mode: read-only
+
+permissions:
+  may_propose:
+    - ui-layout
+    - ui-styling
+    - ui-components
+    - ui-copy
+    - ui-navigation-structure
+
+  may_not_modify:
+    - canonical-laws
+    - project-packs
+    - runtime-protocols
+    - librarian-contracts
+    - agent-charters
+    - recovery-seeds
+
+includes:
+
+  packs:
+    - PLEXIMESH_AWACS_PROJECT_PACK@v1
+
+  charters:
+    - UI_AGENT_CHARTER@v1
+
+  seeds:
+    - AWACS_UI_CONTEXT_SEED@LATEST
+
+resolution_rules:
+  order:
+    - packs
+    - charters
+    - seeds
+
+  validation:
+    - all references must resolve
+    - missing references are fatal

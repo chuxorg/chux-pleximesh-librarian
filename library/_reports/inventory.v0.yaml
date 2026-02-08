@@ -7,619 +7,918 @@ report:
 artifacts:
   - path: library/_quarantine_migrated/data/awacs/phases/phase2.2/guardian-authorization-draft.md
     classification: dynamic
+    status: archived
     concept: "quarantine:guardian-authorization-draft"
   - path: library/_quarantine_migrated/data/project13/gates/mission-rail-implementation-gate.md
     classification: dynamic
+    status: archived
     concept: "quarantine:mission-rail-implementation-gate"
   - path: library/_quarantine_migrated/data/prompts/engineer/2025-12-23T18-17-04Z_prompt_root-1766513824107397000-entrypoint_4c2e7c92-fd8c-4f75-a12d-558dbc0ad70a.md
     classification: dynamic
+    status: archived
     concept: "quarantine:2025-12-23T18-17-04Z_prompt_root-1766513824107397000-entrypoint_4c2e7c92-fd8c-4f75-a12d-558dbc0ad70a"
   - path: library/_quarantine_migrated/data/prompts/pm/20251225T215831Z_awacs-project13-follow-up_prompt.md
     classification: dynamic
+    status: archived
     concept: "quarantine:20251225T215831Z_awacs-project13-follow-up_prompt"
   - path: library/_quarantine_migrated/data/prompts/ui/20251225T221558Z_awacs-task-ack_prompt.md
     classification: dynamic
+    status: archived
     concept: "quarantine:20251225T221558Z_awacs-task-ack_prompt"
   - path: library/_quarantine_migrated/data/prompts/ui/20251225T222021Z_procedure-ladder-guardrails_prompt.md
     classification: dynamic
+    status: archived
     concept: "quarantine:20251225T222021Z_procedure-ladder-guardrails_prompt"
   - path: library/_quarantine_migrated/data/results/engineer/2025-12-23T18-17-04Z_result_root-1766513824107397000-entrypoint_4c2e7c92-fd8c-4f75-a12d-558dbc0ad70a.md
     classification: dynamic
+    status: archived
     concept: "quarantine:2025-12-23T18-17-04Z_result_root-1766513824107397000-entrypoint_4c2e7c92-fd8c-4f75-a12d-558dbc0ad70a"
   - path: library/_quarantine_migrated/decisions/architecture/.gitkeep
     classification: ignore
+    status: archived
     concept: "quarantine:.gitkeep"
   - path: library/_quarantine_migrated/decisions/architecture/awacs-mission-rail-scaling.md
     classification: dynamic
+    status: archived
     concept: "quarantine:awacs-mission-rail-scaling"
   - path: library/_quarantine_migrated/decisions/architecture/awacs-procedure-ladder-guardrails.md
     classification: dynamic
+    status: archived
     concept: "quarantine:awacs-procedure-ladder-guardrails"
   - path: library/_quarantine_migrated/decisions/process/.gitkeep
     classification: ignore
+    status: archived
     concept: "quarantine:.gitkeep"
   - path: library/_quarantine_migrated/legacy/governance/escalations/.gitkeep
     classification: ignore
+    status: archived
     concept: "quarantine:.gitkeep"
   - path: library/_quarantine_migrated/legacy/governance/laws/.gitkeep
     classification: ignore
+    status: archived
     concept: "quarantine:.gitkeep"
   - path: library/_quarantine_migrated/legacy/governance/mandates/.gitkeep
     classification: ignore
+    status: archived
     concept: "quarantine:.gitkeep"
   - path: library/_quarantine_migrated/legacy/governance/sdlc/.gitkeep
     classification: ignore
+    status: archived
     concept: "quarantine:.gitkeep"
   - path: library/_quarantine_migrated/legacy/references/directory-standards/.gitkeep
     classification: ignore
+    status: archived
     concept: "quarantine:.gitkeep"
   - path: library/_quarantine_migrated/legacy/references/naming/.gitkeep
     classification: ignore
+    status: archived
     concept: "quarantine:.gitkeep"
   - path: library/_quarantine_migrated/legacy/references/roles/.gitkeep
     classification: ignore
+    status: archived
     concept: "quarantine:.gitkeep"
   - path: library/_quarantine_migrated/legacy/references/taxonomies/.gitkeep
     classification: ignore
+    status: archived
     concept: "quarantine:.gitkeep"
   - path: library/_quarantine_migrated/prompts/codex/.gitkeep
     classification: ignore
+    status: archived
     concept: "quarantine:.gitkeep"
   - path: library/_quarantine_migrated/prompts/documentation/.gitkeep
     classification: ignore
+    status: archived
     concept: "quarantine:.gitkeep"
   - path: library/_quarantine_migrated/prompts/engineering/.gitkeep
     classification: ignore
+    status: archived
     concept: "quarantine:.gitkeep"
   - path: library/_quarantine_migrated/prompts/guardian/.gitkeep
     classification: ignore
+    status: archived
     concept: "quarantine:.gitkeep"
   - path: library/_quarantine_migrated/prompts/guardian/sprint-2-refocus.md
     classification: dynamic
+    status: archived
     concept: "quarantine:sprint-2-refocus"
   - path: library/_quarantine_migrated/prompts/pm/.gitkeep
     classification: ignore
+    status: archived
     concept: "quarantine:.gitkeep"
   - path: library/_quarantine_migrated/prompts/pm/persistence-enforcement.md
     classification: dynamic
+    status: archived
     concept: "quarantine:persistence-enforcement"
   - path: library/_quarantine_migrated/prompts/pm/sprint-2-execution-substrate-hardening.md
     classification: dynamic
+    status: archived
     concept: "quarantine:sprint-2-execution-substrate-hardening"
   - path: library/_quarantine_migrated/prompts/qa/.gitkeep
     classification: ignore
+    status: archived
     concept: "quarantine:.gitkeep"
   - path: library/_quarantine_migrated/prompts/ui/vscode-mining-prompt.md
     classification: dynamic
+    status: archived
     concept: "quarantine:vscode-mining-prompt"
   - path: library/_quarantine_migrated/results/codex/.gitkeep
     classification: ignore
+    status: archived
     concept: "quarantine:.gitkeep"
   - path: library/_quarantine_migrated/results/documentation/.gitkeep
     classification: ignore
+    status: archived
     concept: "quarantine:.gitkeep"
   - path: library/_quarantine_migrated/results/engineer/.gitkeep
     classification: ignore
+    status: archived
     concept: "quarantine:.gitkeep"
   - path: library/_quarantine_migrated/results/engineer/librarian-mongo-persistence-step2-prompt-20251228T012703Z.md
     classification: dynamic
+    status: archived
     concept: "quarantine:librarian-mongo-persistence-step2-prompt-20251228T012703Z"
   - path: library/_quarantine_migrated/results/engineer/librarian-mongo-persistence-step2-response-20251228T012703Z.md
     classification: dynamic
+    status: archived
     concept: "quarantine:librarian-mongo-persistence-step2-response-20251228T012703Z"
   - path: library/_quarantine_migrated/results/engineer/thread-b-pr-auth-prompt-20251228T120448Z.md
     classification: dynamic
+    status: archived
     concept: "quarantine:thread-b-pr-auth-prompt-20251228T120448Z"
   - path: library/_quarantine_migrated/results/engineer/thread-b-pr-auth-response-20251228T120448Z.md
     classification: dynamic
+    status: archived
     concept: "quarantine:thread-b-pr-auth-response-20251228T120448Z"
   - path: library/_quarantine_migrated/results/engineer/thread-b-pr-finalization-prompt-20251228T120218Z.md
     classification: dynamic
+    status: archived
     concept: "quarantine:thread-b-pr-finalization-prompt-20251228T120218Z"
   - path: library/_quarantine_migrated/results/engineer/thread-b-pr-finalization-response-20251228T120218Z.md
     classification: dynamic
+    status: archived
     concept: "quarantine:thread-b-pr-finalization-response-20251228T120218Z"
   - path: library/_quarantine_migrated/results/engineer/thread-b-prompt-20251228T114024Z.md
     classification: dynamic
+    status: archived
     concept: "quarantine:thread-b-prompt-20251228T114024Z"
   - path: library/_quarantine_migrated/results/engineer/thread-b-response-20251228T114024Z.md
     classification: dynamic
+    status: archived
     concept: "quarantine:thread-b-response-20251228T114024Z"
   - path: library/_quarantine_migrated/results/guardian/.gitkeep
     classification: ignore
+    status: archived
     concept: "quarantine:.gitkeep"
   - path: library/_quarantine_migrated/results/guardian/awacs-vscode-ui-mining-review.md
     classification: dynamic
+    status: archived
     concept: "quarantine:awacs-vscode-ui-mining-review"
   - path: library/_quarantine_migrated/results/pm/.gitkeep
     classification: ignore
+    status: archived
     concept: "quarantine:.gitkeep"
   - path: library/_quarantine_migrated/results/pm/awacs-mission-rail-authorization-prompt-20251225T221700Z.md
     classification: dynamic
+    status: archived
     concept: "quarantine:awacs-mission-rail-authorization-prompt-20251225T221700Z"
   - path: library/_quarantine_migrated/results/pm/awacs-mission-rail-authorization-response-20251225T221700Z.md
     classification: dynamic
+    status: archived
     concept: "quarantine:awacs-mission-rail-authorization-response-20251225T221700Z"
   - path: library/_quarantine_migrated/results/pm/awacs-mission-rail-implementation-gate-prompt-20251226T150834Z.md
     classification: dynamic
+    status: archived
     concept: "quarantine:awacs-mission-rail-implementation-gate-prompt-20251226T150834Z"
   - path: library/_quarantine_migrated/results/pm/awacs-mission-rail-implementation-gate-response-20251226T150834Z.md
     classification: dynamic
+    status: archived
     concept: "quarantine:awacs-mission-rail-implementation-gate-response-20251226T150834Z"
   - path: library/_quarantine_migrated/results/pm/awacs-project13-follow-up-prompt.md
     classification: dynamic
+    status: archived
     concept: "quarantine:awacs-project13-follow-up-prompt"
   - path: library/_quarantine_migrated/results/pm/awacs-project13-follow-up-response-20251225T215831Z.md
     classification: dynamic
+    status: archived
     concept: "quarantine:awacs-project13-follow-up-response-20251225T215831Z"
   - path: library/_quarantine_migrated/results/pm/awacs-project13-follow-up-response.md
     classification: dynamic
+    status: archived
     concept: "quarantine:awacs-project13-follow-up-response"
   - path: library/_quarantine_migrated/results/pm/awacs-project13-follow-up-tasks-20251225T215831Z.md
     classification: dynamic
+    status: archived
     concept: "quarantine:awacs-project13-follow-up-tasks-20251225T215831Z"
   - path: library/_quarantine_migrated/results/pm/awacs-project13-follow-up-tasks.md
     classification: dynamic
+    status: archived
     concept: "quarantine:awacs-project13-follow-up-tasks"
   - path: library/_quarantine_migrated/results/pm/awacs-project13-task-creation-prompt-20251225T220336Z.md
     classification: dynamic
+    status: archived
     concept: "quarantine:awacs-project13-task-creation-prompt-20251225T220336Z"
   - path: library/_quarantine_migrated/results/pm/awacs-project13-task-creation-response-20251225T220336Z.md
     classification: dynamic
+    status: archived
     concept: "quarantine:awacs-project13-task-creation-response-20251225T220336Z"
   - path: library/_quarantine_migrated/results/pm/awacs-project13-task-creation-tasks-20251225T220336Z.md
     classification: dynamic
+    status: archived
     concept: "quarantine:awacs-project13-task-creation-tasks-20251225T220336Z"
   - path: library/_quarantine_migrated/results/pm/awacs-task-orchestration-and-source-control.md
     classification: dynamic
+    status: archived
     concept: "quarantine:awacs-task-orchestration-and-source-control"
   - path: library/_quarantine_migrated/results/pm/awacs-ui-authorization-confirmation-20251225T221253Z.md
     classification: dynamic
+    status: archived
     concept: "quarantine:awacs-ui-authorization-confirmation-20251225T221253Z"
   - path: library/_quarantine_migrated/results/pm/awacs-ui-authorization-prompt-20251225T221253Z.md
     classification: dynamic
+    status: archived
     concept: "quarantine:awacs-ui-authorization-prompt-20251225T221253Z"
   - path: library/_quarantine_migrated/results/pm/mission-rail-implementation-authorization-prompt-20251226T215646Z.md
     classification: dynamic
+    status: archived
     concept: "quarantine:mission-rail-implementation-authorization-prompt-20251226T215646Z"
   - path: library/_quarantine_migrated/results/pm/mission-rail/mission-rail-implementation-authorization-response-20251226T215646Z.md
     classification: dynamic
+    status: archived
     concept: "quarantine:mission-rail-implementation-authorization-response-20251226T215646Z"
   - path: library/_quarantine_migrated/results/qa/.gitkeep
     classification: ignore
+    status: archived
     concept: "quarantine:.gitkeep"
   - path: library/_quarantine_migrated/results/ui/awacs-project13-task-ack-20251225T221558Z.md
     classification: dynamic
+    status: archived
     concept: "quarantine:awacs-project13-task-ack-20251225T221558Z"
   - path: library/_quarantine_migrated/results/ui/procedure-ladder-guardrails-plan-20251225T222021Z.md
     classification: dynamic
+    status: archived
     concept: "quarantine:procedure-ladder-guardrails-plan-20251225T222021Z"
   - path: library/_quarantine_migrated/results/ui/uiagent-vscode-report.md
     classification: dynamic
+    status: archived
     concept: "quarantine:uiagent-vscode-report"
   - path: library/_reports/agent-conflicts.v0.yaml
     classification: ignore
+    status: archived
     concept: "artifact:agent-conflicts"
   - path: library/_reports/canonical-layout.v0.yaml
     classification: ignore
+    status: archived
     concept: "artifact:canonical-layout"
   - path: library/_reports/disk-authoritative-artifacts-after.v0.yaml
     classification: ignore
+    status: archived
     concept: "artifact:disk-authoritative-artifacts-after"
   - path: library/_reports/duplication-report.v0.yaml
     classification: ignore
+    status: archived
     concept: "artifact:duplication-report"
   - path: library/_reports/dynamic-artifact-locations.v0.yaml
     classification: ignore
+    status: archived
     concept: "artifact:dynamic-artifact-locations"
   - path: library/_reports/final-audit.v0.md
     classification: ignore
+    status: archived
     concept: "artifact:final-audit"
   - path: library/_reports/governance-gaps.v0.yaml
     classification: ignore
+    status: archived
     concept: "artifact:governance-gaps"
   - path: library/_reports/inventory.v0.yaml
     classification: ignore
+    status: archived
     concept: "artifact:inventory"
   - path: library/_reports/migration-map.v0.yaml
     classification: ignore
+    status: archived
     concept: "artifact:migration-map"
   - path: library/_reports/mongo-artifact-contract.v0.yaml
     classification: ignore
+    status: archived
     concept: "artifact:mongo-artifact-contract"
   - path: library/_reports/mongo-migration-plan.v0.yaml
     classification: ignore
+    status: archived
     concept: "artifact:mongo-migration-plan"
   - path: library/_reports/mongo-migration-results.v0.yaml
     classification: ignore
+    status: archived
     concept: "artifact:mongo-migration-results"
   - path: library/_reports/mongo-normalization-rules.v0.yaml
     classification: ignore
+    status: archived
     concept: "artifact:mongo-normalization-rules"
   - path: library/_reports/mongo-sample-integrity.v0.yaml
     classification: ignore
+    status: archived
     concept: "artifact:mongo-sample-integrity"
   - path: library/_reports/open-questions.v0.yaml
     classification: ignore
+    status: archived
     concept: "artifact:open-questions"
   - path: library/_reports/prompt-size-risk-areas.v0.yaml
     classification: ignore
+    status: archived
     concept: "artifact:prompt-size-risk-areas"
   - path: library/_reports/rehydration-coverage.v0.yaml
     classification: ignore
+    status: archived
     concept: "artifact:rehydration-coverage"
   - path: library/_reports/runtime-inconsistencies.v0.yaml
     classification: ignore
+    status: archived
     concept: "artifact:runtime-inconsistencies"
   - path: library/agents/documentation/v0/boot-pack.v0.yaml
     classification: seed
+    status: archived
     concept: "agent:documentation.boot-pack"
   - path: library/agents/documentation/v0/charter.md
     classification: seed
+    status: archived
     concept: "agent:documentation.charter"
   - path: library/agents/documentation/v0/definition.v0.yaml
     classification: seed
+    status: archived
     concept: "agent:documentation.definition"
   - path: library/agents/documentation/v0/guardrails/rules.v0.yaml
     classification: seed
+    status: archived
     concept: "agent:documentation.guardrails"
   - path: library/agents/engineer/v0/boot-pack.v0.yaml
     classification: seed
+    status: archived
     concept: "agent:engineer.boot-pack"
   - path: library/agents/engineer/v0/charter.md
     classification: seed
+    status: archived
     concept: "agent:engineer.charter"
   - path: library/agents/engineer/v0/definition.v0.yaml
     classification: seed
+    status: archived
     concept: "agent:engineer.definition"
   - path: library/agents/engineer/v0/guardrails/rules.v0.yaml
     classification: seed
+    status: archived
     concept: "agent:engineer.guardrails"
   - path: library/agents/engineer/v0/schemas/engineer-work-order.v0.yaml
     classification: seed
+    status: archived
     concept: "agent:engineer.schema:engineer-work-order"
   - path: library/agents/guardian/v0/boot-pack.v0.yaml
     classification: seed
+    status: archived
     concept: "agent:guardian.boot-pack"
   - path: library/agents/guardian/v0/charter.md
     classification: seed
+    status: archived
     concept: "agent:guardian.charter"
   - path: library/agents/guardian/v0/definition.v0.yaml
     classification: seed
+    status: archived
     concept: "agent:guardian.definition"
   - path: library/agents/guardian/v0/guardrails/rules.v0.yaml
     classification: seed
+    status: archived
     concept: "agent:guardian.guardrails"
   - path: library/agents/guardian/v0/schemas/guardian-decision.v0.yaml
     classification: seed
+    status: archived
     concept: "agent:guardian.schema:guardian-decision"
   - path: library/agents/maestro/v0/boot-pack.v0.yaml
     classification: seed
+    status: archived
     concept: "agent:maestro.boot-pack"
   - path: library/agents/maestro/v0/charter.md
     classification: seed
+    status: archived
     concept: "agent:maestro.charter"
   - path: library/agents/maestro/v0/definition.v0.yaml
     classification: seed
+    status: archived
     concept: "agent:maestro.definition"
   - path: library/agents/maestro/v0/guardrails/rules.v0.yaml
     classification: seed
+    status: archived
     concept: "agent:maestro.guardrails"
   - path: library/agents/pm/v0/boot-pack.v0.yaml
     classification: seed
+    status: archived
     concept: "agent:pm.boot-pack"
   - path: library/agents/pm/v0/charter.md
     classification: seed
+    status: archived
     concept: "agent:pm.charter"
   - path: library/agents/pm/v0/definition.v0.yaml
     classification: seed
+    status: archived
     concept: "agent:pm.definition"
   - path: library/agents/pm/v0/guardrails/rules.v0.yaml
     classification: seed
+    status: archived
     concept: "agent:pm.guardrails"
   - path: library/agents/pm/v0/schemas/pm-plan.v0.yaml
     classification: seed
+    status: archived
     concept: "agent:pm.schema:pm-plan"
   - path: library/agents/qa/v0/boot-pack.v0.yaml
     classification: seed
+    status: archived
     concept: "agent:qa.boot-pack"
   - path: library/agents/qa/v0/charter.md
     classification: seed
+    status: archived
     concept: "agent:qa.charter"
   - path: library/agents/qa/v0/definition.v0.yaml
     classification: seed
+    status: archived
     concept: "agent:qa.definition"
   - path: library/agents/qa/v0/guardrails/rules.v0.yaml
     classification: seed
+    status: archived
     concept: "agent:qa.guardrails"
   - path: library/agents/support/v0/boot-pack.v0.yaml
     classification: seed
+    status: archived
     concept: "agent:support.boot-pack"
   - path: library/agents/support/v0/charter.md
     classification: seed
+    status: archived
     concept: "agent:support.charter"
   - path: library/agents/support/v0/definition.v0.yaml
     classification: seed
+    status: archived
     concept: "agent:support.definition"
   - path: library/agents/support/v0/guardrails/rules.v0.yaml
     classification: seed
+    status: archived
     concept: "agent:support.guardrails"
   - path: library/examples/references/roles/agent-artifact-persistence.md
     classification: seed
+    status: archived
     concept: "example:agent-artifact-persistence"
   - path: library/governance/laws/dev-workflow-enforcement.v0.md
     classification: seed
+    status: archived
     concept: "law:dev-workflow-enforcement"
   - path: library/governance/laws/dev-workflow-minimums.v0.md
     classification: seed
+    status: archived
     concept: "law:dev-workflow-minimums"
   - path: library/governance/laws/event-taxonomy-principles.v0.md
     classification: seed
+    status: archived
     concept: "law:event-taxonomy-principles"
   - path: library/governance/laws/mvp-required-event-types.v0.md
     classification: seed
+    status: archived
     concept: "law:mvp-required-event-types"
   - path: library/governance/laws/persistence-law.v0.md
     classification: seed
+    status: archived
     concept: "law:persistence-law"
   - path: library/governance/laws/run-abort-semantics.v0.md
     classification: seed
+    status: archived
     concept: "law:run-abort-semantics"
   - path: library/governance/laws/runtime-event-stream-principles.v0.md
     classification: seed
+    status: archived
     concept: "law:runtime-event-stream-principles"
+  - path: library/governance/laws/awacs-phase-state-snapshot-law.v1.md
+    classification: seed
+    status: archived
+    concept: "law:awacs-phase-state-snapshot"
+  - path: library/canon/rules/CANON_EXECUTION_PROTOCOL.v1.md
+    classification: seed
+    concept: "law:canon-execution-protocol"
+  - path: library/canon/taxonomy/CANON_ARTIFACT_TAXONOMY.v1.md
+    classification: seed
+    concept: "law:canon-artifact-taxonomy"
+  - path: library/canon/rules/LIBRARIAN_RESOLVER_LAW.v1.md
+    classification: seed
+    concept: "law:librarian-resolver-law"
+  - path: library/canon/charters/UI_AGENT_CHARTER.v1.md
+    classification: seed
+    concept: "charter:ui-agent"
+  - path: library/canon/charters/PM_AGENT_CHARTER.v1.md
+    classification: seed
+    concept: "charter:pm-agent"
+  - path: library/canon/charters/GUARDIAN_CHARTER.v1.md
+    classification: seed
+    concept: "charter:guardian-agent"
+  - path: library/brand/yanzi/wordmark/BRAND-YANZI-WORDMARK.v1.1.md
+    classification: seed
+    status: archived
+    concept: "brand:yanzi-wordmark"
   - path: library/governance/github/PR_EXECUTION_LAW.v2.md
     classification: seed
+    status: archived
     concept: "law:pr-execution-law"
   - path: library/ui/library/ux/awacs-library-ui-figma-make-prompt.v1.md
     classification: seed
+    status: archived
     concept: "prompt:awacs-library-ui-figma-make-prompt"
   - path: library/ui/library/ux/awacs-library-ui-codex-implementation-prompt.v1.md
     classification: seed
+    status: archived
     concept: "prompt:awacs-library-ui-codex-implementation-prompt"
   - path: library/ui/contracts/UI-CONTRACT-AWACS.v1.yaml
     classification: seed
+    status: archived
     concept: "ui-contract:awacs"
   - path: library/seeds/PHASE_OPEN_SEED_DELTA.v1.md
     classification: seed
+    status: archived
     concept: "seed:phase-open-seed-delta"
+  - path: library/canon/seeds/PROJECT_STATE_SEED.v1.yaml
+    classification: seed
+    concept: "seed:project-state-seed"
+  - path: library/canon/seeds/AWACS_UI_CONTEXT_SEED.LATEST.alias.v1.yaml
+    classification: seed
+    concept: "seed-alias:awacs-ui-context-latest"
+  - path: library/canon/snapshots/PLEXIMESH_PHASE_SNAPSHOT_INIT.v1.md
+    classification: seed
+    concept: "snapshot:pleximesh-phase-snapshot-init"
+  - path: library/canon/snapshots/PLEXIMESH_PHASE_SNAPSHOT_LIBRARY_MVC.v1.md
+    classification: seed
+    concept: "snapshot:pleximesh-phase-snapshot-library-mvc"
+  - path: library/canon/snapshots/LATEST.alias.v1.yaml
+    classification: seed
+    concept: "snapshot-alias:latest"
+  - path: library/canon/packs/PLEXIMESH_AWACS_PROJECT_PACK.v1.yaml
+    classification: seed
+    concept: "pack:pleximesh-awacs-project"
+  - path: library/canon/packs/AWACS_UI_AGENT_PACK.v1.yaml
+    classification: seed
+    concept: "pack:awacs-ui-agent"
+  - path: library/canon/schemas/PROMPT_ARTIFACT_SCHEMA.v1.yaml
+    classification: seed
+    concept: "schema:prompt-artifact"
   - path: library/guardian/interfaces/GUARDIAN_SERVICE_INTERFACE.v1.md
     classification: seed
+    status: archived
     concept: "interface:guardian-service-interface"
   - path: library/guardian/laws/GUARDIAN_LAW_PHASE_CLOSE.v1.md
     classification: seed
+    status: archived
     concept: "law:guardian-law-phase-close"
   - path: library/governance/policies/awacs/authority-matrix-certification.v0.md
     classification: seed
+    status: archived
     concept: "policy:authority-matrix-certification"
   - path: library/governance/policies/awacs/event-taxonomy-v0.md
     classification: seed
+    status: archived
     concept: "policy:event-taxonomy-v0"
   - path: library/governance/policies/awacs/nfr-charter.v0.md
     classification: seed
+    status: archived
     concept: "policy:nfr-charter"
   - path: library/governance/policies/awacs/ui/event-stream-v0.md
     classification: seed
+    status: archived
     concept: "policy:event-stream-v0"
   - path: library/governance/policies/ui/ui-socket-model.v0.md
     classification: seed
+    status: archived
     concept: "canon:ui-socket-model"
   - path: library/governance/phases/PHASE-UI-FOUNDATION.v0.md
     classification: seed
+    status: archived
     concept: "phase:PHASE-UI-FOUNDATION"
   - path: library/governance/phases/PHASE-UI-QA-FOUNDATION.v0.md
     classification: seed
+    status: archived
     concept: "phase:PHASE-UI-QA-FOUNDATION"
   - path: library/governance/phases/PHASE-UI-LIBRARY-VIEWER.v0.md
     classification: seed
+    status: archived
     concept: "phase:PHASE-UI-LIBRARY-VIEWER"
   - path: library/phases/PHASE-GUARDIAN-WORKBENCH.v1.md
     classification: seed
+    status: archived
     concept: "phase:PHASE-GUARDIAN-WORKBENCH"
   - path: library/phases/PHASE-AGENT-OBSERVABILITY.v1.md
     classification: seed
+    status: archived
     concept: "phase:PHASE-AGENT-OBSERVABILITY"
   - path: library/governance/policies/ui/ui-qa-gate-workflow.v0.md
     classification: seed
+    status: archived
     concept: "gate:ui-qa-workflow"
   - path: library/governance/policies/ui/ui-qa-agent-policy.v0.md
     classification: seed
+    status: archived
     concept: "policy:ui-qa-agent-policy"
   - path: library/governance/policies/ui/ui-qa-agent-policy-electron-amendment.v0.md
     classification: seed
+    status: archived
     concept: "policy:ui-qa-agent-policy-electron-amendment"
   - path: library/governance/operational/ui-qa-assignment-message.v0.md
     classification: seed
+    status: archived
     concept: "operational:ui-qa-assignment-message"
   - path: library/governance/task-inventories/ui-foundation-task-inventory.v0.md
     classification: seed
+    status: archived
     concept: "task-inventory:UI-FOUNDATION"
   - path: library/governance/task-inventories/ui-library-viewer-task-inventory.v0.md
     classification: seed
+    status: archived
     concept: "task-inventory:UI-LIBRARY-VIEWER"
   - path: library/governance/task-inventories/ui-runtime-viewer-task-inventory.v0.md
     classification: seed
+    status: archived
     concept: "task-inventory:UI-RUNTIME-VIEWER"
   - path: releases/spine/release-spine.v0.md
     classification: seed
+    status: archived
     concept: "release:spine"
   - path: releases/records/release-record.template.v0.md
     classification: seed
+    status: archived
     concept: "release:record-template"
   - path: runtime/hardening/runtime-hardening-phase1.v0.md
     classification: seed
+    status: archived
     concept: "runtime-hardening:phase1-spine"
   - path: runtime/hardening/runtime-hardening-phase1-complete.v0.md
     classification: seed
+    status: archived
     concept: "runtime-hardening:phase1-complete"
   - path: recovery/seed-prompts/PLEXIMESH_PROJECT_STATE_SNAPSHOT.v1.md
     classification: seed
+    status: archived
     concept: "recovery:seed-prompt.pleximesh-project-state-snapshot.v1"
   - path: recovery/seed-prompts/MASTER_SEED_PROMPT.v1.md
     classification: seed
+    status: archived
     concept: "recovery:seed-prompt.master-seed-prompt.v1"
   - path: recovery/seed-prompts/GUARDIAN_ROLE_SEED.v1.md
     classification: seed
+    status: archived
     concept: "recovery:seed-prompt.guardian-role-seed.v1"
   - path: recovery/seed-prompts/LIBRARIAN_ROLE_SEED_AND_RECOVERY.v1.md
     classification: seed
+    status: archived
     concept: "recovery:seed-prompt.librarian-role-seed-and-recovery.v1"
   - path: recovery/seed-prompts/PANIC_PROMPT.v1.md
     classification: seed
+    status: archived
     concept: "recovery:seed-prompt.panic-prompt.v1"
   - path: recovery/seed-prompts/CONVERSATION_ROLLOVER_PROTOCOL.v1.md
     classification: seed
+    status: archived
     concept: "recovery:seed-prompt.conversation-rollover-protocol.v1"
   - path: recovery/contracts/LLM_MEMORY_CONTRACT.v1.md
     classification: seed
+    status: archived
     concept: "recovery:contract.llm-memory.v1"
   - path: library/ui/awacs/seeds/AWACS_UI_CONTEXT_SEED.v3.md
     classification: seed
+    status: archived
     concept: "recovery:seed-prompt.awacs-ui-context-seed.v3"
+  - path: library/ui/reports/AWACS_UI_STATE_REPORT.v1.md
+    classification: seed
+    concept: "ui-analysis:awacs-ui-state-report"
+  - path: library/ui/architecture/AWACS_UI_INFORMATION_ARCHITECTURE.v1.md
+    classification: seed
+    concept: "ui-architecture:awacs-ui-information-architecture"
+  - path: library/ui/architecture/UI_ARCH_DECISION_SHELL_REPLACEMENT.v1.md
+    classification: seed
+    status: active
+    mutability: locked
+    concept: "architecture-decision:ui-arch-decision-shell-replacement"
+  - path: library/ui/decisions/AWACS_UI_OPERATIONAL_MODE.v1.md
+    classification: seed
+    concept: "ui-decision:awacs-ui-operational-mode"
+  - path: library/ui/requirements/AWACS_UI_REQUIREMENTS_MVP.v1.md
+    classification: seed
+    concept: "ui-requirements:awacs-ui-requirements-mvp"
+  - path: library/ui/process/AWACS_UI_CHANGE_REVIEW_CHECKLIST.v1.md
+    classification: seed
+    concept: "ui-process:awacs-ui-change-review-checklist"
+  - path: library/ui/process/AWACS_FIGMA_INTEGRATION_PROTOCOL.v1.md
+    classification: seed
+    concept: "ui-process:awacs-figma-integration-protocol"
+  - path: library/ui/shell/UI_SHELL_YANZI.v3.html
+    classification: seed
+    mutability: locked
+    concept: "ui-contract:ui-shell-yanzi"
+  - path: library/ui/zones/UI_ZONES_YANZI.v1.md
+    classification: seed
+    status: active
+    concept: "ui-layout:ui-zones-yanzi"
+  - path: library/plans/schema/YANZI_PLAN_SCHEMA.v1.yaml
+    classification: seed
+    status: active
+    concept: "plan-schema:yanzi-plan-schema"
+  - path: library/plans/instances/YANZI_PLAN_V1.yaml
+    classification: seed
+    status: active
+    concept: "plan:yanzi-plan-v1"
   - path: library/governance/policies/engineer/pr-policy.v0.md
     classification: seed
+    status: archived
     concept: "policy:pr-policy"
   - path: library/governance/decisions/process/2026-02-04-ui-contract-awacs-implementation-binding.v0.md
     classification: seed
+    status: archived
     concept: "binding:ui-contract-awacs-implementation"
+  - path: library/governance/decisions/process/2026-02-06-awacs-ui-agent-pack-resolver-update.v0.md
+    classification: seed
+    status: archived
+    concept: "registration:awacs-ui-agent-pack-resolver-update"
   - path: library/governance/policies/guardian/guardian-learning-rules.v0.yaml
     classification: seed
+    status: archived
     concept: "policy:guardian-learning-rules"
   - path: library/governance/policies/guardian/guardian-mission-rules.v0.yaml
     classification: seed
+    status: archived
     concept: "policy:guardian-mission-rules"
   - path: library/governance/policies/guardian/guardian-persistence-preflight.v0.md
     classification: seed
+    status: archived
     concept: "policy:guardian-persistence-preflight"
   - path: library/governance/policies/guardian/guardian-requirements-rules.v0.yaml
     classification: seed
+    status: archived
     concept: "policy:guardian-requirements-rules"
   - path: library/governance/policies/librarian/librarian-intake-agent-contract.v0.md
     classification: seed
+    status: archived
     concept: "policy:librarian-intake-agent-contract"
   - path: library/governance/policies/performance/binary-content-readiness.v0.md
     classification: seed
+    status: archived
     concept: "policy:binary-content-readiness"
   - path: library/governance/policies/performance/reference-first-prompts.v0.md
     classification: seed
+    status: archived
     concept: "policy:reference-first-prompts"
   - path: library/governance/policies/sdlc/versioning-and-release-policy.v0.md
     classification: seed
+    status: archived
     concept: "policy:versioning-and-release-policy"
   - path: library/missions/MISSION-DEFAULT-SDLC/v0/boot-pack.v0.yaml
     classification: seed
+    status: archived
     concept: "mission:MISSION-DEFAULT-SDLC.boot-pack"
   - path: library/missions/MISSION-DEFAULT-SDLC/v0/charter.md
     classification: seed
+    status: archived
     concept: "mission:MISSION-DEFAULT-SDLC.charter"
   - path: library/missions/MISSION-DEFAULT-SDLC/v0/mission.v0.yaml
     classification: seed
+    status: archived
     concept: "mission:MISSION-DEFAULT-SDLC"
   - path: library/runtime/awacs/theme/v0/awacs-theming-model.v0.md
     classification: seed
+    status: archived
     concept: "awacs:awacs-theming-model"
   - path: library/runtime/awacs/views/v0/awacs-runtime-view.v0.yaml
     classification: seed
+    status: archived
     concept: "awacs:awacs-runtime-view"
   - path: library/runtime/awacs/workspace/v0/awacs-workspace-model.v0.md
     classification: seed
+    status: archived
     concept: "awacs:awacs-workspace-model"
   - path: library/runtime/event-stream/v0/run-event-stream.v0.yaml
     classification: seed
+    status: archived
     concept: "event-stream:run-event-stream"
   - path: library/runtime/events/agent/engineer/v0/engineer.completed.v0.yaml
     classification: seed
+    status: archived
     concept: "event:engineer.completed"
   - path: library/runtime/events/agent/engineer/v0/engineer.progress.v0.yaml
     classification: seed
+    status: archived
     concept: "event:engineer.progress"
   - path: library/runtime/events/agent/engineer/v0/engineer.started.v0.yaml
     classification: seed
+    status: archived
     concept: "event:engineer.started"
   - path: library/runtime/events/system/v0/guardian.decision.recorded.v0.yaml
     classification: seed
+    status: archived
     concept: "event:guardian.decision.recorded"
   - path: library/runtime/events/system/v0/guardian.requirements.pass.v0.yaml
     classification: seed
+    status: archived
     concept: "event:guardian.requirements.pass"
   - path: library/runtime/events/system/v0/guardian.requirements.reject.v0.yaml
     classification: seed
+    status: archived
     concept: "event:guardian.requirements.reject"
   - path: library/runtime/events/system/v0/guardian.requirements.revise.v0.yaml
     classification: seed
+    status: archived
     concept: "event:guardian.requirements.revise"
   - path: library/runtime/events/system/v0/pm.plan.approved.v0.yaml
     classification: seed
+    status: archived
     concept: "event:pm.plan.approved"
   - path: library/runtime/events/system/v0/pm.plan.created.v0.yaml
     classification: seed
+    status: archived
     concept: "event:pm.plan.created"
   - path: library/runtime/events/system/v0/qa.verification.failed.v0.yaml
     classification: seed
+    status: archived
     concept: "event:qa.verification.failed"
   - path: library/runtime/events/system/v0/qa.verification.passed.v0.yaml
     classification: seed
+    status: archived
     concept: "event:qa.verification.passed"
   - path: library/runtime/events/system/v0/system.blocked.v0.yaml
     classification: seed
+    status: archived
     concept: "event:system.blocked"
   - path: library/runtime/events/system/v0/system.escalation.required.v0.yaml
     classification: seed
+    status: archived
     concept: "event:system.escalation.required"
   - path: library/runtime/events/system/v0/system.run.aborted.v0.yaml
     classification: seed
+    status: archived
     concept: "event:system.run.aborted"
   - path: library/runtime/events/system/v0/system.run.completed.v0.yaml
     classification: seed
+    status: archived
     concept: "event:system.run.completed"
   - path: library/runtime/events/system/v0/system.run.paused.v0.yaml
     classification: seed
+    status: archived
     concept: "event:system.run.paused"
   - path: library/runtime/events/system/v0/system.run.resumed.v0.yaml
     classification: seed
+    status: archived
     concept: "event:system.run.resumed"
   - path: library/runtime/events/system/v0/system.run.started.v0.yaml
     classification: seed
+    status: archived
     concept: "event:system.run.started"
   - path: library/runtime/events/v0/event-taxonomy.v0.yaml
     classification: seed
+    status: archived
     concept: event.taxonomy
   - path: library/runtime/gates/v0/phase-gate.PHASE-0.mvp-contract-lock.v0.yaml
     classification: seed
+    status: archived
     concept: "runtime.gate:phase-gate.PHASE-0.mvp-contract-lock"
   - path: library/runtime/gates/v0/phase-gate.PHASE-1.gateway-safety-mvp.v0.yaml
     classification: seed
+    status: archived
     concept: "runtime.gate:phase-gate.PHASE-1.gateway-safety-mvp"
   - path: library/runtime/gates/v0/phase-gate.v0.yaml
     classification: seed
+    status: archived
     concept: "runtime.gate:phase-gate"
   - path: library/runtime/messages/compliance/v0/compliance.check.v0.yaml
     classification: seed
+    status: archived
     concept: "message:compliance.check"
   - path: library/runtime/messages/decision/v0/decision.result.v0.yaml
     classification: seed
+    status: archived
     concept: "message:decision.result"
   - path: library/runtime/messages/intent/v0/intent.submission.v0.yaml
     classification: seed
+    status: archived
     concept: "message:intent.submission"
   - path: library/runtime/messages/outcome/v0/outcome.summary.v0.yaml
     classification: seed
+    status: archived
     concept: "message:outcome.summary"
   - path: library/runtime/messages/task/v0/task.evaluate.v0.yaml
     classification: seed
+    status: archived
     concept: "message:task.evaluate"
   - path: library/runtime/rehydration/chat-gpt-recovery-prompt.md
     classification: seed
+    status: archived
     concept: "rehydration:chat-gpt-recovery-prompt"
   - path: library/runtime/runs/v0/mission-run.v0.yaml
     classification: seed
+    status: archived
     concept: "run:mission-run"
   - path: library/runtime/runs/v0/run-outcome.v0.yaml
     classification: seed
+    status: archived
     concept: "run:run-outcome"
   - path: library/runtime/state/v0/run_state.v0.yaml
     classification: seed
+    status: archived
     concept: "runtime.state:run_state"
   - path: library/schemas/events/event.v0.json
     classification: seed
+    status: archived
     concept: "schema:event"

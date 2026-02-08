@@ -1,0 +1,67 @@
+apiVersion: yanzi.ai/plan/schema/v1
+kind: PlanSchema
+
+PlanSpec:
+metadata:
+plan_id: string
+name: string
+workspace_id: string
+project_id: string
+created_at: timestamp
+created_by:
+actor_type: enum[human, agent, system]
+actor_id: string
+
+intent:
+goal: string
+success_criteria: list[string]
+non_goals: list[string]
+
+invariants:
+requires_audit_log: boolean
+requires_gate_approvals: boolean
+
+process:
+process_template_id: string
+phases:
+- phase_id: string
+name: string
+description: string
+gates:
+- gate_id: string
+name: string
+required: boolean
+acceptance: list[string]
+tasks:
+- task_id: string
+title: string
+owner: string
+target_service: enum[ui, runtime, library]
+depends_on: list[string]
+tags: list[string]
+context:
+authoritative: list[string]
+informative: list[string]
+
+services:
+- service_id: string
+name: string
+language: string
+repo: string | null
+
+PlanState:
+phase_status: map[string, enum[not_started, in_progress, blocked, complete]]
+task_status: map[string, enum[not_started, in_progress, blocked, complete]]
+gate_status: map[string, enum[pending, passed, failed]]
+evidence: map[string, object]
+
+PlanChangeLog:
+entries:
+- entry_id: string
+timestamp: timestamp
+actor:
+actor_type: enum[human, agent, system]
+actor_id: string
+change_type: string
+reason: string
+patch: object

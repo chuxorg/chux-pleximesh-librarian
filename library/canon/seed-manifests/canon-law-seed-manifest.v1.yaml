@@ -1,0 +1,33 @@
+{
+  "artifacts": [
+    {
+      "artifact_id": "CANON_EXECUTION_PROTOCOL",
+      "version": "v1",
+      "checksum": "35ebe3a13bab643869b22f63fe7937b67d87f1ca9497a16e7e39b1cd862c64b5",
+      "domain": "governance",
+      "kind": "law",
+      "path": "library/canon/rules/CANON_EXECUTION_PROTOCOL.v1.md",
+      "status": "active",
+      "status_label": "Authoritative"
+    },
+    {
+      "artifact_id": "CANON_ARTIFACT_TAXONOMY",
+      "version": "v1",
+      "checksum": "5b8892c0bf1d1efbe483bdfa803234a23f25aec7164e8807ca4f143491a0c2d1",
+      "domain": "governance",
+      "kind": "law",
+      "path": "library/canon/taxonomy/CANON_ARTIFACT_TAXONOMY.v1.md",
+      "status": "active",
+      "status_label": "Authoritative"
+    }
+  ],
+  "manifest": {
+    "default_created_at": "2026-02-05T21:39:34Z",
+    "default_effective_at": "2026-02-05T21:39:34Z",
+    "generated_at": "2026-02-05T21:39:34Z",
+    "idempotent": true,
+    "name": "canon-law-seed-manifest",
+    "source": "library/canon/seed-manifests",
+    "version": "v1"
+  }
+}

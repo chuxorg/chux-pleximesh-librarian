@@ -1,0 +1,58 @@
+artifact_id: PROMPT_ARTIFACT_SCHEMA
+version: v1
+kind: schema
+domain: librarian
+authority: Human
+status: Authoritative
+
+description:
+  Defines the canonical structure and rules for PROMPT artifacts.
+  Prompts are executable intellectual property and must be reusable,
+  composable, auditable, and constrained.
+
+structure:
+
+  annotation:
+    required: true
+    fields:
+      prompt_id: string
+      version: string
+      agent: string
+      type: enum[prompt, fragment]
+      summary: string
+      intent: string
+      when_to_use: list[string]
+      when_not_to_use: list[string]
+      inputs: list[string]
+      outputs: list[string]
+      tags: list[string]
+
+  audit:
+    required: true
+    fields:
+      created_by: string
+      created_at: datetime
+      updated_by: string|null
+      updated_at: datetime|null
+
+  compose:
+    required: true
+    fields:
+      includes: list[prompt_ref]
+      body: string
+
+rules:
+
+  - annotation and audit metadata MUST NOT be injected into agent execution
+  - only resolved compose.body is sent to agents
+  - includes MUST reference PROMPT artifacts of type fragment
+  - circular includes are illegal
+  - prompts MUST NOT override Canon rules or Charters
+  - prompts MUST execute only within EXECUTE
+
+execution_boundary:
+  control_plane:
+    - annotation
+    - audit
+  data_plane:
+    - compose.body

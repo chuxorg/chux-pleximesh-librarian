@@ -1,0 +1,25 @@
+declaration_id: DECLARATION_INGESTION_TOOLING_DEFERRED.v1
+kind: declaration
+status: accepted
+authority: system
+date: 2026-02-08
+immutable: true
+title: Artifact Ingestion Tooling Deferred
+
+statement: >
+  No tooling is introduced at this time for artifact ingestion.
+  There will be no CLI, service, API, or code changes related to ingestion.
+  This decision intentionally limits scope to clarity, naming, and governance
+  until a future phase explicitly authorizes tooling work.
+
+scope:
+  - Applies to all ingestion-related work
+  - Applies to all agents and phases
+
+constraints:
+  - Librarian runtime API remains read-only
+  - Ingestion continues via existing LIB-003 mechanisms
+
+related_artifacts:
+  - ADR_INGESTION_NOT_LIBRARY_API.v1
+  - POLICY_AGENT_LANGUAGE_INGESTION.v1

@@ -1,0 +1,70 @@
+policy_id: DESIGN_ZONE_2A_INTERACTION_RULES.v1
+kind: design-interaction-policy
+status: accepted
+authority: system
+date: 2026-02-08
+immutable: true
+phase: 3
+title: Zone 2a Domain Navigation Interaction Rules
+
+purpose: >
+  To define strict interaction rules for Zone 2a (Left Toolbar Rail),
+  ensuring predictable, canonical domain navigation without execution risk
+  or contextual ambiguity.
+
+zone_definition:
+  zone: 2a
+  name: Left Toolbar Rail
+  role: Domain navigation (primary)
+
+interaction_rules:
+  click_behavior:
+    - Selecting a domain switches the entire main workspace context
+    - Domain selection is immediate and deterministic
+    - No confirmation dialogs are required for navigation
+
+selection_state:
+    - Exactly one domain is active at all times
+    - Active domain state is persistent across sessions
+    - Active state is visually distinct and unambiguous
+
+scope_constraints:
+  allowed:
+    - Domain switching (Home, Library, Projects, Workflows, Agents, Teams)
+  prohibited:
+    - Workspace-specific actions
+    - Execution or run controls
+    - Per-artifact tools
+    - Contextual actions dependent on active view
+    - Dynamic insertion, hiding, or reordering of domains
+
+structure_rules:
+  - Domains are fixed and canonical
+  - Order is system-defined and immutable
+  - Icons and labels are always visible
+  - No nested menus or sub-navigation
+
+extension_policy:
+  allowed_extensions:
+    - Cross-domain lenses (e.g. Activity, Audit)
+  extension_constraints:
+    - Must apply across multiple domains
+    - Must not alter execution state
+    - Must be visually distinguished from core domains
+    - Must be few in number
+
+accessibility_rules:
+  - Domain identity must not rely on color alone
+  - Icons and labels must be readable at all times
+  - Hover may reinforce meaning but must not reveal hidden actions
+
+non_goals:
+  - Zone 2a is not a customization surface
+  - Zone 2a does not expose power-user shortcuts
+  - Zone 2a does not reflect workspace or phase state
+
+related_artifacts:
+  - UI_SHELL_YANZI.v3
+  - UI_ZONES_YANZI.v1
+  - ADR_INGESTION_NOT_LIBRARY_API.v1
+  - DESIGN_ZONE_1B_INTERACTION_RULES.v1

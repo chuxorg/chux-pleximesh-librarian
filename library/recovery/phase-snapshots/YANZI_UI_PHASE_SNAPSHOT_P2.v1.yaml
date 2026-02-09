@@ -1,0 +1,57 @@
+artifact_type: ui_phase_snapshot
+product: yanzi
+phase: 2
+status: execution-complete
+authority: ui-agent
+timestamp: 2026-02-08T20:15:00Z
+
+summary:
+  - Canonical UI shell installed (UI_SHELL_YANZI.v3)
+  - Legacy UI logic rebound into canonical zones
+  - No geometry, layout, or visual changes introduced
+  - Renderer uses DOM scaffolding to re-home legacy IDs
+  - UI verified manually in Electron runtime
+
+locked_artifacts:
+  - UI_SHELL_YANZI.v3
+  - UI_ZONES_YANZI.v1
+  - UI_ARCH_DECISION_SHELL_REPLACEMENT.v1
+  - PHASE_COMPLETION_CONTRACT.v1
+  - PHASE_BRANCH_HYGIENE.v1
+
+execution_details:
+  renderer:
+    file: renderer.js
+    behavior:
+      - creates DOM scaffolding aligned to canonical zones
+      - rebinds legacy element IDs into zone containers
+      - preserves legacy UI logic and event handling
+      - performs no geometry or layout mutation
+      - introduces no new UI elements
+  index:
+    file: index.html
+    behavior:
+      - loads canonical UI shell
+      - loads renderer.js
+      - does not include legacy layout HTML
+
+constraints:
+  librarian_access:
+    mode: read-only
+    enforced_by: ui contract tests
+    write_endpoints: false
+    authentication: none
+
+verification:
+  automated:
+    - ui contract tests enforcing GET-only behavior passing
+    - build succeeds
+  manual:
+    - Electron runtime launched successfully
+    - UI elements visually constrained to canonical zones
+    - No unexpected visuals or interactions observed
+
+notes:
+  - Phase 2 work was structural rebinding only
+  - No redesign or intentional UI changes were performed
+  - All changes comply with locked shell and zone artifacts

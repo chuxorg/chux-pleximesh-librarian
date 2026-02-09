@@ -1,0 +1,40 @@
+policy_id: POLICY_AGENT_LANGUAGE_INGESTION.v1
+kind: policy
+status: accepted
+authority: system
+date: 2026-02-08
+immutable: true
+title: Standardized Agent Language for Artifact Ingestion
+
+purpose: >
+  To eliminate ambiguity between artifact ingestion and the Librarian runtime API
+  by enforcing precise, mandatory language in all agent interactions.
+
+normative_rules:
+  required_language:
+    - "Submit for ingestion"
+    - "Ingest via LIB-003"
+  prohibited_language:
+    - "POST to Librarian"
+    - "Write to the Library"
+    - "Store via API"
+    - "Persist through Librarian endpoint"
+
+enforcement:
+  - Mandatory in all agent prompts
+  - Mandatory in execution phases
+  - Mandatory in documentation and ADRs
+
+scope:
+  - Applies to all agents
+  - Applies to all artifact kinds
+  - Applies across all phases
+
+rationale:
+  - Prevents conflation of authority and accessibility
+  - Aligns human and agent mental models
+  - Preserves Librarian immutability
+
+related_artifacts:
+  - ADR_INGESTION_NOT_LIBRARY_API.v1
+  - LIB-003.v0.md

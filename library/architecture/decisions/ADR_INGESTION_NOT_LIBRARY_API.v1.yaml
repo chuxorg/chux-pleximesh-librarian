@@ -1,0 +1,47 @@
+adr_id: ADR_INGESTION_NOT_LIBRARY_API.v1
+status: accepted
+authority: system
+date: 2026-02-08
+immutable: true
+kind: architecture-decision-record
+title: Artifact Ingestion Is Not the Librarian API
+
+decision: >
+  Artifact creation and storage must not occur through the Librarian runtime API.
+  The Librarian runtime API is permanently read-only and serves only as a
+  truth-retrieval surface. All artifact creation occurs through a separate
+  ingestion mechanism.
+
+rationale:
+  - Preserves immutability guarantees
+  - Prevents authority and accessibility conflation
+  - Maintains auditability and phase governance
+
+policy:
+  - Agents never write to the Librarian runtime API
+  - Agents submit artifacts for ingestion
+  - Ingestion assigns artifact_id and registers inventory
+  - Librarian runtime API exposes GET-only access
+
+standardized_language:
+  allowed:
+    - "Submit for ingestion"
+  forbidden:
+    - "POST to Librarian"
+    - "Write to the Library"
+    - "Store via API"
+
+scope:
+  - Applies to all artifacts
+  - Applies to all agents
+  - Applies regardless of authentication or deployment context
+
+consequences:
+  - No changes to Librarian runtime API
+  - No tooling introduced by this decision
+  - Ingestion is a required governance step for phase closure
+
+related_artifacts:
+  - LIB-003.v0.md
+  - librarian.v0.yaml
+  - PHASE_COMPLETION_CONTRACT.v1

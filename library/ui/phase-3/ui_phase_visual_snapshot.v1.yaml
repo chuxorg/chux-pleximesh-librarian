@@ -1,0 +1,36 @@
+artifact_type: ui_phase_visual_snapshot
+product: yanzi
+phase: 3
+version: v1
+status: visual-design-complete
+authority: system
+immutable: true
+title: Phase 3 Visual Design Snapshot — Header & Navigation
+
+zones:
+  zone_1a:
+    role: application toolbar
+    visuals:
+      - command palette input (primary)
+      - lightweight dropdown list
+      - home icon
+      - workspace selector
+      - notifications
+      - app settings
+      - avatar
+  zone_1b:
+    role: workspace truth bar
+    visuals:
+      - workspace name
+      - execution state cluster (always emphasized)
+      - context selector pills (2–3 max)
+  zone_2a:
+    role: domain navigation
+    visuals:
+      - icon + label always visible
+      - active state = background + left accent
+
+non_goals:
+  - no styling tokens
+  - no code
+  - no animations

@@ -1,13 +1,51 @@
 {
   "info": {
     "_postman_id": "817057dc-4635-4b41-a4af-9ddfceb64832",
-    "name": "PlexiMesh Librarian Read API",
-    "description": "Read-only collection aligned with librarian/openapi/librarian.v0.yaml. Write operations are intentionally excluded.",
+    "name": "PlexiMesh Librarian REST API",
+    "description": "Read/write collection aligned with the current Librarian REST model. Includes create and query examples using /v1/artifacts.",
     "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
   },
   "item": [
     {
-      "name": "GET /artifacts/{artifact_id} \u2014 Latest Active",
+      "name": "POST /v1/artifacts \u2014 Create Artifact",
+      "request": {
+        "method": "POST",
+        "header": [
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          },
+          {
+            "key": "Accept",
+            "value": "application/json"
+          }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": "{\n  \"artifact_type\": \"ui_phase_visual_snapshot\",\n  \"product\": \"{{product}}\",\n  \"phase\": \"{{phase}}\",\n  \"version\": \"v1\",\n  \"content\": \"artifact_type: ui_phase_visual_snapshot\\nproduct: {{product}}\\nphase: {{phase}}\\nstatus: example\\n\"\n}"
+        },
+        "url": "{{base_url}}/v1/artifacts",
+        "description": "Create an artifact. Expected response fields: artifact_id, canonical_path."
+      },
+      "event": [
+        {
+          "listen": "test",
+          "script": {
+            "type": "text/javascript",
+            "exec": [
+              "try {",
+              "  const data = pm.response.json();",
+              "  if (data && data.artifact_id) {",
+              "    pm.collectionVariables.set(\"artifact_id\", data.artifact_id);",
+              "  }",
+              "} catch (e) {}"
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "name": "GET /v1/artifacts/{{artifact_id}} \u2014 Get Artifact by ID",
       "request": {
         "method": "GET",
         "header": [
@@ -16,12 +54,12 @@
             "value": "application/json"
           }
         ],
-        "url": "{{baseUrl}}/artifacts/{{artifactId}}",
-        "description": "Returns the latest active version. Deterministic ordering is applied internally when selecting the latest version."
+        "url": "{{base_url}}/v1/artifacts/{{artifact_id}}",
+        "description": "Fetch an artifact by ID using the current artifact_id variable."
       }
     },
     {
-      "name": "GET /artifacts/{artifact_id}?version=vX \u2014 Exact Version",
+      "name": "GET /v1/artifacts \u2014 Query Artifacts",
       "request": {
         "method": "GET",
         "header": [
@@ -30,79 +68,31 @@
             "value": "application/json"
           }
         ],
-        "url": "{{baseUrl}}/artifacts/{{artifactId}}?version={{versionParam}}",
-        "description": "Exact version lookup (vN)."
+        "url": "{{base_url}}/v1/artifacts?artifact_type=ui_phase_visual_snapshot&product={{product}}&phase={{phase}}",
+        "description": "Filtered query by artifact_type, product, and phase."
       }
+    }
+  ],
+  "variable": [
+    {
+      "key": "base_url",
+      "value": "http://localhost:8000",
+      "type": "string"
     },
     {
-      "name": "GET /tasks/{task_id} \u2014 Latest Active",
-      "request": {
-        "method": "GET",
-        "header": [
-          {
-            "key": "Accept",
-            "value": "application/json"
-          }
-        ],
-        "url": "{{baseUrl}}/tasks/{{taskId}}",
-        "description": "Typed alias for task artifacts."
-      }
+      "key": "artifact_id",
+      "value": "ui_phase_visual_snapshot",
+      "type": "string"
     },
     {
-      "name": "GET /policies/{policy_id} \u2014 Latest Active",
-      "request": {
-        "method": "GET",
-        "header": [
-          {
-            "key": "Accept",
-            "value": "application/json"
-          }
-        ],
-        "url": "{{baseUrl}}/policies/{{policyId}}",
-        "description": "Typed alias for policy artifacts."
-      }
+      "key": "product",
+      "value": "yanzi",
+      "type": "string"
     },
     {
-      "name": "GET /phases/{phase_id} \u2014 Latest Active",
-      "request": {
-        "method": "GET",
-        "header": [
-          {
-            "key": "Accept",
-            "value": "application/json"
-          }
-        ],
-        "url": "{{baseUrl}}/phases/{{phaseId}}",
-        "description": "Typed alias for phase artifacts."
-      }
-    },
-    {
-      "name": "GET /artifacts \u2014 List",
-      "request": {
-        "method": "GET",
-        "header": [
-          {
-            "key": "Accept",
-            "value": "application/json"
-          }
-        ],
-        "url": "{{baseUrl}}/artifacts?kind={{kindFilter}}&domain={{domainFilter}}&status={{statusFilter}}&tag={{tagFilter}}",
-        "description": "Lists artifacts filtered by kind/domain/status/tag. Results are ordered by (artifact_id, version)."
-      }
-    },
-    {
-      "name": "GET /health \u2014 Expected 404",
-      "request": {
-        "method": "GET",
-        "header": [
-          {
-            "key": "Accept",
-            "value": "application/json"
-          }
-        ],
-        "url": "{{baseUrl}}/health",
-        "description": "No health endpoint is implemented; expect 404 Unknown path."
-      }
+      "key": "phase",
+      "value": "3",
+      "type": "string"
     }
   ]
 }

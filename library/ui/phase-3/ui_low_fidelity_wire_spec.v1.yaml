@@ -1,0 +1,23 @@
+artifact_type: ui_low_fidelity_wire_spec
+product: yanzi
+phase: 3
+version: v1
+status: accepted
+authority: system
+immutable: true
+title: Phase 3 Low-Fidelity Wireframe Specification
+
+zone_1a:
+  layout: [AppIdentity, CommandPalette, Home, WorkspaceSelector, Spacer, Notifications, Settings, Avatar]
+
+zone_1b:
+  layout: [WorkspaceName, ExecutionStateCluster, Spacer, ContextSelectorPill x2-3]
+
+zone_2a:
+  layout:
+    - Home
+    - Library
+    - Projects
+    - Workflows
+    - Agents
+    - Teams

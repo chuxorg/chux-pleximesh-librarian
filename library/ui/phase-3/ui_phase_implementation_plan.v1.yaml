@@ -1,0 +1,33 @@
+artifact_type: ui_phase_implementation_plan
+product: yanzi
+phase: 3
+version: v1
+status: approved
+authority: system
+immutable: true
+title: Phase 3 UI Implementation Plan
+
+zone_1a_components:
+  - AppIdentity
+  - CommandPaletteInput
+  - CommandPaletteDropdown
+  - HomeButton
+  - WorkspaceSelector
+  - Notifications
+  - AppSettings
+  - AvatarMenu
+
+zone_1b_components:
+  - WorkspaceNameDisplay
+  - ExecutionStateCluster
+  - ContextSelectorPill
+
+zone_2a_components:
+  - DomainNavContainer
+  - DomainNavItem
+
+constraints:
+  - no new UI elements
+  - no geometry changes
+  - no execution controls
+  - light/dark parity required

@@ -734,6 +734,11 @@ artifacts:
     status: active
     mutability: locked
     concept: "snapshot:yanzi-ui-phase-3-visual-v1"
+  - path: library/ui/phase-3/ui_phase_implementation_plan.v1.yaml
+    classification: seed
+    status: active
+    mutability: locked
+    concept: "plan:yanzi-ui-phase-3-implementation-v1"
   - path: library/ui/plans/YANZI_UI_PHASE_IMPLEMENTATION_PLAN_P3.v1.yaml
     classification: seed
     status: active

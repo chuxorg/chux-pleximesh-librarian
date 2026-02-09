@@ -744,6 +744,11 @@ artifacts:
     status: active
     mutability: locked
     concept: "snapshot:yanzi-ui-phase-3-wire-spec-v1"
+  - path: library/ui/design/design_zone_1b_interaction_rules.v1.yaml
+    classification: seed
+    status: active
+    mutability: locked
+    concept: "policy:design-zone-1b-interaction-rules"
   - path: library/ui/plans/YANZI_UI_PHASE_IMPLEMENTATION_PLAN_P3.v1.yaml
     classification: seed
     status: active

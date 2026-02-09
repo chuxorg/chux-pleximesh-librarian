@@ -1,0 +1,8 @@
+policy_id: DESIGN_ZONE_1B_INTERACTION_RULES.v1
+kind: design-interaction-policy
+authority: system
+immutable: true
+rules:
+  - execution state is informational only
+  - workspace name is clickable for management
+  - no execution actions allowed

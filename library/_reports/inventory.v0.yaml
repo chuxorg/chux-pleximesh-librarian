@@ -699,6 +699,11 @@ artifacts:
     status: active
     mutability: locked
     concept: "architecture-decision:adr-ingestion-not-library-api"
+  - path: library/policies/UI_ARTIFACT_STORAGE_AND_EXECUTION_POLICY.v1.yaml
+    classification: seed
+    status: active
+    mutability: locked
+    concept: "policy:ui-artifact-storage-and-execution"
   - path: library/ui/decisions/AWACS_UI_OPERATIONAL_MODE.v1.md
     classification: seed
     concept: "ui-decision:awacs-ui-operational-mode"
@@ -719,16 +724,6 @@ artifacts:
     classification: seed
     status: active
     concept: "ui-layout:ui-zones-yanzi"
-  - path: library/ui/snapshots/YANZI_UI_PHASE_DESIGN_SNAPSHOT_P3.v1.yaml
-    classification: seed
-    status: active
-    mutability: locked
-    concept: "snapshot:yanzi-ui-phase-design-p3"
-  - path: library/ui/snapshots/YANZI_UI_PHASE_VISUAL_SNAPSHOT_P3.v1.yaml
-    classification: seed
-    status: active
-    mutability: locked
-    concept: "snapshot:yanzi-ui-phase-visual-p3"
   - path: library/ui/phase-3/ui_phase_visual_snapshot.v1.yaml
     classification: seed
     status: active
@@ -754,16 +749,6 @@ artifacts:
     status: active
     mutability: locked
     concept: "policy:design-zone-2a-interaction-rules"
-  - path: library/ui/plans/YANZI_UI_PHASE_IMPLEMENTATION_PLAN_P3.v1.yaml
-    classification: seed
-    status: active
-    mutability: locked
-    concept: "plan:yanzi-ui-phase-implementation-p3"
-  - path: library/ui/snapshots/YANZI_UI_PHASE_WIREFRAME_P3.v1.yaml
-    classification: seed
-    status: active
-    mutability: locked
-    concept: "snapshot:yanzi-ui-phase-wireframe-p3"
   - path: library/recovery/phase-snapshots/YANZI_UI_PHASE_SNAPSHOT_P2.v1.yaml
     classification: seed
     status: active
@@ -806,11 +791,6 @@ artifacts:
     status: active
     mutability: locked
     concept: "policy:agent-language-ingestion"
-  - path: library/governance/policies/ui/DESIGN_ZONE_2A_INTERACTION_RULES.v1.yaml
-    classification: seed
-    status: active
-    mutability: locked
-    concept: "policy:design-zone-2a-interaction-rules"
   - path: library/governance/declarations/DECLARATION_INGESTION_TOOLING_DEFERRED.v1.yaml
     classification: seed
     status: active

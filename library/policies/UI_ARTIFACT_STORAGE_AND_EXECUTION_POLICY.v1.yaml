@@ -1,0 +1,53 @@
+policy_id: UI_ARTIFACT_STORAGE_AND_EXECUTION_POLICY.v1
+kind: storage-and-execution-policy
+status: accepted
+authority: system
+immutable: true
+
+purpose: >
+  To define canonical storage rules and execution authority for all
+  UI-related artifacts, ensuring deterministic ingestion and reliable
+  agent execution.
+
+storage_rules:
+  ui_phase_artifacts:
+    base_path: library/ui/phase-{phase}/
+    artifact_types:
+      - ui_phase_visual_snapshot
+      - ui_phase_implementation_plan
+      - ui_low_fidelity_wire_spec
+
+  ui_design_policies:
+    base_path: library/ui/design/
+    artifact_types:
+      - design-interaction-policy
+
+execution_rules:
+  write_authority:
+    allowed_agents:
+      - Librarian Agent
+      - Guardian
+      - PM Agent
+    prohibited:
+      - UI Agent
+      - Engineer Agent
+      - Runtime UI
+
+  write_plane:
+    description: >
+      All write operations occur through a restricted internal execution
+      path (implementation-defined). The read plane remains GET-only.
+    temporary_allowance:
+      - UI-based write implementation is permitted pre-MVP
+      - All writes must route through a single internal module
+      - Direct filesystem writes outside this path are forbidden
+
+validation:
+  - Ingestion must fail if canonical path cannot be resolved
+  - Inventory paths must match filesystem paths
+  - Artifact headers must match artifact_type
+
+non_goals:
+  - No public write APIs
+  - No authentication system
+  - No UI for permissions

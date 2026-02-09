@@ -1,0 +1,49 @@
+policy_id: AGENT_LIBRARY_WRITE_PROCESS_RULES.v1
+kind: agent-process-policy
+status: accepted
+authority: system
+immutable: true
+
+purpose: >
+  To ensure all agents reliably store and retrieve artifacts through the
+  Librarian REST API, eliminating ambiguity, drift, and implicit ingestion.
+
+rules:
+  write_path:
+    required:
+      - All artifact creation MUST use POST /v1/artifacts
+      - Canonical path resolution is server-side only
+    forbidden:
+      - Direct filesystem writes
+      - Seed-only ingestion paths
+      - Chat-defined or implicit artifact storage
+      - Repo-local copies of canonical artifacts
+
+  read_path:
+    allowed:
+      - GET /v1/artifacts/{artifact_id}
+      - GET /v1/artifacts with filters
+    forbidden:
+      - Assuming filesystem paths without API resolution
+
+agent_scope:
+  applies_to:
+    - UI Agent
+    - Engineer Agent
+    - PM Agent
+    - Guardian
+  exemptions:
+    - Librarian Agent (internal enforcement only)
+
+error_handling:
+  - Agents MUST block execution if REST write fails
+  - Agents MUST NOT proceed on assumed ingestion
+  - Errors must be surfaced explicitly
+
+non_goals:
+  - No authentication rules defined here
+  - No transport constraints (HTTP/gRPC abstracted)
+
+enforcement:
+  - Violations invalidate execution output
+  - Phase closure is forbidden without REST-confirmed artifact_id

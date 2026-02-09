@@ -704,6 +704,11 @@ artifacts:
     status: active
     mutability: locked
     concept: "policy:ui-artifact-storage-and-execution"
+  - path: library/policies/AGENT_LIBRARY_WRITE_PROCESS_RULES.v1.yaml
+    classification: seed
+    status: active
+    mutability: locked
+    concept: "policy:agent-library-write-process-rules"
   - path: library/ui/decisions/AWACS_UI_OPERATIONAL_MODE.v1.md
     classification: seed
     concept: "ui-decision:awacs-ui-operational-mode"

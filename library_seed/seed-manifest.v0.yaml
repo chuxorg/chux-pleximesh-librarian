@@ -55,6 +55,14 @@
       "kind": "policy",
       "path": "library_seed/policies/pr-policy.v0.md",
       "status": "active"
+    },
+    {
+      "artifact_id": "AGENT_LIBRARY_WRITE_PROCESS_RULES",
+      "checksum": "e5f2ac9c990c5e607682f4ee83e834090739b57ab03800fece3ed0154c806c68",
+      "domain": "governance",
+      "kind": "policy",
+      "path": "library_seed/policies/AGENT_LIBRARY_WRITE_PROCESS_RULES.v1.yaml",
+      "status": "active"
     }
   ],
   "manifest": {

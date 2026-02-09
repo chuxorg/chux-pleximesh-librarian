@@ -1,0 +1,8 @@
+policy_id: DESIGN_ZONE_2A_INTERACTION_RULES.v1
+kind: design-interaction-policy
+authority: system
+immutable: true
+rules:
+  - domain navigation only
+  - fixed canonical ordering
+  - no per-domain actions

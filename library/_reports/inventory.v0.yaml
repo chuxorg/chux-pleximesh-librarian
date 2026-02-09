@@ -699,6 +699,11 @@ artifacts:
     status: active
     mutability: locked
     concept: "architecture-decision:adr-ingestion-not-library-api"
+  - path: library/architecture/decisions/ADR_LIBRARY_REST_WRITE_SUPERCEDES_INGESTION.v1.yaml
+    classification: seed
+    status: active
+    mutability: locked
+    concept: "architecture-decision:adr-library-rest-write-supercedes-ingestion"
   - path: library/policies/UI_ARTIFACT_STORAGE_AND_EXECUTION_POLICY.v1.yaml
     classification: seed
     status: active

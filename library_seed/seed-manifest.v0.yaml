@@ -63,6 +63,14 @@
       "kind": "policy",
       "path": "library_seed/policies/AGENT_LIBRARY_WRITE_PROCESS_RULES.v1.yaml",
       "status": "active"
+    },
+    {
+      "artifact_id": "ADR_LIBRARY_REST_WRITE_SUPERCEDES_INGESTION",
+      "checksum": "7cfa1bea109b1a67c9bc124dca1dff16382d44b6da0fa2e62a4488f696178ab5",
+      "domain": "librarian",
+      "kind": "policy",
+      "path": "library_seed/decisions/architecture/ADR_LIBRARY_REST_WRITE_SUPERCEDES_INGESTION.v1.yaml",
+      "status": "active"
     }
   ],
   "manifest": {

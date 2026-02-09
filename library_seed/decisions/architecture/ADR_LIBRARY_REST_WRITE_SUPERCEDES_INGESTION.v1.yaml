@@ -1,0 +1,35 @@
+adr_id: ADR_LIBRARY_REST_WRITE_SUPERCEDES_INGESTION.v1
+kind: architecture-decision-record
+status: accepted
+authority: system
+immutable: true
+
+decision: >
+  The Librarian REST API is the authoritative write path for all artifact
+  creation and registration. Prior ingestion-only and filesystem-based
+  write models are superseded.
+
+context: >
+  Earlier versions of the Librarian relied on seed-based ingestion and
+  implicit filesystem writes. This model proved unreliable for agent-driven
+  execution, leading to ambiguity between chat, disk, and inventory state.
+
+resolution:
+  - POST /v1/artifacts is now the sole supported write mechanism
+  - Canonical storage paths are resolved server-side
+  - Agents MUST NOT write directly to disk or rely on seed ingestion
+  - The Librarian is a live system of record, not a passive registry
+
+supersedes:
+  - ADR_INGESTION_NOT_LIBRARY_API.v1
+  - UI_ARTIFACT_STORAGE_AND_EXECUTION_POLICY.v1
+
+consequences:
+  - REST API is read/write (controlled)
+  - Ingestion scripts are limited to bootstrap or recovery scenarios
+  - Artifact persistence is deterministic and queryable
+  - Execution no longer depends on chat-local state
+
+non_goals:
+  - No change to authentication posture
+  - No requirement to migrate existing artifact contents
